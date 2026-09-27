@@ -493,8 +493,6 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
     return "#334155";
   };
 
-  // Pointer start position (right edge of top-left callout box in SVG coordinate space)
-  const pointerStart = { x: 380, y: 240 };
   const pointerTarget = activeMeta.center;
 
   return (
@@ -638,26 +636,27 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           className="w-full h-auto select-none overflow-visible filter drop-shadow-sm"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* DYNAMIC SPEECH BUBBLE POINTER LINE */}
-          <path
-            d={`M ${pointerStart.x} ${pointerStart.y} C ${(pointerStart.x + pointerTarget.x) / 2} ${pointerStart.y - 40}, ${(pointerStart.x + pointerTarget.x) / 2} ${pointerTarget.y - 30}, ${pointerTarget.x} ${pointerTarget.y}`}
-            fill="none"
-            stroke="#1e293b"
-            strokeWidth="2.2"
-            strokeDasharray="none"
-            pointerEvents="none"
-            className="transition-all duration-300"
-          />
-          {/* Target Pulse Dot */}
-          <circle
-            cx={pointerTarget.x}
-            cy={pointerTarget.y}
-            r="6"
-            fill="#1e293b"
-            stroke="#ffffff"
-            strokeWidth="2"
-            pointerEvents="none"
-          />
+          {/* LOCATION PIN POINTER */}
+          <g
+            transform={`translate(${pointerTarget.x}, ${pointerTarget.y})`}
+            className="transition-all duration-300 ease-in-out pointer-events-none drop-shadow-md"
+          >
+            {/* Transformasi ini mengatur agar ujung bawah pin (titik 12,22) tepat berada di titik koordinat center pulau */}
+            <g transform="scale(1.5) translate(-12, -22)">
+              <path
+                d="M12 22C12 22 4 16 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 16 12 22 12 22Z"
+                fill={
+                  !hasData ? "#64748b" : 
+                  regData.score < 60 ? "#dc2626" : 
+                  (regData.score < 80 || regData.infected > 0) ? "#ea580c" : 
+                  "#22c55e"
+                }
+                stroke="#ffffff"
+                strokeWidth="1.5"
+              />
+              <circle cx="12" cy="10" r="3.5" fill="#ffffff" />
+            </g>
+          </g>
 
           {/* MAIN INDONESIA MAP PROVINCIAL GROUPS */}
           <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
@@ -1079,7 +1078,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
               onMouseEnter={() => setHoveredId('Sulawesi-Selatan')}
               onMouseLeave={() => setHoveredId(null)}
             >
-              <path d="M0,159.637C0,157.545 -8.363,138.723 -8.363,138.723L-6.021,125.828L-2.676,124.084L-0.334,118.158L-3.68,106.309L-2.342,101.08L-4.014,90.971L-4.014,85.047L0.336,74.94L-3.01,61.344L-1.672,57.512L-8.363,50.541L-8.363,44.963L9.699,29.279L15.051,29.279L23.414,31.719L26.09,40.781L48.836,44.266L55.525,35.901L49.838,27.883L14.717,15.337L-5.018,-4.879L-25.756,-1.743L-22.744,36.25L-37.797,35.901L-37.797,55.42L-49.504,63.785L-39.471,68.664L-42.479,76.682L-35.123,90.625L-36.125,111.887L-41.143,123.735L-40.473,127.916L-46.828,144.651L-44.152,156.848L-39.471,158.592L-38.467,163.121L-34.787,159.637L-28.432,164.516L-21.408,155.801L-14.049,158.241L-5.018,153.014L0,159.637Z" />
+              <path d="M0,159.637C0,157.545 -8.363,138.723 -8.363,138.723L-6.021,125.828L-2.676,124.084L-0.334,118.158L-3.68,106.309L-2.342,101.08L-4.014,90.971L-4.014,85.047L0.336,74.94L-3.01,61.344L-1.672,57.512L-8.363,50.541L-8.363,44.963L9.699,29.279L15.051,29.279L23.414,31.719L26.09,40.781L48.836,44.266L55.525,35.901L49.838,27.883L14.717,15.337L-5.018,-4.879L-25.756,-17.423L-22.744,36.25L-37.797,35.901L-37.797,55.42L-49.504,63.785L-39.471,68.664L-42.479,76.682L-35.123,90.625L-36.125,111.887L-41.143,123.735L-40.473,127.916L-46.828,144.651L-44.152,156.848L-39.471,158.592L-38.467,163.121L-34.787,159.637L-28.432,164.516L-21.408,155.801L-14.049,158.241L-5.018,153.014L0,159.637Z" />
             </g>
             <g
               id="Sulawesi-Tenggara"
