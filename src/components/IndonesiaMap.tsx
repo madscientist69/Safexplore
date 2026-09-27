@@ -22,8 +22,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Aceh",
     "regionKey": "Sumatera",
     "center": {
-      "x": 121,
-      "y": 341
+      "x": 87,
+      "y": 239
     }
   },
   "Sumatera-Utara": {
@@ -31,8 +31,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sumatera Utara",
     "regionKey": "Sumatera",
     "center": {
-      "x": 231,
-      "y": 369
+      "x": 184,
+      "y": 317
     }
   },
   "Pulau-Nias": {
@@ -40,8 +40,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Nias (Sumut)",
     "regionKey": "Sumatera",
     "center": {
-      "x": 198,
-      "y": 469
+      "x": 117,
+      "y": 374
     }
   },
   "Sumatera-Barat": {
@@ -49,8 +49,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sumatera Barat",
     "regionKey": "Sumatera",
     "center": {
-      "x": 285,
-      "y": 539
+      "x": 234,
+      "y": 447
     }
   },
   "Pulau-Siberut": {
@@ -58,8 +58,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Mentawai (Sumbar)",
     "regionKey": "Sumatera",
     "center": {
-      "x": 261,
-      "y": 571
+      "x": 174,
+      "y": 478
     }
   },
   "Riau": {
@@ -67,8 +67,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Riau",
     "regionKey": "Sumatera",
     "center": {
-      "x": 326,
-      "y": 482
+      "x": 298,
+      "y": 386
     }
   },
   "Kepulauan-Riau": {
@@ -76,8 +76,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Kepulauan Riau",
     "regionKey": "Sumatera",
     "center": {
-      "x": 654,
-      "y": 340
+      "x": 562,
+      "y": 249
     }
   },
   "Jambi": {
@@ -85,8 +85,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Jambi",
     "regionKey": "Sumatera",
     "center": {
-      "x": 418,
-      "y": 593
+      "x": 343,
+      "y": 494
     }
   },
   "Bengkulu": {
@@ -94,8 +94,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Bengkulu",
     "regionKey": "Sumatera",
     "center": {
-      "x": 363,
-      "y": 668
+      "x": 319,
+      "y": 575
     }
   },
   "Sumatera-Selatan": {
@@ -103,8 +103,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sumatera Selatan",
     "regionKey": "Sumatera",
     "center": {
-      "x": 407,
-      "y": 637
+      "x": 395,
+      "y": 555
     }
   },
   "Pulau-Bangka": {
@@ -112,8 +112,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Bangka (Babel)",
     "regionKey": "Sumatera",
     "center": {
-      "x": 534,
-      "y": 606
+      "x": 465,
+      "y": 517
     }
   },
   "Pulau-Belitung": {
@@ -121,8 +121,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Belitung (Babel)",
     "regionKey": "Sumatera",
     "center": {
-      "x": 636,
-      "y": 632
+      "x": 551,
+      "y": 550
     }
   },
   "Lampung": {
@@ -130,8 +130,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Lampung",
     "regionKey": "Sumatera",
     "center": {
-      "x": 472,
-      "y": 705
+      "x": 420,
+      "y": 635
     }
   },
   "Banten": {
@@ -139,8 +139,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Banten",
     "regionKey": "Jawa",
     "center": {
-      "x": 553,
-      "y": 795
+      "x": 469,
+      "y": 701
     }
   },
   "Jawa-Barat": {
@@ -148,8 +148,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Jawa Barat & DKI",
     "regionKey": "Jawa",
     "center": {
-      "x": 599,
-      "y": 812
+      "x": 535,
+      "y": 719
     }
   },
   "Jawa-Tengah": {
@@ -157,8 +157,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Jawa Tengah",
     "regionKey": "Jawa",
     "center": {
-      "x": 682,
-      "y": 827
+      "x": 643,
+      "y": 738
     }
   },
   "Daerah-Istimewa-Yogyakarta": {
@@ -166,8 +166,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "DI Yogyakarta",
     "regionKey": "Jawa",
     "center": {
-      "x": 739,
-      "y": 855
+      "x": 654,
+      "y": 765
     }
   },
   "Jawa-Timur": {
@@ -175,8 +175,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Jawa Timur",
     "regionKey": "Jawa",
     "center": {
-      "x": 792,
-      "y": 855
+      "x": 754,
+      "y": 761
     }
   },
   "Pulau-Madura": {
@@ -184,8 +184,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Madura",
     "regionKey": "Jawa",
     "center": {
-      "x": 855,
-      "y": 823
+      "x": 780,
+      "y": 727
     }
   },
   "Kalimantan-Barat": {
@@ -193,8 +193,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Kalimantan Barat",
     "regionKey": "Kalimantan",
     "center": {
-      "x": 719,
-      "y": 538
+      "x": 686,
+      "y": 432
     }
   },
   "Kalimantan-Tengah": {
@@ -202,8 +202,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Kalimantan Tengah",
     "regionKey": "Kalimantan",
     "center": {
-      "x": 835,
-      "y": 577
+      "x": 777,
+      "y": 493
     }
   },
   "Kalimantan-Selatan": {
@@ -211,8 +211,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Kalimantan Selatan",
     "regionKey": "Kalimantan",
     "center": {
-      "x": 915,
-      "y": 589
+      "x": 864,
+      "y": 540
     }
   },
   "Kalimantan-Utara---Kalimantan-Timur": {
@@ -220,8 +220,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Kaltim & Kaltara",
     "regionKey": "Kalimantan",
     "center": {
-      "x": 550,
-      "y": 267
+      "x": 907,
+      "y": 369
     }
   },
   "Sulawesi-Utara": {
@@ -229,8 +229,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sulawesi Utara",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1287,
-      "y": 454
+      "x": 1222,
+      "y": 378
     }
   },
   "Gorontalo": {
@@ -238,8 +238,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Gorontalo",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1221,
-      "y": 487
+      "x": 1151,
+      "y": 390
     }
   },
   "Sulawesi-Tengah": {
@@ -247,8 +247,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sulawesi Tengah",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1189,
-      "y": 553
+      "x": 1113,
+      "y": 456
     }
   },
   "Sulawesi-Barat": {
@@ -256,8 +256,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sulawesi Barat",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1115,
-      "y": 558
+      "x": 1024,
+      "y": 521
     }
   },
   "Sulawesi-Selatan": {
@@ -265,8 +265,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sulawesi Selatan",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1150,
-      "y": 599
+      "x": 1070,
+      "y": 591
     }
   },
   "Sulawesi-Tenggara": {
@@ -274,8 +274,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sulawesi Tenggara",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1197,
-      "y": 685
+      "x": 1138,
+      "y": 591
     }
   },
   "Pulau-Buton": {
@@ -283,8 +283,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Buton",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1276,
-      "y": 726
+      "x": 1177,
+      "y": 640
     }
   },
   "Pulau-Muna": {
@@ -292,8 +292,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Muna",
     "regionKey": "Sulawesi",
     "center": {
-      "x": 1251,
-      "y": 718
+      "x": 1160,
+      "y": 639
     }
   },
   "Bali": {
@@ -301,8 +301,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Bali",
     "regionKey": "Bali & Nusa Tenggara",
     "center": {
-      "x": 925,
-      "y": 885
+      "x": 850,
+      "y": 788
     }
   },
   "Pulau-Lombok": {
@@ -310,8 +310,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Lombok (NTB)",
     "regionKey": "Bali & Nusa Tenggara",
     "center": {
-      "x": 982,
-      "y": 879
+      "x": 899,
+      "y": 797
     }
   },
   "Nusa-Tenggara-Barat": {
@@ -319,8 +319,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sumbawa (NTB)",
     "regionKey": "Bali & Nusa Tenggara",
     "center": {
-      "x": 1021,
-      "y": 876
+      "x": 972,
+      "y": 795
     }
   },
   "Nusa-Tenggara-Timur": {
@@ -328,8 +328,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Flores (NTT)",
     "regionKey": "Bali & Nusa Tenggara",
     "center": {
-      "x": 1149,
-      "y": 871
+      "x": 1116,
+      "y": 793
     }
   },
   "Pu-au-Sumba": {
@@ -337,8 +337,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Sumba (NTT)",
     "regionKey": "Bali & Nusa Tenggara",
     "center": {
-      "x": 1111,
-      "y": 940
+      "x": 1052,
+      "y": 848
     }
   },
   "Pulau-Timor": {
@@ -346,8 +346,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Timor Barat (NTT)",
     "regionKey": "Bali & Nusa Tenggara",
     "center": {
-      "x": 1324,
-      "y": 934
+      "x": 1235,
+      "y": 842
     }
   },
   "Maluku-Utara": {
@@ -355,8 +355,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Maluku Utara",
     "regionKey": "Maluku",
     "center": {
-      "x": 1476,
-      "y": 487
+      "x": 1393,
+      "y": 389
     }
   },
   "Maluku": {
@@ -364,8 +364,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Maluku (Seram & Ambon)",
     "regionKey": "Maluku",
     "center": {
-      "x": 1482,
-      "y": 654
+      "x": 1441,
+      "y": 563
     }
   },
   "Pulau-Buru": {
@@ -373,8 +373,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Buru (Maluku)",
     "regionKey": "Maluku",
     "center": {
-      "x": 1407,
-      "y": 664
+      "x": 1332,
+      "y": 569
     }
   },
   "Pulau-Wetar": {
@@ -382,8 +382,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Wetar (Maluku)",
     "regionKey": "Maluku",
     "center": {
-      "x": 1397,
-      "y": 851
+      "x": 1318,
+      "y": 761
     }
   },
   "Papua-Barat": {
@@ -391,8 +391,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Papua Barat",
     "regionKey": "Papua",
     "center": {
-      "x": 1619,
-      "y": 603
+      "x": 1601,
+      "y": 524
     }
   },
   "Papua": {
@@ -400,8 +400,8 @@ const PROVINCES_MAP: Record<string, ProvinceItem> = {
     "name": "Papua",
     "regionKey": "Papua",
     "center": {
-      "x": 1900,
-      "y": 723
+      "x": 1802,
+      "y": 640
     }
   }
 };
