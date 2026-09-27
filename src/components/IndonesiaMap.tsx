@@ -636,28 +636,6 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           className="w-full h-auto select-none overflow-visible filter drop-shadow-sm"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* LOCATION PIN POINTER */}
-          <g
-            transform={`translate(${pointerTarget.x}, ${pointerTarget.y})`}
-            className="transition-all duration-300 ease-in-out pointer-events-none drop-shadow-md"
-          >
-            {/* Transformasi ini mengatur agar ujung bawah pin (titik 12,22) tepat berada di titik koordinat center pulau */}
-            <g transform="scale(1.5) translate(-12, -22)">
-              <path
-                d="M12 22C12 22 4 16 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 16 12 22 12 22Z"
-                fill={
-                  !hasData ? "#64748b" : 
-                  regData.score < 60 ? "#dc2626" : 
-                  (regData.score < 80 || regData.infected > 0) ? "#ea580c" : 
-                  "#22c55e"
-                }
-                stroke="#ffffff"
-                strokeWidth="1.5"
-              />
-              <circle cx="12" cy="10" r="3.5" fill="#ffffff" />
-            </g>
-          </g>
-
           {/* MAIN INDONESIA MAP PROVINCIAL GROUPS */}
           <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
             <g
@@ -1306,6 +1284,29 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
               <path d="M0,-236.317L-11.373,-236.317L-12.709,-241.892L-26.76,-246.075L-27.428,-243.986L-36.125,-252.35L-50.174,-247.47L-92.318,-267.687L-125.768,-279.536L-135.801,-287.205L-165.236,-271.171L-156.539,-262.11L-179.285,-250.955L-195.34,-253.746L-196.678,-242.59L-210.727,-230.739L-212.734,-223.071L-228.787,-209.129L-241.5,-203.553L-259.563,-209.827L-258.893,-224.466L-264.912,-220.981L-267.588,-204.946L-254.879,-177.063L-264.244,-177.063L-265.582,-170.094L-244.844,-155.454L-232.803,-157.546L-226.113,-155.454L-214.07,-154.059L-198.016,-144.997L-196.008,-147.088L-176.609,-135.237L-171.926,-137.331L-161.223,-131.753L-155.871,-135.237L-126.436,-111.536L-123.762,-102.473L-115.063,-103.171C-115.063,-103.171 -124.428,-96.2 -121.752,-96.2L-111.719,-96.2L-115.732,-91.319L-98.34,-60.647L-80.945,-48.797L-104.359,-50.192L-94.326,-38.34L-78.939,-36.946L-83.621,-34.159L-103.691,-35.553L-84.959,-23.003L-86.297,-12.547L-90.313,1.394L-92.318,11.152L-74.924,2.787L-71.58,9.757L-46.158,4.88L-2.676,50.888L-0.67,-50.192L-9.365,-59.254L-4.014,-69.71L-0.67,-75.985L0,-236.317Z" />
             </g>
           </g>
+
+          {/* LOCATION PIN POINTER (Dipindahkan ke paling bawah agar berada di atas SVG Pulau) */}
+          <g
+            transform={`translate(${pointerTarget.x}, ${pointerTarget.y})`}
+            className="transition-all duration-300 ease-in-out pointer-events-none drop-shadow-md"
+          >
+            {/* Transformasi ini mengatur agar ujung bawah pin (titik 12,22) tepat berada di titik koordinat center pulau */}
+            <g transform="scale(1.5) translate(-12, -22)">
+              <path
+                d="M12 22C12 22 4 16 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 16 12 22 12 22Z"
+                fill={
+                  !hasData ? "#64748b" : 
+                  regData.score < 60 ? "#dc2626" : 
+                  (regData.score < 80 || regData.infected > 0) ? "#ea580c" : 
+                  "#22c55e"
+                }
+                stroke="#ffffff"
+                strokeWidth="1.5"
+              />
+              <circle cx="12" cy="10" r="3.5" fill="#ffffff" />
+            </g>
+          </g>
+
         </svg>
 
       </div>
