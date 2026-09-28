@@ -22,16 +22,18 @@ const ShieldShape = () => (
 );
 
 export const FloatingBackground = ({ isDark = false }) => {
+  // Posisi asli dikembalikan persis seperti semula
   const items = [
-    { Shape: OutlineCubeShape, top: "8%", left: "12%", size: "44px", duration: "11s", delay: "0s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
-    { Shape: ShieldShape, top: "15%", left: "82%", size: "50px", duration: "14s", delay: "-2s", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
-    { Shape: DHSHeadShape, top: "25%", left: "22%", size: "52px", duration: "16s", delay: "-4s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
-    { Shape: OutlineCubeShape, top: "35%", left: "75%", size: "40px", duration: "12s", delay: "-1s", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-cyan-400/30" },
-    { Shape: ShieldShape, top: "48%", left: "18%", size: "48px", duration: "15s", delay: "-3s", anim: "animate-float-2", colorLight: "text-slate-700/35", colorDark: "text-orange-400/30" },
-    { Shape: DHSHeadShape, top: "58%", left: "84%", size: "46px", duration: "13s", delay: "-5s", anim: "animate-float-1", colorLight: "text-slate-800/35", colorDark: "text-white/25" },
-    { Shape: OutlineCubeShape, top: "68%", left: "14%", size: "42px", duration: "14s", delay: "-2s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
-    { Shape: ShieldShape, top: "78%", left: "78%", size: "54px", duration: "17s", delay: "-1s", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
-    { Shape: DHSHeadShape, top: "88%", left: "25%", size: "50px", duration: "15s", delay: "-4s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
+    { Shape: OutlineCubeShape, top: "12%", left: "12%", size: "38px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
+    { Shape: DHSHeadShape, top: "28%", left: "22%", size: "46px", anim: "animate-float-2", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
+    { Shape: ShieldShape, top: "55%", left: "18%", size: "42px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-orange-400/30" },
+    { Shape: OutlineCubeShape, top: "75%", left: "14%", size: "38px", anim: "animate-float-2", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
+    { Shape: DHSHeadShape, top: "90%", left: "25%", size: "44px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
+    
+    { Shape: ShieldShape, top: "20%", left: "82%", size: "44px", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
+    { Shape: OutlineCubeShape, top: "45%", left: "74%", size: "38px", anim: "animate-float-1", colorLight: "text-slate-800/35", colorDark: "text-cyan-400/30" },
+    { Shape: DHSHeadShape, top: "68%", left: "85%", size: "46px", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-white/25" },
+    { Shape: ShieldShape, top: "85%", left: "78%", size: "42px", anim: "animate-float-1", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
   ];
 
   return (
@@ -46,8 +48,6 @@ export const FloatingBackground = ({ isDark = false }) => {
             style={{
               top: item.top,
               left: item.left,
-              "--duration": item.duration,
-              "--delay": item.delay,
               width: item.size,
               height: item.size
             }}
