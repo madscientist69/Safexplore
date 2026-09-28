@@ -30,7 +30,7 @@
 
 /* Dotted radar background */
 .bg-dotted-radar {
-  background-image: radial-gradient(circle, #f15a24 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, var(--primary-orange) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
 }
 
@@ -53,6 +53,10 @@
   -webkit-background-clip: text;
   -webkit-text-stroke: 1.5px #111827;
 }
+
+/* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
 
 /* Speedometer needle animation */
 @keyframes needleSway {
@@ -86,18 +90,92 @@
   animation: radarPulse 2.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* Custom scrollbar */
+/* Floating Elements Keyframes */
+@keyframes floatElements {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) rotate(180deg) scale(1.08);
+  }
+}
+
+@keyframes flyRightToLeft {
+  0% {
+    transform: translateX(100vw) translateY(0px) scale(0.8);
+    opacity: 0;
+  }
+  10% { opacity: 0.25; }
+  90% { opacity: 0.25; }
+  100% {
+    transform: translateX(-20vw) translateY(-15px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes flyLeftToRight {
+  0% {
+    transform: translateX(-20vw) translateY(0px) scaleX(-1) scale(0.8);
+    opacity: 0;
+  }
+  10% { opacity: 0.25; }
+  90% { opacity: 0.25; }
+  100% {
+    transform: translateX(100vw) translateY(-15px) scaleX(-1) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes growCubeLoop {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(15deg); opacity: 0.6; }
+  80% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+  100% { transform: scale(0) rotate(-15deg); opacity: 0; }
+}
+
+/* Floating Elements Utility Classes */
+.animate-float-elements {
+  animation: floatElements var(--duration, 12s) ease-in-out infinite var(--delay, 0s);
+}
+
+.animate-fly-rtl {
+  animation: flyRightToLeft var(--duration, 16s) linear infinite var(--delay, 0s);
+}
+
+.animate-fly-ltr {
+  animation: flyLeftToRight var(--duration, 18s) linear infinite var(--delay, 0s);
+}
+
+.animate-grow-cube {
+  animation: growCubeLoop var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
+}
+
+/* ==========================================
+   CUSTOM SCROLLBAR
+   ========================================== */
+
+/* Chrome, Safari, Edge, Opera */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f0f2f5;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background-color: var(--primary-blue);
+  border-radius: 9999px;
+  border: 2px solid #f0f2f5;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background-color: var(--primary-orange);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) #f0f2f5;
 }

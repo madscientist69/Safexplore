@@ -8,6 +8,7 @@ import ObservatorySection from "@/components/ObservatorySection";
 import ScanModal from "@/components/ScanModal";
 import ResultView from "@/components/ResultView";
 import Footer from "@/components/Footer";
+import { FloatingBackground } from "@/components/FloatingBackground";
 
 export default function Home() {
   const [viewState, setViewState] = useState<"home" | "scanning" | "result">("home");
@@ -38,8 +39,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#f5f7f9] text-[#1c2a38]">
+    <div className="relative min-h-screen flex flex-col justify-between bg-[#f5f7f9] text-[#1c2a38] overflow-x-hidden">
       
+      {/* Background melayang aktif di seluruh kondisi halaman */}
+      <FloatingBackground />
+
       {viewState === "scanning" && (
         <ScanModal
           targetUrl={targetUrl}
@@ -66,7 +70,7 @@ export default function Home() {
             onResetToHome={handleBackToHome}
           />
 
-          <main className="flex-1 flex flex-col">
+          <main className="relative z-10 flex-1 flex flex-col">
             <HeroSection onStartScan={handleStartScan} />
             <AboutSection />
             
