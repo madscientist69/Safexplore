@@ -76,18 +76,20 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
     return {
       score: 100,
       infected: 0,
+      ac_infected: 0,
+      sch_infected: 0,
       total: 0,
       main_threat: "Sistem Terpantau Bersih",
       status: "AMAN / HIJAU"
     };
   };
 
-  const regData = getRegionData(activeId); // Memanggil dengan activeId
+  const regData = getRegionData(activeId);
   const hasData = regData.total > 0;
   const infectedPct = hasData ? Math.round((regData.infected / regData.total) * 100) : 0;
-  
-  const acInfected = Math.round(regData.infected * 0.4);
-  const schInfected = regData.infected - acInfected;
+
+  const acInfected = regData.ac_infected ?? 0;
+  const schInfected = regData.sch_infected ?? 0;
 
   const allRegions = Object.entries(apiData?.regions || {}).map(([id, data]: [string, any]) => ({
     name: PROVINCES_MAP[id]?.name || id,
@@ -126,16 +128,16 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
 
   return (
     <div className="w-full relative flex flex-col items-center select-none py-1">
-      <div 
+      <div
         className="w-full relative flex items-center justify-center min-h-[420px] sm:min-h-[520px] md:min-h-[620px]"
         onClick={() => setSelectedId("Bengkulu")}
       >
-        <div 
+        <div
           className="absolute top-1 sm:top-3 left-1 sm:left-4 z-20 max-w-[210px] sm:max-w-[260px] bg-white rounded-2xl border-2 border-[#1e293b] p-2.5 sm:p-3 text-left shadow-lg text-[9px] sm:text-[10px] font-sans transition-all"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-bold text-gray-900 leading-tight">Nama Provinsi: {activeMeta.name}</div>
-          
+
           {!hasData ? (
             <>
               <div className="mt-1 flex items-center gap-1.5">
@@ -160,9 +162,8 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           ) : (
             <>
               <div className="text-gray-700 mt-0.5">
-                Skor Indeks Keamanan: <span className={`font-bold ${
-                  regData.score < 60 ? "text-red-600" : (regData.score < 80 || regData.infected > 0) ? "text-amber-600" : "text-emerald-600"
-                }`}>
+                Skor Indeks Keamanan: <span className={`font-bold ${regData.score < 60 ? "text-red-600" : (regData.score < 80 || regData.infected > 0) ? "text-amber-600" : "text-emerald-600"
+                  }`}>
                   {regData.score} / 100 ({
                     regData.score < 60 ? "Bahaya" : (regData.score < 80 || regData.infected > 0) ? "Waspada" : "Aman"
                   })
@@ -208,7 +209,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           </span>
         </div>
 
-        <div 
+        <div
           className="absolute bottom-2 left-1 sm:left-4 z-20 max-w-[195px] sm:max-w-[240px] bg-white rounded-2xl border-2 border-[#f15a24] p-2.5 sm:p-3 text-left shadow-md text-[8.5px] sm:text-[9.5px] font-sans"
           onClick={(e) => e.stopPropagation()}
         >
@@ -227,7 +228,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
               <li className="text-gray-500 italic list-none">Belum ada provinsi terinfeksi</li>
             )}
           </ol>
-          
+
           <div className="font-bold text-gray-900 mt-2 leading-tight">
             Top Provinsi Paling Higienis:
             <span className="block text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
@@ -391,10 +392,10 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
               <path
                 d="M12 22C12 22 4 16 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 16 12 22 12 22Z"
                 fill={
-                  !hasData ? "#64748b" : 
-                  regData.score < 60 ? "#dc2626" : 
-                  (regData.score < 80 || regData.infected > 0) ? "#ea580c" : 
-                  "#22c55e"
+                  !hasData ? "#64748b" :
+                    regData.score < 60 ? "#dc2626" :
+                      (regData.score < 80 || regData.infected > 0) ? "#ea580c" :
+                        "#22c55e"
                 }
                 stroke="#ffffff"
                 strokeWidth="1.5"
