@@ -1,17 +1,13 @@
 "use client";
 
 import React from "react";
-// Sesuaikan path import jika lokasinya berbeda
-import { FlyingBirdsBackground, GrowingCubesBackground } from "./FooterAnimatedElements"; 
+import { FlyingBirdsBackground, GrowingCubesBackground } from "./FooterAnimatedElements";
 
 export default function Footer() {
   return (
     <footer className="relative w-full bg-white pt-8 sm:pt-10 pb-6 sm:pb-8 px-4 overflow-hidden border-t border-gray-200">
       
-      {/* 
-        PERBAIKAN: Burung diletakkan di luar kontainer max-w-4xl 
-        agar bisa melintasi lebar penuh halaman tanpa terpotong! 
-      */}
+      {/* Background Burung Terbang (Diletakkan di luar kontainer max-w-4xl agar full width) */}
       <FlyingBirdsBackground />
       
       {/* Background arch / curved hill backdrop dengan animasi kubus tumbuh */}
@@ -28,7 +24,6 @@ export default function Footer() {
           </div>
 
           <div className="relative z-10 flex flex-col gap-1.5 mt-2">
-            {/* Instagram */}
             <a
               href="https://www.instagram.com/depressedhighschooler_official/"
               target="_blank"
@@ -43,7 +38,6 @@ export default function Footer() {
               <span>DEPRESSEDHIGHSCHOOLER_OFFICIAL</span>
             </a>
 
-            {/* YouTube */}
             <a
               href="https://www.youtube.com/@DepressedHighSchooler"
               target="_blank"

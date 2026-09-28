@@ -22,31 +22,33 @@ const DHSHeadShape = () => (
 );
 
 export const FloatingBackground = ({ isDark = false }) => {
-  // Posisi dan Warna dikunci statis agar persis dengan image_0fcb40.png
   const items = [
     { 
       Shape: OutlineCubeShape, 
-      top: "20%", 
-      left: "20%", 
-      size: "42px", 
+      top: "12%", 
+      left: "3%", 
+      right: "auto",
+      size: "40px", 
       anim: "animate-float-1", 
-      colorClass: isDark ? "text-cyan-500/40" : "text-cyan-600/30" 
+      colorClass: isDark ? "text-cyan-400/40" : "text-cyan-600/35" 
     },
     { 
       Shape: ShieldShape, 
-      top: "50%", 
-      left: "75%", 
+      top: "48%", 
+      left: "auto", 
+      right: "3%", 
       size: "44px", 
       anim: "animate-float-2", 
-      colorClass: isDark ? "text-orange-500/40" : "text-orange-600/30" 
+      colorClass: isDark ? "text-orange-400/40" : "text-orange-600/35" 
     },
     { 
       Shape: DHSHeadShape, 
-      top: "75%", 
-      left: "25%", 
-      size: "46px", 
+      top: "78%", 
+      left: "4%", 
+      right: "auto",
+      size: "44px", 
       anim: "animate-float-1", 
-      colorClass: isDark ? "text-slate-400/40" : "text-slate-500/30" 
+      colorClass: isDark ? "text-slate-400/40" : "text-slate-500/35" 
     },
   ];
 
@@ -61,6 +63,7 @@ export const FloatingBackground = ({ isDark = false }) => {
             style={{
               top: item.top,
               left: item.left,
+              right: item.right,
               width: item.size,
               height: item.size
             }}
@@ -72,3 +75,5 @@ export const FloatingBackground = ({ isDark = false }) => {
     </div>
   );
 };
+
+export default FloatingBackground;

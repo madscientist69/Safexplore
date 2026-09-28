@@ -1,66 +1,79 @@
-import React from "react";
+"use client";
 
-const SideProfileBirdSVG = ({ className = "" }) => (
-  <svg viewBox="-30 -30 160 160" className={`w-full h-full fill-current overflow-visible ${className}`}>
-    <path
-      className="animate-wing-back opacity-60"
-      d="M 50,48 Q 45,20 65,10 Q 75,30 60,48 Z"
-    />
-    <path
-      d="M 15,55 C 30,58 50,55 75,45 C 85,41 90,42 95,47 C 90,52 80,60 65,65 C 40,70 20,60 15,55 Z"
-    />
-    <circle cx="85" cy="45" r="3.5" />
-    <path
-      className="animate-wing-front"
-      d="M 50,50 Q 35,15 60,5 Q 80,25 65,50 Z"
-    />
-  </svg>
-);
+import React, { useEffect, useState } from "react";
 
-const IsometricCubeSVG = ({ className = "" }) => (
-  <svg viewBox="0 0 120 120" className={`w-full h-full ${className}`}>
-    <polygon points="60,10 105,35 60,60 15,35" fill="#f15a24" opacity="0.9" />
-    <polygon points="15,35 60,60 60,110 15,85" fill="#0b3c61" opacity="0.95" />
-    <polygon points="60,60 105,35 105,85 60,110" fill="#0284c7" opacity="0.85" />
-  </svg>
-);
+export const FlyingBirdsBackground = () => {
+  const [birds, setBirds] = useState([]);
 
-export const FlyingBirdsBackground = () => (
-  <div className="absolute inset-x-0 top-0 h-36 pointer-events-none z-20 overflow-hidden">
-    {/* Burung 1: Terbang Kanan ke Kiri */}
-    <div className="absolute top-2 w-10 h-10 text-slate-700/80 animate-fly-rtl-1">
-      <SideProfileBirdSVG />
+  useEffect(() => {
+    // Burung hanya terbang di ruang aman (atas banget atau bawah banget)
+    const generateSafeTopPosition = (index) => {
+      if (index % 2 === 0) {
+        return `${2 + (index * 3) % 10}%`; // Zona Atas (2% - 12%)
+      } else {
+        return `${82 + (index * 3) % 10}%`; // Zona Bawah (82% - 92%)
+      }
+    };
+
+    const birdList = Array.from({ length: 6 }).map((_, i) => ({
+      id: i,
+      top: generateSafeTopPosition(i),
+      duration: `${14 + i * 3}s`,
+      delay: `${i * 2.5}s`,
+      size: `${16 + (i % 3) * 4}px`,
+    }));
+
+    setBirds(birdList);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      {birds.map((bird) => (
+        <div
+          key={bird.id}
+          className="absolute text-slate-500/70 animate-fly flex items-center justify-center"
+          style={{
+            top: bird.top,
+            left: "-10vw",
+            width: bird.size,
+            height: bird.size,
+            animationDuration: bird.duration,
+            animationDelay: bird.delay,
+          }}
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+            <path d="M2 15c0 0 4-4 10-4s10 4 10 4-4-2-10-2-10 2-10 2z" />
+          </svg>
+        </div>
+      ))}
     </div>
+  );
+};
 
-    {/* Burung 2: Terbang Kiri ke Kanan */}
-    <div className="absolute top-12 w-9 h-9 text-slate-600/70 animate-fly-ltr-1">
-      <SideProfileBirdSVG />
-    </div>
-
-    {/* Burung 3: Terbang Kanan ke Kiri */}
-    <div className="absolute top-6 w-8 h-8 text-slate-500/60 animate-fly-rtl-2">
-      <SideProfileBirdSVG />
-    </div>
-  </div>
-);
-
-export const GrowingCubesBackground = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-    <div className="absolute left-3 sm:left-6 bottom-3 flex items-end gap-2">
-      <div className="w-8 h-8 sm:w-12 sm:h-12 animate-grow-cube drop-shadow-md" style={{ "--duration": "3.5s", "--delay": "0s" }}>
-        <IsometricCubeSVG />
+export const GrowingCubesBackground = () => {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="absolute left-4 bottom-2 w-10 h-10 text-sky-400/80 animate-grow-cube">
+        <svg viewBox="0 0 100 100" className="w-full h-full">
+          <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="#7dd3fc" stroke="#0284c7" strokeWidth="4" />
+          <path d="M50 10 L50 90 M50 50 L90 30 M50 50 L10 30" stroke="#0284c7" strokeWidth="4" />
+        </svg>
       </div>
-      <div className="w-6 h-6 sm:w-9 sm:h-9 animate-grow-cube drop-shadow-md hidden sm:block" style={{ "--duration": "4s", "--delay": "-1.5s" }}>
-        <IsometricCubeSVG />
+
+      <div className="absolute right-6 bottom-3 flex gap-2 items-end">
+        <div className="w-8 h-8 text-sky-400/80 animate-grow-cube" style={{ animationDelay: "1s" }}>
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="#7dd3fc" stroke="#0284c7" strokeWidth="4" />
+            <path d="M50 10 L50 90 M50 50 L90 30 M50 50 L10 30" stroke="#0284c7" strokeWidth="4" />
+          </svg>
+        </div>
+        <div className="w-12 h-12 text-sky-500/90 animate-grow-cube" style={{ animationDelay: "0.5s" }}>
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="#38bdf8" stroke="#0369a1" strokeWidth="4" />
+            <path d="M50 10 L50 90 M50 50 L90 30 M50 50 L10 30" stroke="#0369a1" strokeWidth="4" />
+          </svg>
+        </div>
       </div>
     </div>
-    <div className="absolute right-3 sm:right-6 bottom-3 flex items-end gap-2">
-      <div className="w-6 h-6 sm:w-9 sm:h-9 animate-grow-cube drop-shadow-md hidden sm:block" style={{ "--duration": "4.2s", "--delay": "-0.8s" }}>
-        <IsometricCubeSVG />
-      </div>
-      <div className="w-8 h-8 sm:w-12 sm:h-12 animate-grow-cube drop-shadow-md" style={{ "--duration": "3.8s", "--delay": "-2s" }}>
-        <IsometricCubeSVG />
-      </div>
-    </div>
-  </div>
-);
+  );
+};
