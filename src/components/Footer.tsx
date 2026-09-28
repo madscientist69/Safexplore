@@ -1,14 +1,11 @@
 "use client";
 
 import React from "react";
-import { FlyingBirdsBackground, GrowingCubesBackground } from "./FooterAnimatedElements";
+import { GrowingCubesBackground } from "./FooterAnimatedElements";
 
 export default function Footer() {
   return (
     <footer className="relative w-full bg-white pt-8 sm:pt-10 pb-6 sm:pb-8 px-4 overflow-hidden border-t border-gray-200">
-      
-      {/* Latar Belakang Burung (Aman di belakang teks) */}
-      <FlyingBirdsBackground />
       
       {/* Latar Bawah Lengkung & Kubus Tumbuh */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-[#f0f2f5] rounded-t-[40px] sm:rounded-t-[70px] md:rounded-t-[100px] pointer-events-none z-0 overflow-hidden">
