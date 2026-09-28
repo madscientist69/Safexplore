@@ -12,9 +12,9 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
   const [url, setUrl] = useState("");
 
   const sampleTargets = [
-    { name: "smansatu.sch.id", label: "SMA Negeri 1 (Sch.id)", risk: "Tinggi (Injeksi Gacor)" },
-    { name: "univ-nusantara.ac.id", label: "Univ Nusantara (Ac.id)", risk: "Sedang (Hidden Backlinks)" },
-    { name: "poltek-negeri.ac.id", label: "Poltek Negeri (Ac.id)", risk: "Bersih" },
+    { name: "unair.ac.id"},
+    { name: "unib.ac.id" },
+    { name: "unesa.ac.id" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
