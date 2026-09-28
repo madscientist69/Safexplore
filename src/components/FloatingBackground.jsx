@@ -22,7 +22,6 @@ const ShieldShape = () => (
 );
 
 export const FloatingBackground = () => {
-  // Posisi ditengahkan (16% - 82%) dan diperbanyak (12 elemen)
   const items = [
     { Shape: OutlineCubeShape, top: "4%", left: "18%", size: "42px", duration: "11s", delay: "0s", anim: "animate-float-1" },
     { Shape: ShieldShape, top: "11%", left: "78%", size: "48px", duration: "14s", delay: "-2s", anim: "animate-float-2" },
@@ -45,7 +44,8 @@ export const FloatingBackground = () => {
         return (
           <div
             key={idx}
-            className={`absolute opacity-30 text-gray-400 dark:text-gray-300 ${item.anim}`}
+            // text-black/15 memastikan warna kontras di background putih (bisa ditimpa dark mode dengan dark:text-white/15)
+            className={`absolute text-black/15 dark:text-white/15 ${item.anim}`}
             style={{
               top: item.top,
               left: item.left,

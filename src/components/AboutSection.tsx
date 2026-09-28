@@ -7,7 +7,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full bg-[#08293d] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
+      className="relative w-full bg-[#111827] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
     >
       {/* Decorative Isometric Cubes on Left and Right borders */}
       <div className="absolute top-1/2 -translate-y-1/2 -left-3 sm:-left-4 md:-left-5 w-16 sm:w-24 md:w-32 opacity-75 sm:opacity-100 pointer-events-none z-10">
@@ -48,7 +48,6 @@ export default function AboutSection() {
           
           {/* SDG 9: Industry, Innovation and Infrastructure */}
           <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-orange-500/30 bg-[#f36d25]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/sdg9.svg" 
               alt="SDG 9: Industry, Innovation and Infrastructure" 
@@ -58,7 +57,6 @@ export default function AboutSection() {
 
           {/* SDG 16: Peace, Justice and Strong Institutions */}
           <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-sky-500/30 bg-[#00689d]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
               src="/sdg16.svg" 
               alt="SDG 16: Peace, Justice and Strong Institutions" 

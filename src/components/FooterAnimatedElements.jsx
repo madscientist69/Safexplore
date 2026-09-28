@@ -1,7 +1,7 @@
 import React from "react";
 
 const SideProfileBirdSVG = ({ className = "" }) => (
-  <svg viewBox="-20 -20 140 140" className={`w-full h-full fill-current overflow-visible ${className}`}>
+  <svg viewBox="-30 -30 160 160" className={`w-full h-full fill-current overflow-visible ${className}`}>
     {/* Sayap Belakang */}
     <path
       className="animate-wing-back opacity-60"
@@ -33,24 +33,20 @@ const IsometricCubeSVG = ({ className = "" }) => (
 );
 
 export const FlyingBirdsBackground = () => (
-  <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-    {/* Burung 1: Terbang dari Kanan ke Kiri */}
+  // z-[50] ditambahkan agar burung dipastikan lewat di DEPAN elemen teks
+  <div className="absolute inset-0 pointer-events-none z-[50] overflow-hidden">
     <div
       className="absolute top-10 right-0 w-12 h-12 text-gray-500/80 animate-fly-rtl"
       style={{ "--duration": "15s", "--delay": "0s" }}
     >
       <SideProfileBirdSVG />
     </div>
-
-    {/* Burung 2: Terbang dari Kanan ke Kiri (lebih kecil) */}
     <div
       className="absolute top-20 right-0 w-9 h-9 text-gray-400/60 animate-fly-rtl"
       style={{ "--duration": "19s", "--delay": "-6s" }}
     >
       <SideProfileBirdSVG />
     </div>
-
-    {/* Burung 3: Terbang dari Kiri ke Kanan */}
     <div
       className="absolute top-14 left-0 w-10 h-10 text-gray-500/70 animate-fly-ltr"
       style={{ "--duration": "17s", "--delay": "-3s" }}

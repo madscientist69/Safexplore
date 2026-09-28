@@ -18,20 +18,19 @@
   background-size: 34px 34px;
 }
 
-/* Blueprint Grid untuk Area Gelap (About Us) */
+/* Blueprint Grid untuk Area Gelap (About Us) disesuaikan warnanya ke Hitam */
 .bg-grid-blueprint-dark {
-  background-color: #08293d;
+  background-color: #111827;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 34px 34px;
 }
 
 /* Speedometer & Radar */
 @keyframes needleSway {
-  0% { transform: rotate(-80deg); }
+  0%, 100% { transform: rotate(-80deg); }
   50% { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
 }
 .animate-needle {
   transform-origin: bottom center;
@@ -51,7 +50,7 @@
    FLOATING ELEMENTS & BIRDS ANIMATION
    ========================================== */
 
-/* Animasi Melayang Ringan */
+/* Animasi Melayang (Pastikan 0% dan 100% persis sama agar tidak teleport) */
 @keyframes floatElements {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-20px) rotate(12deg); }
@@ -62,19 +61,19 @@
   50% { transform: translateY(-30px) rotate(-15deg) scale(1.1); }
 }
 
-/* Animasi Burung Terbang Menyeberang Layar Penuh (tanpa naik-turun ekstrem) */
+/* Animasi Burung Terbang Menyeberang - Diperlebar agar tidak mentok */
 @keyframes flyRightToLeft {
-  0% { transform: translateX(105vw) scaleX(-1); opacity: 0; }
+  0% { transform: translateX(120vw) scaleX(-1); opacity: 0; }
   10% { opacity: 0.8; }
   90% { opacity: 0.8; }
-  100% { transform: translateX(-25vw) scaleX(-1); opacity: 0; }
+  100% { transform: translateX(-30vw) scaleX(-1); opacity: 0; }
 }
 
 @keyframes flyLeftToRight {
-  0% { transform: translateX(-25vw) scaleX(1); opacity: 0; }
+  0% { transform: translateX(-30vw) scaleX(1); opacity: 0; }
   10% { opacity: 0.8; }
   90% { opacity: 0.8; }
-  100% { transform: translateX(105vw) scaleX(1); opacity: 0; }
+  100% { transform: translateX(120vw) scaleX(1); opacity: 0; }
 }
 
 /* ANIMASI KEPAKAN SAYAP BURUNG (SIDE PROFILE) */
@@ -88,12 +87,11 @@
   50% { transform: rotate(-60deg); } 
 }
 
-/* Kubus Tumbuh Footer */
+/* Kubus Tumbuh Footer - Diperbaiki agar tidak snap/teleport di akhir animasi */
 @keyframes growCubeLoop {
-  0% { transform: scale(0) rotate(0deg); opacity: 0; }
-  50% { transform: scale(1.1) rotate(15deg); opacity: 0.6; }
-  80% { transform: scale(1) rotate(0deg); opacity: 0.4; }
-  100% { transform: scale(0) rotate(-15deg); opacity: 0; }
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  40% { transform: scale(1.1) rotate(15deg); opacity: 0.6; }
+  70% { transform: scale(1) rotate(5deg); opacity: 0.4; }
 }
 
 /* Utility Classes */
@@ -119,25 +117,4 @@
 }
 .animate-grow-cube {
   animation: growCubeLoop var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #f0f2f5;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary-blue);
-  border-radius: 9999px;
-  border: 2px solid #f0f2f5;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--primary-orange);
-}
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary-blue) #f0f2f5;
 }
