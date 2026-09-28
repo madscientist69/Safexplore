@@ -10,11 +10,20 @@
   --grid-dark: rgba(255, 255, 255, 0.08);
 }
 
-/* Blueprint Grid */
+/* Blueprint Grid untuk Area Terang */
 .bg-grid-blueprint {
   background-image: 
     linear-gradient(to right, var(--grid-light) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-light) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+/* Blueprint Grid untuk Area Gelap (About Us) */
+.bg-grid-blueprint-dark {
+  background-color: #08293d;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
   background-size: 34px 34px;
 }
 
@@ -53,22 +62,22 @@
   50% { transform: translateY(-30px) rotate(-15deg) scale(1.1); }
 }
 
-/* Animasi Burung Terbang Menyeberang */
+/* Animasi Burung Terbang Menyeberang Layar Penuh (tanpa naik-turun ekstrem) */
 @keyframes flyRightToLeft {
-  0% { transform: translateX(100vw) translateY(0px) scaleX(-1); opacity: 0; }
+  0% { transform: translateX(105vw) scaleX(-1); opacity: 0; }
   10% { opacity: 0.8; }
   90% { opacity: 0.8; }
-  100% { transform: translateX(-20vw) translateY(-40px) scaleX(-1); opacity: 0; }
+  100% { transform: translateX(-25vw) scaleX(-1); opacity: 0; }
 }
 
 @keyframes flyLeftToRight {
-  0% { transform: translateX(-20vw) translateY(0px) scaleX(1); opacity: 0; }
+  0% { transform: translateX(-25vw) scaleX(1); opacity: 0; }
   10% { opacity: 0.8; }
   90% { opacity: 0.8; }
-  100% { transform: translateX(100vw) translateY(-40px) scaleX(1); opacity: 0; }
+  100% { transform: translateX(105vw) scaleX(1); opacity: 0; }
 }
 
-/* ANIMASI KEPAKAN SAYAP BURUNG (SIDE PROFILE / SAMPING) */
+/* ANIMASI KEPAKAN SAYAP BURUNG (SIDE PROFILE) */
 @keyframes flapSideFront {
   0%, 100% { transform: rotate(10deg); }
   50% { transform: rotate(-50deg); } 

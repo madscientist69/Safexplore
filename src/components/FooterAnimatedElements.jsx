@@ -1,8 +1,8 @@
 import React from "react";
 
 const SideProfileBirdSVG = ({ className = "" }) => (
-  <svg viewBox="0 0 100 100" className={`w-full h-full fill-current ${className}`}>
-    {/* Sayap Belakang (Tertutup sebagian oleh badan) */}
+  <svg viewBox="-20 -20 140 140" className={`w-full h-full fill-current overflow-visible ${className}`}>
+    {/* Sayap Belakang */}
     <path
       className="animate-wing-back opacity-60"
       d="M 50,48 Q 45,20 65,10 Q 75,30 60,48 Z"
@@ -13,7 +13,7 @@ const SideProfileBirdSVG = ({ className = "" }) => (
       d="M 15,55 C 30,58 50,55 75,45 C 85,41 90,42 95,47 C 90,52 80,60 65,65 C 40,70 20,60 15,55 Z"
     />
     
-    {/* Kepala / Paruh Kecil */}
+    {/* Paruh / Kepala */}
     <circle cx="85" cy="45" r="3.5" />
 
     {/* Sayap Depan */}
@@ -33,24 +33,27 @@ const IsometricCubeSVG = ({ className = "" }) => (
 );
 
 export const FlyingBirdsBackground = () => (
-  <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+    {/* Burung 1: Terbang dari Kanan ke Kiri */}
     <div
-      className="absolute top-2 right-0 w-12 h-12 text-gray-500/70 animate-fly-rtl"
-      style={{ "--duration": "14s", "--delay": "0s" }}
+      className="absolute top-10 right-0 w-12 h-12 text-gray-500/80 animate-fly-rtl"
+      style={{ "--duration": "15s", "--delay": "0s" }}
     >
       <SideProfileBirdSVG />
     </div>
 
+    {/* Burung 2: Terbang dari Kanan ke Kiri (lebih kecil) */}
     <div
-      className="absolute top-12 right-0 w-8 h-8 text-gray-400/50 animate-fly-rtl"
-      style={{ "--duration": "18s", "--delay": "-6s" }}
+      className="absolute top-20 right-0 w-9 h-9 text-gray-400/60 animate-fly-rtl"
+      style={{ "--duration": "19s", "--delay": "-6s" }}
     >
       <SideProfileBirdSVG />
     </div>
 
+    {/* Burung 3: Terbang dari Kiri ke Kanan */}
     <div
-      className="absolute top-6 left-0 w-10 h-10 text-gray-500/60 animate-fly-ltr"
-      style={{ "--duration": "16s", "--delay": "-3s" }}
+      className="absolute top-14 left-0 w-10 h-10 text-gray-500/70 animate-fly-ltr"
+      style={{ "--duration": "17s", "--delay": "-3s" }}
     >
       <SideProfileBirdSVG />
     </div>

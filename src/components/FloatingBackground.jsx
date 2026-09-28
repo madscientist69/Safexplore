@@ -22,13 +22,20 @@ const ShieldShape = () => (
 );
 
 export const FloatingBackground = () => {
+  // Posisi ditengahkan (16% - 82%) dan diperbanyak (12 elemen)
   const items = [
-    { Shape: OutlineCubeShape, top: "5%", left: "8%", size: "45px", duration: "11s", delay: "0s", anim: "animate-float-1" },
-    { Shape: ShieldShape, top: "15%", left: "88%", size: "50px", duration: "14s", delay: "-2s", anim: "animate-float-2" },
-    { Shape: DHSHeadShape, top: "35%", left: "6%", size: "55px", duration: "16s", delay: "-4s", anim: "animate-float-1" },
-    { Shape: OutlineCubeShape, top: "48%", left: "90%", size: "40px", duration: "12s", delay: "-1s", anim: "animate-float-2" },
-    { Shape: ShieldShape, top: "65%", left: "10%", size: "50px", duration: "15s", delay: "-3s", anim: "animate-float-2" },
-    { Shape: DHSHeadShape, top: "80%", left: "85%", size: "45px", duration: "13s", delay: "-5s", anim: "animate-float-1" },
+    { Shape: OutlineCubeShape, top: "4%", left: "18%", size: "42px", duration: "11s", delay: "0s", anim: "animate-float-1" },
+    { Shape: ShieldShape, top: "11%", left: "78%", size: "48px", duration: "14s", delay: "-2s", anim: "animate-float-2" },
+    { Shape: DHSHeadShape, top: "19%", left: "26%", size: "50px", duration: "16s", delay: "-4s", anim: "animate-float-1" },
+    { Shape: OutlineCubeShape, top: "27%", left: "72%", size: "38px", duration: "12s", delay: "-1s", anim: "animate-float-2" },
+    { Shape: ShieldShape, top: "35%", left: "22%", size: "46px", duration: "15s", delay: "-3s", anim: "animate-float-2" },
+    { Shape: DHSHeadShape, top: "43%", left: "80%", size: "44px", duration: "13s", delay: "-5s", anim: "animate-float-1" },
+    { Shape: OutlineCubeShape, top: "52%", left: "16%", size: "40px", duration: "14s", delay: "-2s", anim: "animate-float-1" },
+    { Shape: ShieldShape, top: "62%", left: "76%", size: "52px", duration: "17s", delay: "-1s", anim: "animate-float-2" },
+    { Shape: DHSHeadShape, top: "71%", left: "24%", size: "48px", duration: "15s", delay: "-4s", anim: "animate-float-1" },
+    { Shape: OutlineCubeShape, top: "80%", left: "82%", size: "42px", duration: "12s", delay: "-3s", anim: "animate-float-2" },
+    { Shape: ShieldShape, top: "88%", left: "20%", size: "45px", duration: "16s", delay: "-5s", anim: "animate-float-1" },
+    { Shape: DHSHeadShape, top: "95%", left: "70%", size: "50px", duration: "13s", delay: "-2s", anim: "animate-float-2" },
   ];
 
   return (
@@ -38,13 +45,13 @@ export const FloatingBackground = () => {
         return (
           <div
             key={idx}
-            className={`absolute opacity-25 text-gray-500 dark:text-gray-400 ${item.anim}`}
+            className={`absolute opacity-30 text-gray-400 dark:text-gray-300 ${item.anim}`}
             style={{
               top: item.top,
               left: item.left,
               "--duration": item.duration,
               "--delay": item.delay,
-              width: item.size, 
+              width: item.size,
               height: item.size
             }}
           >
