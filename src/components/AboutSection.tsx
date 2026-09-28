@@ -10,9 +10,6 @@ export default function AboutSection() {
       id="about"
       className="relative w-full bg-[#171d22] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
     >
-      {/* 3 Floating Elements khusus area gelap About Us */}
-      <FloatingBackground isDark={true} />
-
       {/* Decorative Isometric Cubes di batas kiri dan kanan */}
       <div className="absolute top-1/2 -translate-y-1/2 -left-3 sm:-left-4 md:-left-5 w-16 sm:w-24 md:w-32 opacity-75 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
