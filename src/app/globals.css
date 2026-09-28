@@ -32,15 +32,15 @@
   50% { transform: translateY(-26px) rotate(-12deg) scale(1.06); }
 }
 
-/* Animasi Burung Terbang Penuh dari Ujung ke Ujung Layar */
+/* Animasi Burung Terbang dari Luar Layar Kanan (110%) ke Luar Layar Kiri (-10%) */
 @keyframes flyRightToLeft {
-  0% { transform: translate3d(105vw, 0, 0) scaleX(-1); }
-  100% { transform: translate3d(-10vw, 0, 0) scaleX(-1); }
+  0% { left: 110%; transform: scaleX(-1); }
+  100% { left: -10%; transform: scaleX(-1); }
 }
 
 @keyframes flyLeftToRight {
-  0% { transform: translate3d(-10vw, 0, 0) scaleX(1); }
-  100% { transform: translate3d(105vw, 0, 0) scaleX(1); }
+  0% { left: -10%; transform: scaleX(1); }
+  100% { left: 110%; transform: scaleX(1); }
 }
 
 @keyframes flapSideFront {
@@ -67,9 +67,11 @@
 }
 .animate-fly-rtl {
   animation: flyRightToLeft var(--duration, 14s) linear infinite var(--delay, 0s);
+  animation-fill-mode: both;
 }
 .animate-fly-ltr {
   animation: flyLeftToRight var(--duration, 18s) linear infinite var(--delay, 0s);
+  animation-fill-mode: both;
 }
 .animate-wing-front {
   transform-origin: 50px 50px;

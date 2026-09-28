@@ -22,18 +22,11 @@ const ShieldShape = () => (
 );
 
 export const FloatingBackground = ({ isDark = false }) => {
-  // Posisi asli dikembalikan persis seperti semula
+  // Hanya 3 elemen per section seperti tampilan semula
   const items = [
-    { Shape: OutlineCubeShape, top: "12%", left: "12%", size: "38px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
-    { Shape: DHSHeadShape, top: "28%", left: "22%", size: "46px", anim: "animate-float-2", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
-    { Shape: ShieldShape, top: "55%", left: "18%", size: "42px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-orange-400/30" },
-    { Shape: OutlineCubeShape, top: "75%", left: "14%", size: "38px", anim: "animate-float-2", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
-    { Shape: DHSHeadShape, top: "90%", left: "25%", size: "44px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
-    
-    { Shape: ShieldShape, top: "20%", left: "82%", size: "44px", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
-    { Shape: OutlineCubeShape, top: "45%", left: "74%", size: "38px", anim: "animate-float-1", colorLight: "text-slate-800/35", colorDark: "text-cyan-400/30" },
-    { Shape: DHSHeadShape, top: "68%", left: "85%", size: "46px", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-white/25" },
-    { Shape: ShieldShape, top: "85%", left: "78%", size: "42px", anim: "animate-float-1", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
+    { Shape: OutlineCubeShape, top: "20%", left: "10%", size: "40px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
+    { Shape: ShieldShape, top: "55%", left: "82%", size: "44px", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
+    { Shape: DHSHeadShape, top: "75%", left: "20%", size: "48px", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
   ];
 
   return (

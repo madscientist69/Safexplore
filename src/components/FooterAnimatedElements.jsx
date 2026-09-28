@@ -26,8 +26,7 @@ const IsometricCubeSVG = ({ className = "" }) => (
 );
 
 export const FlyingBirdsBackground = () => (
-  /* Full width container di margin atas kosong */
-  <div className="absolute inset-x-0 top-0 h-24 pointer-events-none z-10 overflow-hidden">
+  <div className="absolute inset-x-0 top-0 h-28 pointer-events-none z-10 overflow-hidden">
     <div
       className="absolute top-2 w-8 h-8 text-slate-600/70 animate-fly-rtl"
       style={{ "--duration": "14s", "--delay": "0s" }}
@@ -36,14 +35,14 @@ export const FlyingBirdsBackground = () => (
     </div>
 
     <div
-      className="absolute top-4 w-7 h-7 text-slate-500/60 animate-fly-ltr"
+      className="absolute top-10 w-7 h-7 text-slate-500/60 animate-fly-ltr"
       style={{ "--duration": "18s", "--delay": "-6s" }}
     >
       <SideProfileBirdSVG />
     </div>
 
     <div
-      className="absolute top-1 w-6 h-6 text-slate-400/50 animate-fly-rtl"
+      className="absolute top-5 w-6 h-6 text-slate-400/50 animate-fly-rtl"
       style={{ "--duration": "22s", "--delay": "-11s" }}
     >
       <SideProfileBirdSVG />
