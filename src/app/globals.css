@@ -24,23 +24,31 @@
 /* Animasi Floating Elements */
 @keyframes floatElements {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-22px) rotate(10deg); }
+  50% { transform: translateY(-20px) rotate(8deg); }
 }
 
 @keyframes floatElementsAlt {
   0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-  50% { transform: translateY(-26px) rotate(-12deg) scale(1.06); }
+  50% { transform: translateY(-24px) rotate(-10deg) scale(1.05); }
 }
 
-/* Animasi Burung Terbang dari Luar Layar Kanan (110%) ke Luar Layar Kiri (-10%) */
+/* Animasi Terbang Burung (Melintasi 100% Lebar Layar Viewport) */
 @keyframes flyRightToLeft {
-  0% { left: 110%; transform: scaleX(-1); }
-  100% { left: -10%; transform: scaleX(-1); }
+  0% {
+    transform: translate3d(100vw, 0, 0) scaleX(-1);
+  }
+  100% {
+    transform: translate3d(-20vw, 0, 0) scaleX(-1);
+  }
 }
 
 @keyframes flyLeftToRight {
-  0% { left: -10%; transform: scaleX(1); }
-  100% { left: 110%; transform: scaleX(1); }
+  0% {
+    transform: translate3d(-20vw, 0, 0) scaleX(1);
+  }
+  100% {
+    transform: translate3d(100vw, 0, 0) scaleX(1);
+  }
 }
 
 @keyframes flapSideFront {
@@ -59,27 +67,38 @@
   70% { transform: scale(1) rotate(5deg); opacity: 0.4; }
 }
 
+/* Helper Classes */
 .animate-float-1 {
   animation: floatElements 12s ease-in-out infinite;
 }
 .animate-float-2 {
   animation: floatElementsAlt 15s ease-in-out infinite;
 }
-.animate-fly-rtl {
-  animation: flyRightToLeft var(--duration, 14s) linear infinite var(--delay, 0s);
-  animation-fill-mode: both;
+
+/* Class animasi burung langsung dengan durasi & delay fixed */
+.animate-fly-rtl-1 {
+  left: 0;
+  will-change: transform;
+  animation: flyRightToLeft 14s linear infinite 0s;
 }
-.animate-fly-ltr {
-  animation: flyLeftToRight var(--duration, 18s) linear infinite var(--delay, 0s);
-  animation-fill-mode: both;
+.animate-fly-ltr-1 {
+  left: 0;
+  will-change: transform;
+  animation: flyLeftToRight 18s linear infinite -6s;
 }
+.animate-fly-rtl-2 {
+  left: 0;
+  will-change: transform;
+  animation: flyRightToLeft 22s linear infinite -11s;
+}
+
 .animate-wing-front {
   transform-origin: 50px 50px;
-  animation: flapSideFront 0.5s ease-in-out infinite;
+  animation: flapSideFront 0.45s ease-in-out infinite;
 }
 .animate-wing-back {
   transform-origin: 50px 48px;
-  animation: flapSideBack 0.5s ease-in-out infinite;
+  animation: flapSideBack 0.45s ease-in-out infinite;
 }
 .animate-grow-cube {
   animation: growCubeLoop var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
