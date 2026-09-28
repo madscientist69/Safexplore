@@ -2,14 +2,18 @@
 
 import React from "react";
 import IsometricCubes from "./IsometricCubes";
+import { FloatingBackground } from "./FloatingBackground";
 
 export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full bg-[#000000] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
+      className="relative w-full bg-[#171d22] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
     >
-      {/* Decorative Isometric Cubes on Left and Right borders */}
+      {/* Floating Elements khusus area gelap About Us */}
+      <FloatingBackground isDark={true} />
+
+      {/* Decorative Isometric Cubes di batas kiri dan kanan */}
       <div className="absolute top-1/2 -translate-y-1/2 -left-3 sm:-left-4 md:-left-5 w-16 sm:w-24 md:w-32 opacity-75 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
@@ -17,7 +21,7 @@ export default function AboutSection() {
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
 
-      {/* Decorative Observatory section watermark */}
+      {/* Watermark Observatory */}
       <div className="hidden sm:block absolute bottom-4 left-6 text-gray-500/50 text-xs font-mono font-bold tracking-wider select-none">
         Observatory Page
       </div>
@@ -46,7 +50,7 @@ export default function AboutSection() {
         {/* SDG Badges Container */}
         <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8">
           
-          {/* SDG 9: Industry, Innovation and Infrastructure */}
+          {/* SDG 9 */}
           <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-orange-500/30 bg-[#f36d25]">
             <img 
               src="/sdg9.svg" 
@@ -55,7 +59,7 @@ export default function AboutSection() {
             />
           </div>
 
-          {/* SDG 16: Peace, Justice and Strong Institutions */}
+          {/* SDG 16 */}
           <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-sky-500/30 bg-[#00689d]">
             <img 
               src="/sdg16.svg" 

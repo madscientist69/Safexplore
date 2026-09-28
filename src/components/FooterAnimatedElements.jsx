@@ -33,23 +33,23 @@ const IsometricCubeSVG = ({ className = "" }) => (
 );
 
 export const FlyingBirdsBackground = () => (
-  /* Diposisikan khusus di batas atas Footer (top-0 h-16) jauh di atas area teks contact developer */
-  <div className="absolute inset-x-0 top-0 h-16 pointer-events-none z-20 overflow-hidden">
+  /* Container ditaruh khusus di area kanan kosong footer (mulai 42% lebar layar sampai paling kanan) */
+  <div className="absolute top-2 right-0 left-[42%] h-24 pointer-events-none z-10 overflow-hidden">
     <div
-      className="absolute top-1 left-0 w-10 h-10 text-slate-600/80 animate-fly-rtl"
-      style={{ "--duration": "14s", "--delay": "0s" }}
+      className="absolute top-2 right-0 w-10 h-10 text-slate-500/80 animate-fly-rtl"
+      style={{ "--duration": "12s", "--delay": "0s" }}
     >
       <SideProfileBirdSVG />
     </div>
     <div
-      className="absolute top-6 left-0 w-8 h-8 text-slate-500/60 animate-fly-rtl"
-      style={{ "--duration": "18s", "--delay": "-5s" }}
+      className="absolute top-10 right-0 w-8 h-8 text-slate-400/60 animate-fly-rtl"
+      style={{ "--duration": "16s", "--delay": "-4s" }}
     >
       <SideProfileBirdSVG />
     </div>
     <div
-      className="absolute top-3 left-0 w-9 h-9 text-slate-600/70 animate-fly-ltr"
-      style={{ "--duration": "16s", "--delay": "-2s" }}
+      className="absolute top-5 left-0 w-9 h-9 text-slate-500/70 animate-fly-ltr"
+      style={{ "--duration": "14s", "--delay": "-2s" }}
     >
       <SideProfileBirdSVG />
     </div>

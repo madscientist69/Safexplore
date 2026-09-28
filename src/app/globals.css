@@ -18,9 +18,9 @@
   background-size: 34px 34px;
 }
 
-/* Blueprint Grid untuk Area Hitam Murni (About Us) */
+/* Blueprint Grid untuk Area Gelap (About Us) disesuaikan ke #171d22 */
 .bg-grid-blueprint-dark {
-  background-color: #000000;
+  background-color: #171d22;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
@@ -63,15 +63,15 @@
   100% { transform: translateY(0px) rotate(0deg) scale(1); }
 }
 
-/* Animasi Burung Terbang Penuh Menyeberang Layar */
+/* Animasi Burung Terbang Menyeberang di Area Kosong Kanan Layar */
 @keyframes flyRightToLeft {
-  0% { transform: translate3d(100vw, 0, 0) scaleX(-1); }
-  100% { transform: translate3d(-150px, 0, 0) scaleX(-1); }
+  0% { transform: translate3d(60vw, 0, 0) scaleX(-1); }
+  100% { transform: translate3d(-60px, 0, 0) scaleX(-1); }
 }
 
 @keyframes flyLeftToRight {
-  0% { transform: translate3d(-150px, 0, 0) scaleX(1); }
-  100% { transform: translate3d(100vw, 0, 0) scaleX(1); }
+  0% { transform: translate3d(-60px, 0, 0) scaleX(1); }
+  100% { transform: translate3d(60vw, 0, 0) scaleX(1); }
 }
 
 /* ANIMASI KEPAKAN SAYAP BURUNG (SIDE PROFILE) */
@@ -100,10 +100,10 @@
   animation: floatElementsAlt var(--duration, 15s) ease-in-out infinite var(--delay, 0s);
 }
 .animate-fly-rtl {
-  animation: flyRightToLeft var(--duration, 16s) linear infinite var(--delay, 0s);
+  animation: flyRightToLeft var(--duration, 14s) linear infinite var(--delay, 0s);
 }
 .animate-fly-ltr {
-  animation: flyLeftToRight var(--duration, 18s) linear infinite var(--delay, 0s);
+  animation: flyLeftToRight var(--duration, 14s) linear infinite var(--delay, 0s);
 }
 .animate-wing-front {
   transform-origin: 50px 50px;
