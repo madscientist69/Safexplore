@@ -14,8 +14,6 @@ export default function Home() {
   const [viewState, setViewState] = useState<"home" | "scanning" | "result">("home");
   const [targetUrl, setTargetUrl] = useState("smansatu.sch.id");
   const [scanResult, setScanResult] = useState<any>(null);
-  
-  // Trigger update untuk Observatory
   const [scanCount, setScanCount] = useState(0);
 
   const handleStartScan = (url: string) => {
@@ -26,7 +24,6 @@ export default function Home() {
 
   const handleScanComplete = (data: any) => {
     setScanResult(data);
-    // Memicu fetch ulang di ObservatorySection
     setScanCount(prev => prev + 1);
     setViewState("result");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -39,9 +36,10 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-between bg-[#f5f7f9] text-[#1c2a38] overflow-x-hidden">
+    /* Wadah utama relative overflow-hidden */
+    <div className="relative min-h-screen flex flex-col justify-between bg-[#f5f7f9] text-[#1c2a38] overflow-hidden">
       
-      {/* Background melayang aktif di seluruh kondisi halaman */}
+      {/* Floating background berada di z-0 sepanjang halaman */}
       <FloatingBackground />
 
       {viewState === "scanning" && (
@@ -62,23 +60,27 @@ export default function Home() {
 
       {viewState === "home" && (
         <>
-          <Navbar
-            onNavigate={(id) => {
-              const el = document.getElementById(id);
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
-            onResetToHome={handleBackToHome}
-          />
+          {/* Main & Navbar di z-10 */}
+          <div className="relative z-10 flex-1 flex flex-col">
+            <Navbar
+              onNavigate={(id) => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              onResetToHome={handleBackToHome}
+            />
 
-          <main className="relative z-10 flex-1 flex flex-col">
-            <HeroSection onStartScan={handleStartScan} />
-            <AboutSection />
-            
-            {/* Lempar trigger ke Observatory */}
-            <ObservatorySection refreshTrigger={scanCount} />
-          </main>
+            <main className="flex-1 flex flex-col">
+              <HeroSection onStartScan={handleStartScan} />
+              <AboutSection />
+              <ObservatorySection refreshTrigger={scanCount} />
+            </main>
+          </div>
 
-          <Footer />
+          {/* Footer di z-10 dengan background solid menutup penuh FloatingBackground */}
+          <div className="relative z-10 bg-white">
+            <Footer />
+          </div>
         </>
       )}
 
