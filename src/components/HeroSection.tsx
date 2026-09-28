@@ -35,7 +35,7 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
       </div>
 
       {/* Decorative subtle section tag on bottom left */}
-      <div className="hidden sm:block absolute bottom-4 left-6 text-gray-400/60 text-xs font-mono font-bold tracking-wider select-none">
+      <div className="hidden sm:block absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-400/60 text-xs font-mono font-bold tracking-wider select-none">
         About Us
       </div>
 

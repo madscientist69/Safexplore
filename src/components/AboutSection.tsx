@@ -19,7 +19,7 @@ export default function AboutSection() {
       </div>
 
       {/* Watermark Observatory */}
-      <div className="hidden sm:block absolute bottom-4 center text-gray-500/50 text-xs font-mono font-bold tracking-wider select-none">
+      <div className="hidden sm:block absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-500/50 text-xs font-mono font-bold tracking-wider select-none">
         Observatory Page
       </div>
 

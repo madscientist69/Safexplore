@@ -52,8 +52,8 @@ export default function ObservatorySection({ refreshTrigger = 0 }: ObservatoryPr
         <IsometricCubes variant="right" />
       </div>
 
-      <div className="hidden sm:block absolute bottom-4 left-6 text-gray-400/50 text-xs font-mono font-bold tracking-wider select-none">
-        FOOTERS
+      <div className="hidden sm:block absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-400/50 text-xs font-mono font-bold tracking-wider select-none">
+        Footer
       </div>
 
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-20">
