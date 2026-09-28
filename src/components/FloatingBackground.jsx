@@ -21,28 +21,31 @@ const ShieldShape = () => (
   </svg>
 );
 
-export const FloatingBackground = ({ isDark = false }) => {
+export const FloatingBackground = () => {
+  // Warna disesuaikan agar kontras tinggi & terlihat jelas di area terang maupun gelap
   const items = [
-    { Shape: OutlineCubeShape, top: "8%", left: "12%", size: "44px", duration: "11s", delay: "0s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
-    { Shape: ShieldShape, top: "15%", left: "82%", size: "50px", duration: "14s", delay: "-2s", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
-    { Shape: DHSHeadShape, top: "25%", left: "22%", size: "52px", duration: "16s", delay: "-4s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
-    { Shape: OutlineCubeShape, top: "35%", left: "75%", size: "40px", duration: "12s", delay: "-1s", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-cyan-400/30" },
-    { Shape: ShieldShape, top: "48%", left: "18%", size: "48px", duration: "15s", delay: "-3s", anim: "animate-float-2", colorLight: "text-slate-700/35", colorDark: "text-orange-400/30" },
-    { Shape: DHSHeadShape, top: "58%", left: "84%", size: "46px", duration: "13s", delay: "-5s", anim: "animate-float-1", colorLight: "text-slate-800/35", colorDark: "text-white/25" },
-    { Shape: OutlineCubeShape, top: "68%", left: "14%", size: "42px", duration: "14s", delay: "-2s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-cyan-400/30" },
-    { Shape: ShieldShape, top: "78%", left: "78%", size: "54px", duration: "17s", delay: "-1s", anim: "animate-float-2", colorLight: "text-slate-800/35", colorDark: "text-orange-400/30" },
-    { Shape: DHSHeadShape, top: "88%", left: "25%", size: "50px", duration: "15s", delay: "-4s", anim: "animate-float-1", colorLight: "text-slate-700/35", colorDark: "text-white/25" },
+    { Shape: OutlineCubeShape, top: "4%", left: "18%", size: "42px", duration: "11s", delay: "0s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "11%", left: "78%", size: "48px", duration: "14s", delay: "-2s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "19%", left: "26%", size: "50px", duration: "16s", delay: "-4s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-slate-300/40" },
+    { Shape: OutlineCubeShape, top: "27%", left: "72%", size: "38px", duration: "12s", delay: "-1s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "35%", left: "22%", size: "46px", duration: "15s", delay: "-3s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "43%", left: "80%", size: "44px", duration: "13s", delay: "-5s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-slate-300/40" },
+    { Shape: OutlineCubeShape, top: "52%", left: "16%", size: "40px", duration: "14s", delay: "-2s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "62%", left: "76%", size: "52px", duration: "17s", delay: "-1s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "71%", left: "24%", size: "48px", duration: "15s", delay: "-4s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-slate-300/40" },
+    { Shape: OutlineCubeShape, top: "80%", left: "82%", size: "42px", duration: "12s", delay: "-3s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "88%", left: "20%", size: "45px", duration: "16s", delay: "-5s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "95%", left: "70%", size: "50px", duration: "13s", delay: "-2s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-slate-300/40" },
   ];
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
+    <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[1] overflow-hidden select-none">
       {items.map((item, idx) => {
         const Shape = item.Shape;
-        const colorClass = isDark ? item.colorDark : item.colorLight;
         return (
           <div
             key={idx}
-            className={`absolute ${colorClass} ${item.anim}`}
+            className={`absolute ${item.color} ${item.anim}`}
             style={{
               top: item.top,
               left: item.left,
