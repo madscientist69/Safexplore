@@ -1,24 +1,36 @@
 {
-  "unsyiah": "Sumatera", "usu": "Sumatera", "unand": "Sumatera", "unri": "Sumatera", "unp": "Sumatera", "uin-suska": "Sumatera", 
-  "unib": "Sumatera", "unihaz": "Sumatera", "umb": "Sumatera", "unsri": "Sumatera", "unila": "Sumatera", "uin-raden-fatah": "Sumatera",
-  "uin-ar-raniry": "Sumatera", "unimal": "Sumatera", "itera": "Sumatera", "polmed": "Sumatera", "polsri": "Sumatera",
-  
-  "ugm": "Jawa", "ui": "Jawa", "itb": "Jawa", "unair": "Jawa", "its": "Jawa", "ipb": "Jawa", "undip": "Jawa", "unpad": "Jawa",
-  "ub": "Jawa", "brawijaya": "Jawa", "uns": "Jawa", "uny": "Jawa", "upi": "Jawa", "unesa": "Jawa", "unnes": "Jawa", "unsoed": "Jawa",
-  "untirta": "Jawa", "unej": "Jawa", "uin-suka": "Jawa", "uinjkt": "Jawa", "uin-malang": "Jawa", "uinsgd": "Jawa", "upnjatim": "Jawa",
-  "upnvj": "Jawa", "upnyk": "Jawa", "gunadarma": "Jawa", "binus": "Jawa", "telkomuniversity": "Jawa", "mercubuana": "Jawa", "trisakti": "Jawa",
-  "untar": "Jawa", "umn": "Jawa", "umm": "Jawa", "ums": "Jawa", "polban": "Jawa", "pens": "Jawa", "polines": "Jawa", "isiyk": "Jawa",
+  "unsyiah": "Aceh", "unimal": "Aceh", "uin-ar-raniry": "Aceh",
+  "usu": "Sumatera-Utara", "polmed": "Sumatera-Utara",
+  "unand": "Sumatera-Barat", "unp": "Sumatera-Barat",
+  "unri": "Riau", "uin-suska": "Riau",
+  "unib": "Bengkulu", "unihaz": "Bengkulu", "umb": "Bengkulu",
+  "unsri": "Sumatera-Selatan", "polsri": "Sumatera-Selatan", "uin-raden-fatah": "Sumatera-Selatan",
+  "unila": "Lampung", "itera": "Lampung",
 
-  "unmul": "Kalimantan", "untan": "Kalimantan", "ulm": "Kalimantan", "upr": "Kalimantan", "ubt": "Kalimantan", "itk": "Kalimantan",
-  "iain-palangkaraya": "Kalimantan", "polnes": "Kalimantan", "poliban": "Kalimantan",
+  "ugm": "Daerah-Istimewa-Yogyakarta", "uny": "Daerah-Istimewa-Yogyakarta", "uin-suka": "Daerah-Istimewa-Yogyakarta", "upnyk": "Daerah-Istimewa-Yogyakarta", "isiyk": "Daerah-Istimewa-Yogyakarta",
+  "ui": "Jawa-Barat", "itb": "Jawa-Barat", "unpad": "Jawa-Barat", "upi": "Jawa-Barat", "uinsgd": "Jawa-Barat", "gunadarma": "Jawa-Barat", "binus": "Jawa-Barat", "telkomuniversity": "Jawa-Barat", "mercubuana": "Jawa-Barat", "trisakti": "Jawa-Barat", "untar": "Jawa-Barat", "polban": "Jawa-Barat", "upnvj": "Jawa-Barat", "ipb": "Jawa-Barat",
+  "uinjkt": "Banten", "untirta": "Banten", "umn": "Banten",
+  "undip": "Jawa-Tengah", "uns": "Jawa-Tengah", "unnes": "Jawa-Tengah", "unsoed": "Jawa-Tengah", "polines": "Jawa-Tengah", "ums": "Jawa-Tengah",
+  "unair": "Jawa-Timur", "its": "Jawa-Timur", "ub": "Jawa-Timur", "brawijaya": "Jawa-Timur", "unesa": "Jawa-Timur", "unej": "Jawa-Timur", "uin-malang": "Jawa-Timur", "upnjatim": "Jawa-Timur", "umm": "Jawa-Timur", "pens": "Jawa-Timur",
 
-  "unhas": "Sulawesi", "unsrat": "Sulawesi", "unm": "Sulawesi", "untad": "Sulawesi", "uho": "Sulawesi", "ung": "Sulawesi",
-  "unisan": "Sulawesi", "iain-manado": "Sulawesi", "pnup": "Sulawesi", "poliupg": "Sulawesi", "uin-alauddin": "Sulawesi",
+  "untan": "Kalimantan-Barat",
+  "upr": "Kalimantan-Tengah", "iain-palangkaraya": "Kalimantan-Tengah",
+  "ulm": "Kalimantan-Selatan", "poliban": "Kalimantan-Selatan",
+  "unmul": "Kalimantan-Utara---Kalimantan-Timur", "itk": "Kalimantan-Utara---Kalimantan-Timur", "polnes": "Kalimantan-Utara---Kalimantan-Timur", "ubt": "Kalimantan-Utara---Kalimantan-Timur",
 
-  "unud": "Bali & Nusa Tenggara", "undiksha": "Bali & Nusa Tenggara", "unram": "Bali & Nusa Tenggara", "undana": "Bali & Nusa Tenggara",
-  "isi-dps": "Bali & Nusa Tenggara", "pnb": "Bali & Nusa Tenggara",
+  "unsrat": "Sulawesi-Utara", "iain-manado": "Sulawesi-Utara",
+  "ung": "Gorontalo", "unisan": "Gorontalo",
+  "untad": "Sulawesi-Tengah",
+  "unhas": "Sulawesi-Selatan", "unm": "Sulawesi-Selatan", "pnup": "Sulawesi-Selatan", "poliupg": "Sulawesi-Selatan", "uin-alauddin": "Sulawesi-Selatan",
+  "uho": "Sulawesi-Tenggara",
 
-  "unpatti": "Maluku", "unkhair": "Maluku", "iain-ambon": "Maluku", "polnam": "Maluku", "unidar": "Maluku",
+  "unud": "Bali", "undiksha": "Bali", "isi-dps": "Bali", "pnb": "Bali",
+  "unram": "Nusa-Tenggara-Barat",
+  "undana": "Nusa-Tenggara-Timur",
 
-  "uncen": "Papua", "unipa": "Papua", "musamus": "Papua", "isbi-tanah-papua": "Papua", "iain-fmpapua": "Papua"
+  "unkhair": "Maluku-Utara",
+  "unpatti": "Maluku", "iain-ambon": "Maluku", "polnam": "Maluku", "unidar": "Maluku",
+
+  "unipa": "Papua-Barat",
+  "uncen": "Papua", "musamus": "Papua", "isbi-tanah-papua": "Papua", "iain-fmpapua": "Papua"
 }
