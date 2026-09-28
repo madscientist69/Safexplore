@@ -22,34 +22,31 @@ const DHSHeadShape = () => (
 );
 
 export const FloatingBackground = ({ isDark = false }) => {
-  // Tepat 3 elemen per section, posisi lebih ke tengah agar tidak tertutup kubus pinggir
+  // Posisi dan Warna dikunci statis agar persis dengan image_0fcb40.png
   const items = [
     { 
       Shape: OutlineCubeShape, 
-      top: "18%", 
-      left: "22%", 
+      top: "20%", 
+      left: "20%", 
       size: "42px", 
       anim: "animate-float-1", 
-      colorLight: "text-slate-600/40", 
-      colorDark: "text-cyan-400/35" 
+      colorClass: isDark ? "text-cyan-500/40" : "text-cyan-600/30" 
     },
     { 
       Shape: ShieldShape, 
-      top: "52%", 
+      top: "50%", 
       left: "75%", 
       size: "44px", 
       anim: "animate-float-2", 
-      colorLight: "text-slate-700/40", 
-      colorDark: "text-orange-400/35" 
+      colorClass: isDark ? "text-orange-500/40" : "text-orange-600/30" 
     },
     { 
       Shape: DHSHeadShape, 
-      top: "78%", 
-      left: "26%", 
+      top: "75%", 
+      left: "25%", 
       size: "46px", 
       anim: "animate-float-1", 
-      colorLight: "text-slate-600/40", 
-      colorDark: "text-white/30" 
+      colorClass: isDark ? "text-slate-400/40" : "text-slate-500/30" 
     },
   ];
 
@@ -57,11 +54,10 @@ export const FloatingBackground = ({ isDark = false }) => {
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
       {items.map((item, idx) => {
         const Shape = item.Shape;
-        const colorClass = isDark ? item.colorDark : item.colorLight;
         return (
           <div
             key={idx}
-            className={`absolute ${colorClass} ${item.anim}`}
+            className={`absolute ${item.colorClass} ${item.anim}`}
             style={{
               top: item.top,
               left: item.left,

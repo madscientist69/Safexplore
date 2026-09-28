@@ -8,6 +8,12 @@ export default function Footer() {
   return (
     <footer className="relative w-full bg-white pt-8 sm:pt-10 pb-6 sm:pb-8 px-4 overflow-hidden border-t border-gray-200">
       
+      {/* 
+        PERBAIKAN: Burung diletakkan di luar kontainer max-w-4xl 
+        agar bisa melintasi lebar penuh halaman tanpa terpotong! 
+      */}
+      <FlyingBirdsBackground />
+      
       {/* Background arch / curved hill backdrop dengan animasi kubus tumbuh */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-[#f0f2f5] rounded-t-[40px] sm:rounded-t-[70px] md:rounded-t-[100px] pointer-events-none z-0 overflow-hidden">
         <GrowingCubesBackground />
@@ -17,9 +23,6 @@ export default function Footer() {
         
         {/* Developer Contacts */}
         <div className="text-left mb-4 sm:mb-6 w-full relative p-2 rounded-xl">
-          {/* Animasi burung terbang di belakang teks kontak */}
-          <FlyingBirdsBackground />
-          
           <div className="relative z-10 font-mono font-black text-xs sm:text-sm md:text-base text-gray-900 tracking-wider">
             CONTACT DEVELOPER :
           </div>
