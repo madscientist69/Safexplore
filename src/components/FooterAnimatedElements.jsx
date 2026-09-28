@@ -15,14 +15,14 @@ const IsometricCubeSVG = ({ className = "" }) => (
 );
 
 export const FlyingBirdsBackground = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 rounded-xl">
-    <div className="absolute top-2 right-0 w-8 h-8 text-gray-400/30 animate-fly-rtl" style={{ "--duration": "14s", "--delay": "0s" }}>
+  <div className="absolute inset-0 pointer-events-none z-0">
+    <div className="absolute top-2 right-0 w-8 h-8 text-gray-600/60 animate-fly-rtl" style={{ "--duration": "14s", "--delay": "0s" }}>
       <BirdSVG />
     </div>
-    <div className="absolute top-8 right-0 w-6 h-6 text-gray-400/25 animate-fly-rtl" style={{ "--duration": "18s", "--delay": "-5s" }}>
+    <div className="absolute top-8 right-0 w-6 h-6 text-gray-600/50 animate-fly-rtl" style={{ "--duration": "18s", "--delay": "-5s" }}>
       <BirdSVG />
     </div>
-    <div className="absolute top-4 left-0 w-7 h-7 text-gray-400/30 animate-fly-ltr" style={{ "--duration": "16s", "--delay": "-2s" }}>
+    <div className="absolute top-4 left-0 w-7 h-7 text-gray-600/60 animate-fly-ltr" style={{ "--duration": "16s", "--delay": "-2s" }}>
       <BirdSVG />
     </div>
   </div>

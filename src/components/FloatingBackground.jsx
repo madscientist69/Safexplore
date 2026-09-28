@@ -40,13 +40,13 @@ export const FloatingBackground = () => {
   ];
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+    <div className="fixed inset-0 pointer-events-none z-[40] select-none">
       {items.map((item, idx) => {
         const Shape = item.Shape;
         return (
           <div
             key={idx}
-            className="absolute opacity-[0.08] dark:opacity-[0.12] text-gray-700 dark:text-gray-200 animate-float-elements"
+            className="absolute opacity-25 dark:opacity-35 text-gray-700 dark:text-gray-200 animate-float-elements"
             style={{
               top: item.top,
               left: item.left,
