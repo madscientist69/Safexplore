@@ -1,6 +1,6 @@
 import React from "react";
 
-const CubeShape = () => (
+const OutlineCubeShape = () => (
   <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current" strokeWidth="6">
     <rect x="25" y="25" width="50" height="50" rx="8" />
   </svg>
@@ -22,43 +22,33 @@ const ShieldShape = () => (
 );
 
 export const FloatingBackground = () => {
-  // Distribusi elemen menyebar dari atas ke bawah halaman
   const items = [
-    // Area Atas (Hero)
-    { Shape: CubeShape, top: "4%", left: "8%", size: "w-10 h-10", duration: "11s", delay: "0s", anim: "animate-float-1" },
-    { Shape: ShieldShape, top: "12%", left: "88%", size: "w-12 h-12", duration: "14s", delay: "-2s", anim: "animate-float-2" },
-    
-    // Area Tengah Atas (About)
-    { Shape: DHSHeadShape, top: "28%", left: "6%", size: "w-14 h-14", duration: "16s", delay: "-4s", anim: "animate-float-1" },
-    { Shape: CubeShape, top: "36%", left: "84%", size: "w-9 h-9", duration: "12s", delay: "-1s", anim: "animate-float-2" },
-    
-    // Area Tengah Bawah (Observatory)
-    { Shape: ShieldShape, top: "54%", left: "10%", size: "w-13 h-13", duration: "15s", delay: "-3s", anim: "animate-float-2" },
-    { Shape: DHSHeadShape, top: "68%", left: "90%", size: "w-11 h-11", duration: "13s", delay: "-5s", anim: "animate-float-1" },
-    
-    // Area Bawah (Sebelum Footer)
-    { Shape: CubeShape, top: "82%", left: "12%", size: "w-12 h-12", duration: "14s", delay: "-2s", anim: "animate-float-1" },
+    { Shape: OutlineCubeShape, top: "5%", left: "8%", size: "45px", duration: "11s", delay: "0s", anim: "animate-float-1" },
+    { Shape: ShieldShape, top: "15%", left: "88%", size: "50px", duration: "14s", delay: "-2s", anim: "animate-float-2" },
+    { Shape: DHSHeadShape, top: "35%", left: "6%", size: "55px", duration: "16s", delay: "-4s", anim: "animate-float-1" },
+    { Shape: OutlineCubeShape, top: "48%", left: "90%", size: "40px", duration: "12s", delay: "-1s", anim: "animate-float-2" },
+    { Shape: ShieldShape, top: "65%", left: "10%", size: "50px", duration: "15s", delay: "-3s", anim: "animate-float-2" },
+    { Shape: DHSHeadShape, top: "80%", left: "85%", size: "45px", duration: "13s", delay: "-5s", anim: "animate-float-1" },
   ];
 
   return (
-    /* Menggunakan absolute h-full w-full agar menyatu dengan scroll halaman & z-0 di bawah konten */
-    <div className="absolute inset-0 h-full w-full pointer-events-none z-0 overflow-hidden select-none">
+    <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[1] overflow-hidden select-none">
       {items.map((item, idx) => {
         const Shape = item.Shape;
         return (
           <div
             key={idx}
-            className={`absolute opacity-20 text-gray-600 dark:text-gray-300 ${item.anim}`}
+            className={`absolute opacity-25 text-gray-500 dark:text-gray-400 ${item.anim}`}
             style={{
               top: item.top,
               left: item.left,
               "--duration": item.duration,
               "--delay": item.delay,
+              width: item.size, 
+              height: item.size
             }}
           >
-            <div className={item.size}>
-              <Shape />
-            </div>
+            <Shape />
           </div>
         );
       })}

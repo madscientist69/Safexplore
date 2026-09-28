@@ -1,20 +1,26 @@
 import React from "react";
 
-// Komponen Burung Baru dengan Animasi Mengepak Sayap
-const FlappingBirdSVG = () => (
-  <svg viewBox="0 0 64 64" className="w-full h-full fill-current">
-    {/* Sayap Kiri */}
+const SideProfileBirdSVG = ({ className = "" }) => (
+  <svg viewBox="0 0 100 100" className={`w-full h-full fill-current ${className}`}>
+    {/* Sayap Belakang (Tertutup sebagian oleh badan) */}
     <path
-      className="animate-wing-left"
-      d="M 32 34 C 20 18 8 16 2 24 C 12 28 22 32 32 34 Z"
+      className="animate-wing-back opacity-60"
+      d="M 50,48 Q 45,20 65,10 Q 75,30 60,48 Z"
     />
-    {/* Sayap Kanan */}
-    <path
-      className="animate-wing-right"
-      d="M 32 34 C 44 18 56 16 62 24 C 52 28 42 32 32 34 Z"
-    />
+    
     {/* Badan & Ekor Burung */}
-    <path d="M 32 30 C 30 35 28 45 25 50 C 30 47 34 47 39 50 C 36 45 34 35 32 30 Z" />
+    <path
+      d="M 15,55 C 30,58 50,55 75,45 C 85,41 90,42 95,47 C 90,52 80,60 65,65 C 40,70 20,60 15,55 Z"
+    />
+    
+    {/* Kepala / Paruh Kecil */}
+    <circle cx="85" cy="45" r="3.5" />
+
+    {/* Sayap Depan */}
+    <path
+      className="animate-wing-front"
+      d="M 50,50 Q 35,15 60,5 Q 80,25 65,50 Z"
+    />
   </svg>
 );
 
@@ -28,28 +34,25 @@ const IsometricCubeSVG = ({ className = "" }) => (
 
 export const FlyingBirdsBackground = () => (
   <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-    {/* Burung 1 (Terbang Kanan ke Kiri) */}
     <div
-      className="absolute top-1 right-0 w-8 h-8 text-gray-700/60 animate-fly-rtl"
+      className="absolute top-2 right-0 w-12 h-12 text-gray-500/70 animate-fly-rtl"
       style={{ "--duration": "14s", "--delay": "0s" }}
     >
-      <FlappingBirdSVG />
+      <SideProfileBirdSVG />
     </div>
 
-    {/* Burung 2 (Terbang Kanan ke Kiri, Lebih Kecil) */}
     <div
-      className="absolute top-7 right-0 w-6 h-6 text-gray-600/50 animate-fly-rtl"
+      className="absolute top-12 right-0 w-8 h-8 text-gray-400/50 animate-fly-rtl"
       style={{ "--duration": "18s", "--delay": "-6s" }}
     >
-      <FlappingBirdSVG />
+      <SideProfileBirdSVG />
     </div>
 
-    {/* Burung 3 (Terbang Kiri ke Kanan) */}
     <div
-      className="absolute top-3 left-0 w-7 h-7 text-gray-700/60 animate-fly-ltr"
+      className="absolute top-6 left-0 w-10 h-10 text-gray-500/60 animate-fly-ltr"
       style={{ "--duration": "16s", "--delay": "-3s" }}
     >
-      <FlappingBirdSVG />
+      <SideProfileBirdSVG />
     </div>
   </div>
 );

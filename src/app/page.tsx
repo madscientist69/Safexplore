@@ -36,32 +36,35 @@ export default function Home() {
   };
 
   return (
-    /* Wadah utama relative overflow-hidden */
-    <div className="relative min-h-screen flex flex-col justify-between bg-[#f5f7f9] text-[#1c2a38] overflow-hidden">
+    <div className="relative min-h-screen flex flex-col bg-[#f5f7f9] text-[#1c2a38] overflow-x-hidden">
       
-      {/* Floating background berada di z-0 sepanjang halaman */}
+      {/* Floating Background Ditempatkan Langsung di Sini dengan z-[1] */}
       <FloatingBackground />
 
       {viewState === "scanning" && (
-        <ScanModal
-          targetUrl={targetUrl}
-          onComplete={handleScanComplete}
-          onCancel={handleBackToHome}
-        />
+        <div className="relative z-50">
+          <ScanModal
+            targetUrl={targetUrl}
+            onComplete={handleScanComplete}
+            onCancel={handleBackToHome}
+          />
+        </div>
       )}
 
       {viewState === "result" && (
-        <ResultView
-          targetUrl={targetUrl}
-          scanData={scanResult}
-          onBackToSearch={handleBackToHome}
-        />
+        <div className="relative z-50">
+          <ResultView
+            targetUrl={targetUrl}
+            scanData={scanResult}
+            onBackToSearch={handleBackToHome}
+          />
+        </div>
       )}
 
       {viewState === "home" && (
         <>
-          {/* Main & Navbar di z-10 */}
-          <div className="relative z-10 flex-1 flex flex-col">
+          {/* Komponen Utama harus di atas z-index FloatingBackground (z-10) */}
+          <div className="relative z-10 flex-1 flex flex-col w-full">
             <Navbar
               onNavigate={(id) => {
                 const el = document.getElementById(id);
@@ -77,8 +80,8 @@ export default function Home() {
             </main>
           </div>
 
-          {/* Footer di z-10 dengan background solid menutup penuh FloatingBackground */}
-          <div className="relative z-10 bg-white">
+          {/* Footer diberi lapisan solid agar menutupi floating elements yang jatuh ke bawah */}
+          <div className="relative z-20 bg-white">
             <Footer />
           </div>
         </>
