@@ -1,19 +1,21 @@
+"use client";
+
 import React from "react";
 
 const OutlineCubeShape = () => (
-  <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current" strokeWidth="6">
+  <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current drop-shadow-sm" strokeWidth="6">
     <rect x="25" y="25" width="50" height="50" rx="8" />
   </svg>
 );
 
 const ShieldShape = () => (
-  <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current" strokeWidth="6" strokeLinejoin="round">
+  <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current drop-shadow-sm" strokeWidth="6" strokeLinejoin="round">
     <path d="M50,15 L80,25 C80,60 50,85 50,85 C50,85 20,60 20,25 Z" />
   </svg>
 );
 
 const DHSHeadShape = () => (
-  <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current" strokeWidth="5">
+  <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current drop-shadow-sm" strokeWidth="5">
     <circle cx="50" cy="50" r="40" />
     <path d="M 30 38 L 42 50 M 42 38 L 30 50" strokeLinecap="round" strokeWidth="6" />
     <path d="M 58 38 L 70 50 M 70 38 L 58 50" strokeLinecap="round" strokeWidth="6" />
@@ -25,30 +27,30 @@ export const FloatingBackground = ({ isDark = false }) => {
   const items = [
     { 
       Shape: OutlineCubeShape, 
-      top: "12%", 
-      left: "3%", 
-      right: "auto",
-      size: "40px", 
+      top: "20%", 
+      left: "15%", // Digeser lebih ke tengah
+      right: "auto", 
+      size: "48px", 
       anim: "animate-float-1", 
-      colorClass: isDark ? "text-cyan-400/40" : "text-cyan-600/35" 
+      colorClass: isDark ? "text-cyan-400/30" : "text-cyan-600/30" 
     },
     { 
       Shape: ShieldShape, 
-      top: "48%", 
+      top: "55%", 
       left: "auto", 
-      right: "3%", 
-      size: "44px", 
+      right: "18%", // Digeser lebih ke tengah
+      size: "52px", 
       anim: "animate-float-2", 
-      colorClass: isDark ? "text-orange-400/40" : "text-orange-600/35" 
+      colorClass: isDark ? "text-orange-400/30" : "text-orange-600/30" 
     },
     { 
       Shape: DHSHeadShape, 
       top: "78%", 
-      left: "4%", 
-      right: "auto",
-      size: "44px", 
+      left: "12%", // Digeser lebih ke tengah
+      right: "auto", 
+      size: "48px", 
       anim: "animate-float-1", 
-      colorClass: isDark ? "text-slate-400/40" : "text-slate-500/35" 
+      colorClass: isDark ? "text-slate-400/30" : "text-slate-500/30" 
     },
   ];
 

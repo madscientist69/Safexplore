@@ -7,17 +7,17 @@ export default function Footer() {
   return (
     <footer className="relative w-full bg-white pt-8 sm:pt-10 pb-6 sm:pb-8 px-4 overflow-hidden border-t border-gray-200">
       
-      {/* Background Burung Terbang (Diletakkan di luar kontainer max-w-4xl agar full width) */}
+      {/* Latar Belakang Burung (Aman di belakang teks) */}
       <FlyingBirdsBackground />
       
-      {/* Background arch / curved hill backdrop dengan animasi kubus tumbuh */}
+      {/* Latar Bawah Lengkung & Kubus Tumbuh */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-[#f0f2f5] rounded-t-[40px] sm:rounded-t-[70px] md:rounded-t-[100px] pointer-events-none z-0 overflow-hidden">
         <GrowingCubesBackground />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-start w-full">
         
-        {/* Developer Contacts */}
+        {/* Kontak Developer */}
         <div className="text-left mb-4 sm:mb-6 w-full relative p-2 rounded-xl">
           <div className="relative z-10 font-mono font-black text-xs sm:text-sm md:text-base text-gray-900 tracking-wider">
             CONTACT DEVELOPER :
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Big Retro-Striped "CONTACT US!" Banner with Mascot Face */}
+        {/* Banner "CONTACT US!" */}
         <div className="w-full flex justify-center items-center py-4 select-none relative z-10">
           <svg
             viewBox="0 0 900 160"
@@ -98,6 +98,7 @@ export default function Footer() {
           </svg>
         </div>
 
+        {/* Copyright */}
         <div className="w-full text-center text-xs text-gray-500 font-mono mt-2 relative z-10">
           © {new Date().getFullYear()} Safexplore Digital Shield. All rights reserved.
         </div>
