@@ -18,12 +18,12 @@
   background-size: 34px 34px;
 }
 
-/* Blueprint Grid untuk Area Gelap (About Us) disesuaikan warnanya ke Hitam */
+/* Blueprint Grid untuk Area Hitam Murni (About Us) */
 .bg-grid-blueprint-dark {
-  background-color: #111827;
+  background-color: #000000;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
   background-size: 34px 34px;
 }
 
@@ -50,30 +50,28 @@
    FLOATING ELEMENTS & BIRDS ANIMATION
    ========================================== */
 
-/* Animasi Melayang (Pastikan 0% dan 100% persis sama agar tidak teleport) */
+/* Animasi Melayang Mulus (0% dan 100% persis sama agar tidak teleport) */
 @keyframes floatElements {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(12deg); }
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(12deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 @keyframes floatElementsAlt {
-  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-  50% { transform: translateY(-30px) rotate(-15deg) scale(1.1); }
+  0% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(-30px) rotate(-15deg) scale(1.08); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1); }
 }
 
-/* Animasi Burung Terbang Menyeberang - Diperlebar agar tidak mentok */
+/* Animasi Burung Terbang Penuh Menyeberang Layar */
 @keyframes flyRightToLeft {
-  0% { transform: translateX(120vw) scaleX(-1); opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.8; }
-  100% { transform: translateX(-30vw) scaleX(-1); opacity: 0; }
+  0% { transform: translate3d(100vw, 0, 0) scaleX(-1); }
+  100% { transform: translate3d(-150px, 0, 0) scaleX(-1); }
 }
 
 @keyframes flyLeftToRight {
-  0% { transform: translateX(-30vw) scaleX(1); opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.8; }
-  100% { transform: translateX(120vw) scaleX(1); opacity: 0; }
+  0% { transform: translate3d(-150px, 0, 0) scaleX(1); }
+  100% { transform: translate3d(100vw, 0, 0) scaleX(1); }
 }
 
 /* ANIMASI KEPAKAN SAYAP BURUNG (SIDE PROFILE) */
@@ -87,7 +85,7 @@
   50% { transform: rotate(-60deg); } 
 }
 
-/* Kubus Tumbuh Footer - Diperbaiki agar tidak snap/teleport di akhir animasi */
+/* Kubus Tumbuh Footer */
 @keyframes growCubeLoop {
   0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
   40% { transform: scale(1.1) rotate(15deg); opacity: 0.6; }

@@ -22,19 +22,20 @@ const ShieldShape = () => (
 );
 
 export const FloatingBackground = () => {
+  // Warna disesuaikan agar kontras tinggi & terlihat jelas di area terang maupun gelap
   const items = [
-    { Shape: OutlineCubeShape, top: "4%", left: "18%", size: "42px", duration: "11s", delay: "0s", anim: "animate-float-1" },
-    { Shape: ShieldShape, top: "11%", left: "78%", size: "48px", duration: "14s", delay: "-2s", anim: "animate-float-2" },
-    { Shape: DHSHeadShape, top: "19%", left: "26%", size: "50px", duration: "16s", delay: "-4s", anim: "animate-float-1" },
-    { Shape: OutlineCubeShape, top: "27%", left: "72%", size: "38px", duration: "12s", delay: "-1s", anim: "animate-float-2" },
-    { Shape: ShieldShape, top: "35%", left: "22%", size: "46px", duration: "15s", delay: "-3s", anim: "animate-float-2" },
-    { Shape: DHSHeadShape, top: "43%", left: "80%", size: "44px", duration: "13s", delay: "-5s", anim: "animate-float-1" },
-    { Shape: OutlineCubeShape, top: "52%", left: "16%", size: "40px", duration: "14s", delay: "-2s", anim: "animate-float-1" },
-    { Shape: ShieldShape, top: "62%", left: "76%", size: "52px", duration: "17s", delay: "-1s", anim: "animate-float-2" },
-    { Shape: DHSHeadShape, top: "71%", left: "24%", size: "48px", duration: "15s", delay: "-4s", anim: "animate-float-1" },
-    { Shape: OutlineCubeShape, top: "80%", left: "82%", size: "42px", duration: "12s", delay: "-3s", anim: "animate-float-2" },
-    { Shape: ShieldShape, top: "88%", left: "20%", size: "45px", duration: "16s", delay: "-5s", anim: "animate-float-1" },
-    { Shape: DHSHeadShape, top: "95%", left: "70%", size: "50px", duration: "13s", delay: "-2s", anim: "animate-float-2" },
+    { Shape: OutlineCubeShape, top: "4%", left: "18%", size: "42px", duration: "11s", delay: "0s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "11%", left: "78%", size: "48px", duration: "14s", delay: "-2s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "19%", left: "26%", size: "50px", duration: "16s", delay: "-4s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-slate-300/40" },
+    { Shape: OutlineCubeShape, top: "27%", left: "72%", size: "38px", duration: "12s", delay: "-1s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "35%", left: "22%", size: "46px", duration: "15s", delay: "-3s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "43%", left: "80%", size: "44px", duration: "13s", delay: "-5s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-slate-300/40" },
+    { Shape: OutlineCubeShape, top: "52%", left: "16%", size: "40px", duration: "14s", delay: "-2s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "62%", left: "76%", size: "52px", duration: "17s", delay: "-1s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "71%", left: "24%", size: "48px", duration: "15s", delay: "-4s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-slate-300/40" },
+    { Shape: OutlineCubeShape, top: "80%", left: "82%", size: "42px", duration: "12s", delay: "-3s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-cyan-400/40" },
+    { Shape: ShieldShape, top: "88%", left: "20%", size: "45px", duration: "16s", delay: "-5s", anim: "animate-float-1", color: "text-slate-600/40 dark:text-orange-400/40" },
+    { Shape: DHSHeadShape, top: "95%", left: "70%", size: "50px", duration: "13s", delay: "-2s", anim: "animate-float-2", color: "text-slate-600/40 dark:text-slate-300/40" },
   ];
 
   return (
@@ -44,8 +45,7 @@ export const FloatingBackground = () => {
         return (
           <div
             key={idx}
-            // text-black/15 memastikan warna kontras di background putih (bisa ditimpa dark mode dengan dark:text-white/15)
-            className={`absolute text-black/15 dark:text-white/15 ${item.anim}`}
+            className={`absolute ${item.color} ${item.anim}`}
             style={{
               top: item.top,
               left: item.left,

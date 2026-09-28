@@ -7,7 +7,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full bg-[#111827] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
+      className="relative w-full bg-[#000000] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
     >
       {/* Decorative Isometric Cubes on Left and Right borders */}
       <div className="absolute top-1/2 -translate-y-1/2 -left-3 sm:-left-4 md:-left-5 w-16 sm:w-24 md:w-32 opacity-75 sm:opacity-100 pointer-events-none z-10">

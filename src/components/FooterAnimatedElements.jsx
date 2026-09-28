@@ -33,23 +33,23 @@ const IsometricCubeSVG = ({ className = "" }) => (
 );
 
 export const FlyingBirdsBackground = () => (
-  // z-[50] ditambahkan agar burung dipastikan lewat di DEPAN elemen teks
-  <div className="absolute inset-0 pointer-events-none z-[50] overflow-hidden">
+  /* Diposisikan khusus di batas atas Footer (top-0 h-16) jauh di atas area teks contact developer */
+  <div className="absolute inset-x-0 top-0 h-16 pointer-events-none z-20 overflow-hidden">
     <div
-      className="absolute top-10 right-0 w-12 h-12 text-gray-500/80 animate-fly-rtl"
-      style={{ "--duration": "15s", "--delay": "0s" }}
+      className="absolute top-1 left-0 w-10 h-10 text-slate-600/80 animate-fly-rtl"
+      style={{ "--duration": "14s", "--delay": "0s" }}
     >
       <SideProfileBirdSVG />
     </div>
     <div
-      className="absolute top-20 right-0 w-9 h-9 text-gray-400/60 animate-fly-rtl"
-      style={{ "--duration": "19s", "--delay": "-6s" }}
+      className="absolute top-6 left-0 w-8 h-8 text-slate-500/60 animate-fly-rtl"
+      style={{ "--duration": "18s", "--delay": "-5s" }}
     >
       <SideProfileBirdSVG />
     </div>
     <div
-      className="absolute top-14 left-0 w-10 h-10 text-gray-500/70 animate-fly-ltr"
-      style={{ "--duration": "17s", "--delay": "-3s" }}
+      className="absolute top-3 left-0 w-9 h-9 text-slate-600/70 animate-fly-ltr"
+      style={{ "--duration": "16s", "--delay": "-2s" }}
     >
       <SideProfileBirdSVG />
     </div>
