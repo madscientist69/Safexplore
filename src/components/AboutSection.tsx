@@ -10,10 +10,10 @@ export default function AboutSection() {
       className="relative w-full bg-[#171d22] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
     >
 
-      <div className="absolute top-1/2 -translate-y-1/2 -left-4 sm:-left-6 sm:-translate-y-2 md:-left-8 w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute top-1/2 -translate-y-2 -left-4 sm:-left-6 md:-left-8 -translate-y-1/2 w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
-      <div className="absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-6 sm:-translate-y-2 md:-right-8 w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute top-1/2 -translate-y-2 -right-4 sm:-right-6 md:-right-8 -translate-y-1/2  w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
 
