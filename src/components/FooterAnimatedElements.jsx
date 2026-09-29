@@ -6,22 +6,22 @@ const IsometricCubeSVG = ({ className = "" }) => (
   </svg>
 );
 
-
 export const GrowingCubesBackground = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-    <div className="absolute left-2 sm:left-6 bottom-4 flex items-end gap-2">
-      <div className="w-10 h-10 sm:w-16 sm:h-16 animate-grow-cube drop-shadow-md" style={{ "--duration": "3.5s", "--delay": "0s" }}>
+  <div className="absolute inset-0 pointer-events-none z-0">
+    <div className="absolute left-2 sm:left-6 bottom-0 flex items-end gap-1 sm:gap-2">
+      <div className="w-12 h-12 sm:w-20 sm:h-20 animate-grow-cube drop-shadow-md origin-bottom" style={{ "--duration": "3.5s", "--delay": "0s" }}>
         <IsometricCubeSVG />
       </div>
-      <div className="w-7 h-7 sm:w-11 sm:h-11 animate-grow-cube drop-shadow-md hidden sm:block" style={{ "--duration": "4s", "--delay": "-1.5s" }}>
+      <div className="w-8 h-8 sm:w-14 sm:h-14 animate-grow-cube drop-shadow-md origin-bottom hidden sm:block" style={{ "--duration": "4s", "--delay": "-1.5s" }}>
         <IsometricCubeSVG />
       </div>
     </div>
-    <div className="absolute right-2 sm:right-6 bottom-4 flex items-end gap-2">
-      <div className="w-7 h-7 sm:w-11 sm:h-11 animate-grow-cube drop-shadow-md hidden sm:block" style={{ "--duration": "4.2s", "--delay": "-0.8s" }}>
+    
+    <div className="absolute right-2 sm:right-6 bottom-0 flex items-end gap-1 sm:gap-2">
+      <div className="w-8 h-8 sm:w-14 sm:h-14 animate-grow-cube drop-shadow-md origin-bottom hidden sm:block" style={{ "--duration": "4.2s", "--delay": "-0.8s" }}>
         <IsometricCubeSVG />
       </div>
-      <div className="w-10 h-10 sm:w-16 sm:h-16 animate-grow-cube drop-shadow-md" style={{ "--duration": "3.8s", "--delay": "-2s" }}>
+      <div className="w-12 h-12 sm:w-20 sm:h-20 animate-grow-cube drop-shadow-md origin-bottom" style={{ "--duration": "3.8s", "--delay": "-2s" }}>
         <IsometricCubeSVG />
       </div>
     </div>

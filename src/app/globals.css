@@ -21,6 +21,29 @@
   background-size: 34px 34px;
 }
 
+/* =========================================
+   CUSTOM SCROLLBAR (TEMA BLUE & ORANGE)
+   ========================================= */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9; 
+  border-left: 1px solid #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 6px;
+  border: 3px solid #f1f5f9; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-orange);
+}
+
 /* Animasi Floating Elements */
 @keyframes floatElements {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -32,35 +55,6 @@
   50% { transform: translateY(-24px) rotate(-10deg) scale(1.05); }
 }
 
-/* Animasi Terbang Burung (Melintasi 100% Lebar Layar Viewport) */
-@keyframes flyRightToLeft {
-  0% {
-    transform: translate3d(100vw, 0, 0) scaleX(-1);
-  }
-  100% {
-    transform: translate3d(-20vw, 0, 0) scaleX(-1);
-  }
-}
-
-@keyframes flyLeftToRight {
-  0% {
-    transform: translate3d(-20vw, 0, 0) scaleX(1);
-  }
-  100% {
-    transform: translate3d(100vw, 0, 0) scaleX(1);
-  }
-}
-
-@keyframes flapSideFront {
-  0%, 100% { transform: rotate(10deg); }
-  50% { transform: rotate(-50deg); } 
-}
-
-@keyframes flapSideBack {
-  0%, 100% { transform: rotate(5deg); }
-  50% { transform: rotate(-60deg); } 
-}
-
 @keyframes growCubeLoop {
   0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
   40% { transform: scale(1.1) rotate(15deg); opacity: 0.6; }
@@ -68,38 +62,6 @@
 }
 
 /* Helper Classes */
-.animate-float-1 {
-  animation: floatElements 12s ease-in-out infinite;
-}
-.animate-float-2 {
-  animation: floatElementsAlt 15s ease-in-out infinite;
-}
-
-/* Class animasi burung langsung dengan durasi & delay fixed */
-.animate-fly-rtl-1 {
-  left: 0;
-  will-change: transform;
-  animation: flyRightToLeft 14s linear infinite 0s;
-}
-.animate-fly-ltr-1 {
-  left: 0;
-  will-change: transform;
-  animation: flyLeftToRight 18s linear infinite -6s;
-}
-.animate-fly-rtl-2 {
-  left: 0;
-  will-change: transform;
-  animation: flyRightToLeft 22s linear infinite -11s;
-}
-
-.animate-wing-front {
-  transform-origin: 50px 50px;
-  animation: flapSideFront 0.45s ease-in-out infinite;
-}
-.animate-wing-back {
-  transform-origin: 50px 48px;
-  animation: flapSideBack 0.45s ease-in-out infinite;
-}
-.animate-grow-cube {
-  animation: growCubeLoop var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
-}
+.animate-float-1 { animation: floatElements 12s ease-in-out infinite; }
+.animate-float-2 { animation: floatElementsAlt 15s ease-in-out infinite; }
+.animate-grow-cube { animation: growCubeLoop var(--duration, 4s) ease-in-out infinite var(--delay, 0s); }
