@@ -19,7 +19,7 @@ export default function IsometricCubes({
   const fillColor = "#064E7A";
   const strokeWidth = "3";
 
-  // Variant "left" (3 Stepped Cubes - Kiri)
+  // Variant "left" 
   if (variant === "left") {
     return (
       <div className={`pointer-events-none select-none ${className}`}>
@@ -47,51 +47,53 @@ export default function IsometricCubes({
     );
   }
 
-  // Variant "stacked" (Animasi Tangga dari Bawah ke Atas)
+  // Variant "stacked" 
   if (variant === "stacked") {
     return (
-      <div className={`pointer-events-none select-none ${className}`}>
+      <div 
+        className={`pointer-events-none select-none w-full h-full ${className}`}
+        style={{ 
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)', 
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)' 
+        }}
+      >
         <style>
           {`
-            @keyframes buildStairs {
-              0% { opacity: 0; transform: translateY(20px); }
-              15%, 85% { opacity: 1; transform: translateY(0); }
-              100% { opacity: 0; transform: translateY(-15px); }
+            @keyframes escalator {
+              0% { transform: translateY(0); }
+              100% { transform: translateY(-70px); } /* Bergerak sejauh 1 tinggi kubus */
             }
-            .anim-stair-cube {
-              animation: buildStairs 4s infinite ease-out forwards;
-              opacity: 0; /* Awal tersembunyi */
+            .anim-escalator {
+              /* Animasi linear agar pergerakannya mulus dan tidak membuat pusing */
+              animation: escalator 2s linear infinite; 
             }
           `}
         </style>
         <svg
-          viewBox="0 0 120 310"
-          className="w-full h-auto drop-shadow-lg"
+          viewBox="0 0 120 1400" 
+          preserveAspectRatio="xMidYMid slice" // Memaksa SVG memenuhi container (sampai ujung)
+          className="w-full h-full drop-shadow-lg"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Koordinat Y dari Atas (10) ke Bawah (220) */}
-          {[10, 80, 150, 220].map((y, idx) => {
-            // Logika delay: (3 - idx) membuat index ke-3 (paling bawah, y=220) muncul di detik 0s.
-            // Index ke-0 (paling atas, y=10) akan muncul paling terakhir (delay terbesar).
-            const delay = (3 - idx) * 0.4;
-            
-            return (
-              <g key={idx} transform={`translate(10, ${y})`}>
-                <g className="anim-stair-cube" style={{ animationDelay: `${delay}s` }}>
+          <g className="anim-escalator">
+            {Array.from({ length: 25 }).map((_, idx) => {
+              const y = -70 + (idx * 70); 
+              return (
+                <g key={idx} transform={`translate(10, ${y})`}>
                   <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
                   <path d="M0 28 L50 56 L50 84 L0 56 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
                   <path d="M50 56 L100 28 L100 56 L50 84 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
                 </g>
-              </g>
-            );
-          })}
+              );
+            })}
+          </g>
         </svg>
       </div>
     );
   }
 
-  // Variant "right" (3 Stepped Cubes - Kanan)
+  // Variant "right" 
   return (
     <div className={`pointer-events-none select-none ${className}`}>
       <svg viewBox="0 0 220 220" className="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
