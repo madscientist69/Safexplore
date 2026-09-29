@@ -105,8 +105,8 @@ export default function IsometricCubes({
         ].map((transform, idx) => (
           <g key={idx} transform={transform}>
             <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={topFill} opacity="0.9" stroke="none" />
-            <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={leftFill} opacity="0.95" stroke="none" />
-            <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={rightFill} opacity="0.85" stroke="none" />
+            <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={rightFill} opacity="0.95" stroke="none" />
+            <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={leftFill} opacity="0.85" stroke="none" />
           </g>
         ))}
       </svg>
