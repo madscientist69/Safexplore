@@ -54,7 +54,7 @@ export default function Navbar({ onNavigate, onResetToHome }: NavbarProps) {
             </span>
           </div>
 
-          <div className="flex-1 flex justify-end -translate-x-4">
+          <div className="flex-1 flex justify-end -translate-x-5">
             <button
               onClick={() => handleScroll("about")}
               className="hover:text-orange-100 transition-all font-medium py-1 px-2 sm:px-3 rounded-full hover:bg-white/15 cursor-pointer text-xs sm:text-sm"
