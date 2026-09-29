@@ -130,13 +130,13 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
   const pointerTarget = activeMeta.center;
 
   return (
-    // Struktur diubah menjadi Flex Row di PC (Boks di kiri, Peta di kanan) agar tidak pernah menimpa
     <div className="w-full flex flex-col md:flex-row items-stretch select-none py-2 px-4 md:px-0 gap-6" onClick={() => setSelectedId("Bengkulu")}>
 
-      {/* AREA KIRI: PANEL INFO & TOP PROVINSI (Desktop: Fixed Width) */}
-      <div className="w-full md:w-[260px] flex flex-col gap-4 flex-shrink-0 relative z-20">
+      {/* AREA KIRI (PC) / BAWAH (HP): PANEL INFO & TOP PROVINSI */}
+      {/* Penambahan `order-2 md:order-1` memposisikan area ini di bawah pada mobile dan di kiri pada desktop */}
+      <div className="w-full md:w-[260px] flex flex-col gap-4 flex-shrink-0 relative z-20 order-2 md:order-1">
 
-        {/* PANEL 1: INFO PROVINSI (Desain textbox awal dikembalikan & diberi min-h) */}
+        {/* PANEL 1: INFO PROVINSI */}
         <div
           className="w-full bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all flex flex-col min-h-[260px]"
           onClick={(e) => e.stopPropagation()}
@@ -195,7 +195,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           )}
         </div>
 
-        {/* PANEL 3: TOP PROVINSI (Desain textbox awal dikembalikan & diberi min-h) */}
+        {/* PANEL 2: TOP PROVINSI */}
         <div
           className="w-full bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans flex flex-col min-h-[220px]"
           onClick={(e) => e.stopPropagation()}
@@ -236,10 +236,11 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
       </div>
 
 
-      {/* AREA KANAN: STATUS & PETA */}
-      <div className="flex-1 flex flex-col gap-4 relative z-10 w-full">
+      {/* AREA KANAN (PC) / ATAS (HP): STATUS & PETA */}
+      {/* Penambahan `order-1 md:order-2` memposisikan peta di atas pada mobile dan di kanan pada desktop */}
+      <div className="flex-1 flex flex-col gap-4 relative z-10 w-full order-1 md:order-2">
 
-        {/* PANEL 2: STATUS LEGEND */}
+        {/* PANEL STATUS LEGEND */}
         <div className="flex flex-wrap justify-center md:justify-end items-center gap-3 md:gap-2 bg-white/95 backdrop-blur-md px-4 py-3 md:px-3 md:py-1.5 rounded-xl border border-gray-200 shadow-md text-xs md:text-[10px] font-sans font-bold w-full md:w-fit self-end">
           <span className="text-gray-500 hidden md:inline">Status:</span>
           <span className="flex items-center gap-1 text-slate-700">
@@ -257,7 +258,8 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
         </div>
 
         {/* KONTAINER PETA */}
-        <div className="w-full relative h-[450px] md:h-full min-h-[400px] md:min-h-[600px] border border-gray-200 md:border-none rounded-xl bg-slate-50 md:bg-transparent overflow-hidden touch-pan-x touch-pan-y cursor-grab active:cursor-grabbing">
+        {/* Mengurangi tinggi minimal desktop menjadi md:min-h-[450px] agar tidak terlalu jauh ke filter */}
+        <div className="w-full relative h-[400px] md:h-auto md:min-h-[450px] border border-gray-200 md:border-none rounded-xl bg-slate-50 md:bg-transparent overflow-hidden touch-pan-x touch-pan-y cursor-grab active:cursor-grabbing">
 
           {/* Tombol Zoom (Hanya Tampil di Mobile) */}
           <div className="absolute bottom-4 right-4 z-30 flex flex-col gap-2 md:hidden">
@@ -266,14 +268,15 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           </div>
 
           {/* Area Render Peta SVG */}
-          <div className="w-full h-full overflow-auto hide-scrollbar flex items-center justify-center md:items-start md:justify-start">
+          {/* Perubahan justify-center menjadi justify-start pada mobile mencegah terpotongnya sisi kiri */}
+          <div className="w-full h-full overflow-auto hide-scrollbar flex items-center justify-start md:justify-center">
             <div
               className="transition-all duration-300 ease-out flex items-center justify-center w-full h-full"
-              style={{ width: `${zoom * 100}%`, minWidth: `${zoom * 800}px` }}
+              style={{ width: `${zoom * 100}%`, minWidth: zoom > 1 ? `${zoom * 800}px` : '100%' }}
             >
-              {/* ViewBox dilebarkan ke kiri (-50) dan atas (50) agar Sumatera dan region lain aman tidak terpotong */}
+              {/* viewBox diperluas dan digeser agar seluruh peta (termasuk sumatera) masuk sempurna tanpa kepotong */}
               <svg
-                viewBox="-50 50 2100 850"
+                viewBox="-100 0 2150 850"
                 className="w-full h-auto max-h-full object-contain filter drop-shadow-sm py-4 md:py-0"
                 xmlns="http://www.w3.org/2000/svg"
               >
