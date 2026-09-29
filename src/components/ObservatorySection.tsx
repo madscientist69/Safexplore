@@ -40,10 +40,10 @@ export default function ObservatorySection({ refreshTrigger = 0 }: ObservatoryPr
       id="observatory"
       className="relative w-full bg-grid-blueprint py-12 md:py-20 px-3 sm:px-4 overflow-hidden border-b border-gray-200"
     >
-      <div className="absolute -bottom-2 -left-2 w-16 sm:w-36 md:w-60 opacity-30 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute -bottom-2 -translate-y-3 -left-2 w-16 sm:w-36 md:w-60 opacity-30 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="left" />
       </div>
-      <div className="absolute -bottom-2 -right-2 w-16 sm:w-36 md:w-60 opacity-30 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute -bottom-2 -translate-y-3 -right-2 w-16 sm:w-36 md:w-60 opacity-30 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="right" />
       </div>
 
