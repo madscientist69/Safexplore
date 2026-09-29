@@ -67,14 +67,18 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [zoom, setZoom] = useState<number>(1);
 
+  const MIN_ZOOM = 1;
+  const MAX_ZOOM = 2.5;
+
+  // Handler Zoom dengan batas yang teruji
   const handleZoomIn = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setZoom((prev) => Math.min(prev + 0.5, 3));
+    setZoom((prev) => Math.min(MAX_ZOOM, Math.round((prev + 0.5) * 10) / 10));
   };
 
   const handleZoomOut = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setZoom((prev) => Math.max(prev - 0.5, 1));
+    setZoom((prev) => Math.max(MIN_ZOOM, Math.round((prev - 0.5) * 10) / 10));
   };
 
   const activeId = hoveredId || selectedId || "Bengkulu";
@@ -130,15 +134,14 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
   const pointerTarget = activeMeta.center;
 
   return (
-    <div className="w-full flex flex-col md:flex-row items-stretch select-none py-2 px-4 md:px-0 gap-6" onClick={() => setSelectedId("Bengkulu")}>
+    <div className="w-full flex flex-col md:flex-row items-stretch select-none py-2 px-2 md:px-0 gap-4" onClick={() => setSelectedId("Bengkulu")}>
 
-      {/* AREA KIRI (PC) / BAWAH (HP): PANEL INFO & TOP PROVINSI */}
-      {/* Penambahan `order-2 md:order-1` memposisikan area ini di bawah pada mobile dan di kiri pada desktop */}
-      <div className="w-full md:w-[260px] flex flex-col gap-4 flex-shrink-0 relative z-20 order-2 md:order-1">
+      {/* PANEL INFO - Diperkecil menjadi md:w-[220px] lg:w-[240px] agar lebih rapet ke kiri */}
+      <div className="w-full md:w-[220px] lg:w-[240px] flex flex-col gap-3 flex-shrink-0 relative z-20 order-2 md:order-1">
 
-        {/* PANEL 1: INFO PROVINSI */}
+        {/* PANEL INFO PROVINSI */}
         <div
-          className="w-full bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all flex flex-col min-h-[260px]"
+          className="w-full bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all flex flex-col min-h-[250px]"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-2">Nama Provinsi: {activeMeta.name}</div>
@@ -195,9 +198,9 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           )}
         </div>
 
-        {/* PANEL 2: TOP PROVINSI */}
+        {/* PANEL TOP PROVINSI */}
         <div
-          className="w-full bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans flex flex-col min-h-[220px]"
+          className="w-full bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans flex flex-col min-h-[210px]"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-1">
@@ -236,12 +239,11 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
       </div>
 
 
-      {/* AREA KANAN (PC) / ATAS (HP): STATUS & PETA */}
-      {/* Penambahan `order-1 md:order-2` memposisikan peta di atas pada mobile dan di kanan pada desktop */}
-      <div className="flex-1 flex flex-col gap-4 relative z-10 w-full order-1 md:order-2">
+      {/* AREA KANAN: STATUS LEGEND & CONTAINER PETA */}
+      <div className="flex-1 flex flex-col gap-3 relative z-10 w-full order-1 md:order-2">
 
         {/* PANEL STATUS LEGEND */}
-        <div className="flex flex-wrap justify-center md:justify-end items-center gap-3 md:gap-2 bg-white/95 backdrop-blur-md px-4 py-3 md:px-3 md:py-1.5 rounded-xl border border-gray-200 shadow-md text-xs md:text-[10px] font-sans font-bold w-full md:w-fit self-end">
+        <div className="flex flex-wrap justify-center md:justify-end items-center gap-3 md:gap-2 bg-white/95 backdrop-blur-md px-4 py-2.5 md:px-3 md:py-1.5 rounded-xl border border-gray-200 shadow-sm text-xs md:text-[10px] font-sans font-bold w-full md:w-fit self-end">
           <span className="text-gray-500 hidden md:inline">Status:</span>
           <span className="flex items-center gap-1 text-slate-700">
             <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-white border border-slate-400 inline-block shadow-xs"></span> Belum Ada Data
@@ -258,26 +260,41 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
         </div>
 
         {/* KONTAINER PETA */}
-        {/* Mengurangi tinggi minimal desktop menjadi md:min-h-[450px] agar tidak terlalu jauh ke filter */}
-        <div className="w-full relative h-[400px] md:h-auto md:min-h-[450px] border border-gray-200 md:border-none rounded-xl bg-slate-50 md:bg-transparent overflow-hidden touch-pan-x touch-pan-y cursor-grab active:cursor-grabbing">
+        <div className="w-full relative h-[380px] md:h-[500px] border border-gray-200 md:border-none rounded-xl bg-slate-50 md:bg-transparent overflow-hidden">
 
-          {/* Tombol Zoom (Hanya Tampil di Mobile) */}
+          {/* Tombol Zoom (HP/Mobile) dengan disable state yang bekerja presisi */}
           <div className="absolute bottom-4 right-4 z-30 flex flex-col gap-2 md:hidden">
-            <button onClick={handleZoomIn} className="w-10 h-10 bg-white/90 backdrop-blur shadow-md border border-gray-300 rounded-lg text-xl font-bold flex items-center justify-center text-gray-700 active:bg-gray-100">+</button>
-            <button onClick={handleZoomOut} className="w-10 h-10 bg-white/90 backdrop-blur shadow-md border border-gray-300 rounded-lg text-2xl font-bold flex items-center justify-center text-gray-700 active:bg-gray-100">-</button>
+            <button
+              onClick={handleZoomIn}
+              disabled={zoom >= MAX_ZOOM}
+              className={`w-10 h-10 bg-white/90 backdrop-blur shadow-md border border-gray-300 rounded-lg text-xl font-bold flex items-center justify-center text-gray-700 transition-opacity ${zoom >= MAX_ZOOM ? "opacity-40 cursor-not-allowed" : "active:bg-gray-100"
+                }`}
+            >
+              +
+            </button>
+            <button
+              onClick={handleZoomOut}
+              disabled={zoom <= MIN_ZOOM}
+              className={`w-10 h-10 bg-white/90 backdrop-blur shadow-md border border-gray-300 rounded-lg text-2xl font-bold flex items-center justify-center text-gray-700 transition-opacity ${zoom <= MIN_ZOOM ? "opacity-40 cursor-not-allowed" : "active:bg-gray-100"
+                }`}
+            >
+              -
+            </button>
           </div>
 
-          {/* Area Render Peta SVG */}
-          {/* Perubahan justify-center menjadi justify-start pada mobile mencegah terpotongnya sisi kiri */}
-          <div className="w-full h-full overflow-auto hide-scrollbar flex items-center justify-start md:justify-center">
+          {/* Render Peta SVG dengan Transform Center Origin (Center-Focused Zoom) */}
+          <div className="w-full h-full flex items-center justify-center p-2 overflow-auto hide-scrollbar">
             <div
-              className="transition-all duration-300 ease-out flex items-center justify-center w-full h-full"
-              style={{ width: `${zoom * 100}%`, minWidth: zoom > 1 ? `${zoom * 800}px` : '100%' }}
+              className="w-full h-full flex items-center justify-center transition-transform duration-300 ease-out origin-center"
+              style={{
+                transform: `scale(${zoom})`,
+                transformOrigin: "center center"
+              }}
             >
-              {/* viewBox diperluas dan digeser agar seluruh peta (termasuk sumatera) masuk sempurna tanpa kepotong */}
+              {/* viewBox diperketat (30 180 1840 690) agar daratan peta memenuhi area dan tampil lebih besar di PC */}
               <svg
-                viewBox="-100 0 2150 850"
-                className="w-full h-auto max-h-full object-contain filter drop-shadow-sm py-4 md:py-0"
+                viewBox="30 180 1840 690"
+                className="w-full h-full max-h-full object-contain filter drop-shadow-sm"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
