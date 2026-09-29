@@ -5,9 +5,9 @@ import os
 from urllib.parse import urlparse
 
 DB_HOST = "127.0.0.1"
-DB_USER = "File ini hanya untuk keperluan demonstrasi lomba"
-DB_PASS = "File ini hanya untuk keperluan demonstrasi lomba"
-DB_NAME = "File ini hanya untuk keperluan demonstrasi lomba"
+DB_USER = "unalityc_zero67"
+DB_PASS = "ayamgeprekaqila67"
+DB_NAME = "unalityc_webpatrol_db"
 
 PROVINCES = [
     "Aceh", "Sumatera-Utara", "Pulau-Nias", "Sumatera-Barat", "Pulau-Siberut",
