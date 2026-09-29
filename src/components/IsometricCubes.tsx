@@ -5,7 +5,7 @@ import React from "react";
 interface IsometricCubesProps {
   className?: string;
   variant?: "left" | "right" | "stacked";
-  colorMode?: "orange-blue" | "all-blue" | "leaf-green"; // Tambahkan leaf-green
+  colorMode?: "orange-blue" | "all-blue" | "leaf-green";
 }
 
 export default function IsometricCubes({
@@ -13,40 +13,37 @@ export default function IsometricCubes({
   variant = "right",
   colorMode = "orange-blue",
 }: IsometricCubesProps) {
-  
-  // Konfigurasi Warna Dinamis
-  let strokeColor = "#F2692E"; // Default Orange
-  let fillColor = "#064E7A";   // Default Dark Blue
+
+  let topFill = "#f15a24";   
+  let leftFill = "#0b3c61"; 
+  let rightFill = "#0284c7"; 
   
   if (colorMode === "all-blue") {
-    strokeColor = "#0ea5e9";
+    topFill = "#38bdf8";
+    leftFill = "#0c4a6e";
+    rightFill = "#0284c7";
   } else if (colorMode === "leaf-green") {
-    strokeColor = "#4ade80"; // Hijau Daun Cerah
-    fillColor = "#064e3b";   // Hijau Gelap
+    topFill = "#4ade80";   
+    leftFill = "#064e3b";  
+    rightFill = "#166534"; 
   }
-
-  const strokeWidth = "3";
 
   // Variant "left" 
   if (variant === "left") {
     return (
       <div className={`pointer-events-none select-none ${className}`}>
         <svg viewBox="0 0 220 220" className="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(85, 5)">
-            <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-            <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-            <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          </g>
-          <g transform="translate(35, 55)">
-            <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-            <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-            <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          </g>
-          <g transform="translate(85, 105)">
-            <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-            <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-            <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          </g>
+          {[
+            "translate(85, 5)",
+            "translate(35, 55)",
+            "translate(85, 105)"
+          ].map((transform, idx) => (
+            <g key={idx} transform={transform}>
+              <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={topFill} opacity="0.9" stroke="none" />
+              <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={leftFill} opacity="0.95" stroke="none" />
+              <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={rightFill} opacity="0.85" stroke="none" />
+            </g>
+          ))}
         </svg>
       </div>
     );
@@ -85,9 +82,9 @@ export default function IsometricCubes({
               const y = -70 + (idx * 70); 
               return (
                 <g key={idx} transform={`translate(10, ${y})`}>
-                  <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-                  <path d="M0 28 L50 56 L50 84 L0 56 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-                  <path d="M50 56 L100 28 L100 56 L50 84 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
+                  <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={topFill} opacity="0.9" stroke="none" />
+                  <path d="M0 28 L50 56 L50 84 L0 56 Z" fill={leftFill} opacity="0.95" stroke="none" />
+                  <path d="M50 56 L100 28 L100 56 L50 84 Z" fill={rightFill} opacity="0.85" stroke="none" />
                 </g>
               );
             })}
@@ -101,21 +98,17 @@ export default function IsometricCubes({
   return (
     <div className={`pointer-events-none select-none ${className}`}>
       <svg viewBox="0 0 220 220" className="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(35, 5)">
-          <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-        </g>
-        <g transform="translate(85, 55)">
-          <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-        </g>
-        <g transform="translate(35, 105)">
-          <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-          <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-        </g>
+        {[
+          "translate(35, 5)",
+          "translate(85, 55)",
+          "translate(35, 105)"
+        ].map((transform, idx) => (
+          <g key={idx} transform={transform}>
+            <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={topFill} opacity="0.9" stroke="none" />
+            <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={leftFill} opacity="0.95" stroke="none" />
+            <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={rightFill} opacity="0.85" stroke="none" />
+          </g>
+        ))}
       </svg>
     </div>
   );

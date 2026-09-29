@@ -1,8 +1,8 @@
 export const IsometricCubeSVG = ({ className = "" }) => (
   <svg viewBox="0 0 120 120" className={`w-full h-full ${className}`}>
-    <polygon points="60,10 105,35 60,60 15,35" fill="#f15a24" opacity="0.9" />
-    <polygon points="15,35 60,60 60,110 15,85" fill="#0b3c61" opacity="0.95" />
-    <polygon points="60,60 105,35 105,85 60,110" fill="#0284c7" opacity="0.85" />
+    <polygon points="60,10 105,35 60,60 15,35" fill="#064E7A" stroke="#F2692E" strokeWidth="3" strokeLinejoin="round" />
+    <polygon points="15,35 60,60 60,110 15,85" fill="#064E7A" stroke="#F2692E" strokeWidth="3" strokeLinejoin="round" />
+    <polygon points="60,60 105,35 105,85 60,110" fill="#064E7A" stroke="#F2692E" strokeWidth="3" strokeLinejoin="round" />
   </svg>
 );
 

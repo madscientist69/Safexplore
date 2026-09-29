@@ -46,7 +46,7 @@ export default function Navbar({ onNavigate, onResetToHome }: NavbarProps) {
             className="absolute left-1/2 -translate-x-1/2 top-0 translate-y-[-2px] bg-[#0b3c61] text-white px-3 sm:px-8 py-2 sm:py-3 rounded-b-xl sm:rounded-b-2xl shadow-lg border-2 border-t-0 border-[#f15a24]/50 flex items-center gap-1.5 sm:gap-2.5 cursor-pointer hover:bg-[#082a44] transition-all group select-none z-50"
           >
       
-            <div className="w-5 h-5 sm:w-8 sm:h-8 md:w-9 md:h-9 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-5 h-5 sm:w-8.5 sm:h-8.5 md:w-9 md:h-9 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
               <img
                 src="/favicon.ico"
                 alt="Safexplore Logo"
