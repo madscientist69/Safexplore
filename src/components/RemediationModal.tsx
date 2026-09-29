@@ -8,13 +8,12 @@ interface RemediationModalProps {
   isOpen: boolean;
   onClose: () => void;
   targetUrl: string;
-  isInfected: boolean; // Tambahkan prop ini
+  isInfected: boolean; 
 }
 
 export default function RemediationModal({ isOpen, onClose, targetUrl, isInfected }: RemediationModalProps) {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  // Kunci scroll saat modal terbuka
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -37,28 +36,23 @@ export default function RemediationModal({ isOpen, onClose, targetUrl, isInfecte
   const handleDownloadReport = () => {
     const doc = new jsPDF();
     
-    // Header Laporan
     doc.setFontSize(22);
     doc.setTextColor(isInfected ? 241 : 34, isInfected ? 90 : 197, isInfected ? 36 : 94); // Oranye kalau infeksi, Hijau kalau aman
     doc.text("Laporan Audit Keamanan WebPatrol", 20, 20);
     
-    // Informasi Target
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
     doc.text(`Domain Target: ${targetUrl}`, 20, 32);
     doc.text(`Tanggal Audit: ${new Date().toLocaleDateString('id-ID')} - ${new Date().toLocaleTimeString('id-ID')}`, 20, 40);
     
-    // Status Dinamis
     const statusText = isInfected ? "TERINFEKSI (Injeksi SEO & Cloaking)" : "AMAN (Tidak Ditemukan Injeksi)";
     doc.setTextColor(isInfected ? 220 : 34, isInfected ? 38 : 197, isInfected ? 38 : 94);
     doc.text(`Status Analisis: ${statusText}`, 20, 48);
     
-    // Garis Pemisah
     doc.setLineWidth(0.5);
     doc.setDrawColor(200, 200, 200);
     doc.line(20, 55, 190, 55);
     
-    // Ringkasan Remediasi Dinamis
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0);
     doc.setFont("helvetica", "bold");
@@ -83,12 +77,10 @@ export default function RemediationModal({ isOpen, onClose, targetUrl, isInfecte
     
     doc.text(steps, 20, 78);
     
-    // Footer
     doc.setFontSize(9);
     doc.setTextColor(150, 150, 150);
     doc.text("Dokumen ini dihasilkan secara otomatis oleh Sistem WebPatrol.", 20, 280);
 
-    // Proses Unduh
     doc.save(`Audit_Laporan_${targetUrl}.pdf`);
   };
 
@@ -109,7 +101,6 @@ RewriteRule .* - [F,L]
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
       <div className={`bg-white rounded-2xl border-2 ${isInfected ? "border-[#f15a24]" : "border-[#5cb85c]"} shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in zoom-in duration-200`}>
         
-        {/* Header Dinamis Tergantung Status */}
         <div className={`${isInfected ? "bg-[#f15a24]" : "bg-[#5cb85c]"} text-white p-3.5 sm:p-4 flex items-center justify-between`}>
           <div className="flex items-center gap-2 min-w-0 mr-2">
             <ShieldCheck className="w-5 h-5 text-white shrink-0" />
@@ -122,11 +113,10 @@ RewriteRule .* - [F,L]
           </button>
         </div>
 
-        {/* Content Body */}
         <div className="p-4 sm:p-6 overflow-y-auto space-y-4 sm:space-y-6 text-xs sm:text-sm text-gray-700">
           
           {!isInfected ? (
-            // Tampilan jika web aman
+   
             <div className="flex flex-col items-center justify-center p-6 text-center space-y-4">
                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
                   <Check className="w-8 h-8" />
@@ -135,7 +125,7 @@ RewriteRule .* - [F,L]
                <p className="text-gray-600 max-w-md">Tidak ditemukan indikasi infeksi SEO Cloaking atau Web Defacement pada target ini. Tidak ada tindakan remediasi yang diperlukan saat ini.</p>
             </div>
           ) : (
-            // Tampilan jika terinfeksi (Sama seperti sebelumnya)
+ 
             <>
               {/* Action 1 */}
               <div className="border border-gray-200 rounded-xl p-3 sm:p-4 bg-gray-50/50">

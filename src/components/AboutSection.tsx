@@ -48,7 +48,7 @@ export default function AboutSection() {
         </p>
 
         <h3 className="mt-6 sm:mt-5 text-sm sm:text-xl md:text-2xl font-bold px-2">
-          Dan <span className="text-[#00d2ff]">Kami</span> memiliki solusinya disini.
+          Dan <span className="text-[#00d2ff]">Kami</span> memiliki solusinya di sini.
         </h3>
         <p className="mt-1 sm:mt-2 text-[10.5px] sm:text-sm text-gray-400 font-medium">
           Dengan landasan :

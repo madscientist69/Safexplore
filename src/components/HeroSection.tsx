@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CheckCircle2, Search, Sparkles } from "lucide-react";
 import IsometricCubes from "./IsometricCubes";
 
@@ -10,6 +10,28 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onStartScan }: HeroSectionProps) {
   const [url, setUrl] = useState("");
+  
+
+  const [typedText, setTypedText] = useState("");
+  const fullText = "Reputasi Digital";
+
+  useEffect(() => {
+    const delayTimeout = setTimeout(() => {
+      let index = 0;
+      const typingInterval = setInterval(() => {
+        if (index <= fullText.length) {
+          setTypedText(fullText.slice(0, index));
+          index++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, 100); 
+
+      return () => clearInterval(typingInterval);
+    }, 1500); 
+
+    return () => clearTimeout(delayTimeout);
+  }, []);
 
   const sampleTargets = [
     { name: "unair.ac.id"},
@@ -39,11 +61,11 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
 
       <div className="max-w-3xl w-full mx-auto text-center z-20 flex flex-col items-center relative">
         
-        {/* Main Title */}
         <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[40px] font-extrabold text-[#1a2530] leading-snug sm:leading-tight tracking-tight max-w-2xl">
           Amankan{" "}
           <span className="text-[#f15a24] font-extrabold underline decoration-[#f15a24]/30 underline-offset-4">
-            Reputasi Digital
+            {typedText}
+            <span className="animate-pulse text-[#f15a24]">|</span>
           </span>{" "}
           Institusi Anda dari Serangan{" "}
           <span className="inline-flex items-center gap-1 sm:gap-1.5 text-[#1a2530]">
