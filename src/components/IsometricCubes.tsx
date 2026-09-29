@@ -23,12 +23,7 @@ export default function IsometricCubes({
   if (variant === "left") {
     return (
       <div className={`pointer-events-none select-none ${className}`}>
-        <svg
-          viewBox="0 0 220 220"
-          className="w-full h-auto drop-shadow-lg"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg viewBox="0 0 220 220" className="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Back/Top Cube */}
           <g transform="translate(85, 5)">
             <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
@@ -52,23 +47,20 @@ export default function IsometricCubes({
     );
   }
 
-  // Variant "stacked" (Kolom vertikal 4 kubus dengan animasi tangga berurutan)
+  // Variant "stacked" (Animasi Tangga dari Bawah ke Atas)
   if (variant === "stacked") {
     return (
       <div className={`pointer-events-none select-none ${className}`}>
-        {/* CSS Keyframes khusus untuk animasi kubus ini */}
         <style>
           {`
-            @keyframes stairCascade {
-              0% { opacity: 0; transform: translateY(-15px); }
-              10% { opacity: 1; transform: translateY(0); }
-              25% { opacity: 1; transform: translateY(0); }
-              35% { opacity: 0; transform: translateY(15px); }
-              100% { opacity: 0; transform: translateY(15px); }
+            @keyframes buildStairs {
+              0% { opacity: 0; transform: translateY(20px); }
+              15%, 85% { opacity: 1; transform: translateY(0); }
+              100% { opacity: 0; transform: translateY(-15px); }
             }
-            .anim-cascade-cube {
-              animation: stairCascade 4s infinite ease-in-out;
-              opacity: 0; /* State awal tidak terlihat */
+            .anim-stair-cube {
+              animation: buildStairs 4s infinite ease-out forwards;
+              opacity: 0; /* Awal tersembunyi */
             }
           `}
         </style>
@@ -78,20 +70,22 @@ export default function IsometricCubes({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Iterasi posisi Y dan index untuk memberikan jeda animasi berurutan */}
-          {[10, 80, 150, 220].map((y, idx) => (
-            <g key={idx} transform={`translate(10, ${y})`}>
-              {/* Grup ini yang akan diberi animasi dengan delay dinamis */}
-              <g 
-                className="anim-cascade-cube" 
-                style={{ animationDelay: `${idx * 1}s` }}
-              >
-                <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-                <path d="M0 28 L50 56 L50 84 L0 56 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
-                <path d="M50 56 L100 28 L100 56 L50 84 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
+          {/* Koordinat Y dari Atas (10) ke Bawah (220) */}
+          {[10, 80, 150, 220].map((y, idx) => {
+            // Logika delay: (3 - idx) membuat index ke-3 (paling bawah, y=220) muncul di detik 0s.
+            // Index ke-0 (paling atas, y=10) akan muncul paling terakhir (delay terbesar).
+            const delay = (3 - idx) * 0.4;
+            
+            return (
+              <g key={idx} transform={`translate(10, ${y})`}>
+                <g className="anim-stair-cube" style={{ animationDelay: `${delay}s` }}>
+                  <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
+                  <path d="M0 28 L50 56 L50 84 L0 56 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
+                  <path d="M50 56 L100 28 L100 56 L50 84 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
+                </g>
               </g>
-            </g>
-          ))}
+            );
+          })}
         </svg>
       </div>
     );
@@ -100,12 +94,7 @@ export default function IsometricCubes({
   // Variant "right" (3 Stepped Cubes - Kanan)
   return (
     <div className={`pointer-events-none select-none ${className}`}>
-      <svg
-        viewBox="0 0 220 220"
-        className="w-full h-auto drop-shadow-lg"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg viewBox="0 0 220 220" className="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Back/Top Cube */}
         <g transform="translate(35, 5)">
           <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
