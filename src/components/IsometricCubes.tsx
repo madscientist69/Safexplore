@@ -13,14 +13,13 @@ export default function IsometricCubes({
   variant = "right",
   colorMode = "orange-blue",
 }: IsometricCubesProps) {
-  // Exact design specs from Figma:
   // Fill: #064E7A
   // Border: 3px solid #F2692E / #0ea5e9
   const strokeColor = colorMode === "orange-blue" ? "#F2692E" : "#0ea5e9";
   const fillColor = "#064E7A";
   const strokeWidth = "3";
 
-  // Variant "left" (3 Stepped Cubes - Simetris Presisi)
+  // Variant "left" (3 Stepped Cubes - Kiri)
   if (variant === "left") {
     return (
       <div className={`pointer-events-none select-none ${className}`}>
@@ -31,7 +30,7 @@ export default function IsometricCubes({
           xmlns="http://www.w3.org/2000/svg"
         >
           {/* Back/Top Cube */}
-          <g transform="translate(80, 12)">
+          <g transform="translate(85, 5)">
             <path
               d="M50 0 L100 28 L50 56 L0 28 Z"
               fill={fillColor}
@@ -59,7 +58,7 @@ export default function IsometricCubes({
           </g>
 
           {/* Middle/Left Cube */}
-          <g transform="translate(40, 52)">
+          <g transform="translate(35, 55)">
             <path
               d="M50 0 L100 28 L50 56 L0 28 Z"
               fill={fillColor}
@@ -87,7 +86,7 @@ export default function IsometricCubes({
           </g>
 
           {/* Front/Right Cube */}
-          <g transform="translate(80, 92)">
+          <g transform="translate(85, 105)">
             <path
               d="M50 0 L100 28 L50 56 L0 28 Z"
               fill={fillColor}
@@ -118,7 +117,7 @@ export default function IsometricCubes({
     );
   }
 
-  // Variant "stacked" (Vertical column of 4 cubes)
+  // Variant "stacked" (Kolom vertikal 4 kubus)
   if (variant === "stacked") {
     return (
       <div className={`pointer-events-none select-none ${className}`}>
@@ -161,7 +160,7 @@ export default function IsometricCubes({
     );
   }
 
-  // Variant "right" (3 Stepped Cubes - Simetris Presisi)
+  // Variant "right" (3 Stepped Cubes - Kanan)
   return (
     <div className={`pointer-events-none select-none ${className}`}>
       <svg
@@ -171,7 +170,7 @@ export default function IsometricCubes({
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* Back/Top Cube */}
-        <g transform="translate(40, 12)">
+        <g transform="translate(35, 5)">
           <path
             d="M50 0 L100 28 L50 56 L0 28 Z"
             fill={fillColor}
@@ -199,7 +198,7 @@ export default function IsometricCubes({
         </g>
 
         {/* Middle/Right Cube */}
-        <g transform="translate(80, 52)">
+        <g transform="translate(85, 55)">
           <path
             d="M50 0 L100 28 L50 56 L0 28 Z"
             fill={fillColor}
@@ -227,7 +226,7 @@ export default function IsometricCubes({
         </g>
 
         {/* Front/Left Cube */}
-        <g transform="translate(40, 92)">
+        <g transform="translate(35, 105)">
           <path
             d="M50 0 L100 28 L50 56 L0 28 Z"
             fill={fillColor}
