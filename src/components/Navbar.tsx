@@ -40,16 +40,16 @@ export default function Navbar({ onNavigate, onResetToHome }: NavbarProps) {
 
           <div
             onClick={onResetToHome}
-            className="absolute left-1/2 -translate-x-1/2 top-0 translate-y-[-2px] bg-[#0b3c61] text-white px-3 sm:px-6 py-1.5 sm:py-2.5 rounded-b-xl sm:rounded-b-2xl shadow-lg border-2 border-t-0 border-[#f15a24]/50 flex items-center gap-1.5 sm:gap-2 cursor-pointer hover:bg-[#082a44] transition-all group select-none z-50"
+            className="absolute left-1/2 -translate-x-1/2 top-0 translate-y-[-2px] bg-[#0b3c61] text-white px-5 sm:px-8 py-2 sm:py-3 rounded-b-xl sm:rounded-b-2xl shadow-lg border-2 border-t-0 border-[#f15a24]/50 flex items-center gap-2 sm:gap-2.5 cursor-pointer hover:bg-[#082a44] transition-all group select-none z-50"
           >
-            <div className="w-5 h-5 sm:w-7 sm:h-7 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
               <img
                 src="/favicon.ico"
                 alt="Safexplore Logo"
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="font-bold tracking-wider text-xs sm:text-base md:text-lg text-white font-mono">
+            <span className="font-bold tracking-wider text-base sm:text-lg md:text-xl text-white font-mono">
               Safexplore
             </span>
           </div>

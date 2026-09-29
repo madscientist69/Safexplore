@@ -13,7 +13,7 @@ export default function AboutSection() {
       <div className="absolute top-1/2 -translate-y-1/2 -left-4 sm:-left-6 -translate-y-1 md:-left-8 w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
-      <div className="absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-6 -translate-y-1 md:-right-8 w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-6 -translate-y-2 md:-right-8 w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
 

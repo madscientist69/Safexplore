@@ -38,7 +38,7 @@ export default function ObservatorySection({ refreshTrigger = 0 }: ObservatoryPr
   return (
     <section
       id="observatory"
-      className="relative w-full bg-grid-blueprint pt-10 pb-16 md:pt-14 md:pb-20 px-3 sm:px-4 overflow-hidden border-b border-gray-200"
+      className="relative w-full bg-grid-blueprint pt-10 pb-28 md:pt-14 md:pb-20 px-3 sm:px-4 overflow-hidden border-b border-gray-200"
     >
       <div className="absolute bottom-0 left-0 w-24 sm:w-30 md:w-60 lg:w-64 opacity-70 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="left" />
