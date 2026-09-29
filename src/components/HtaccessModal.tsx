@@ -12,6 +12,20 @@ interface HtaccessModalProps {
 export default function HtaccessModal({ isOpen, onClose, targetUrl = "website" }: HtaccessModalProps) {
   const [copied, setCopied] = useState(false);
 
+    useEffect(() => {
+      if (isOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "unset";
+      }
+      return () => {
+        document.body.style.overflow = "unset";
+      };
+    }, [isOpen]);
+  
+    if (!isOpen) return null;
+  
+
   if (!isOpen) return null;
 
   const htaccessContent = `# =======================================================
@@ -55,17 +69,6 @@ Options -Indexes
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
 
   const handleDownload = () => {
     const blob = new Blob([htaccessContent], { type: "text/plain;charset=utf-8" });

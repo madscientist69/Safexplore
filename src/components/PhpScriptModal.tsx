@@ -12,6 +12,20 @@ interface PhpScriptModalProps {
 export default function PhpScriptModal({ isOpen, onClose, targetUrl = "website" }: PhpScriptModalProps) {
   const [copied, setCopied] = useState(false);
 
+    useEffect(() => {
+      if (isOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "unset";
+      }
+      return () => {
+        document.body.style.overflow = "unset";
+      };
+    }, [isOpen]);
+  
+    if (!isOpen) return null;
+  
+
   if (!isOpen) return null;
 
   const phpScriptContent = `<?php
@@ -101,17 +115,6 @@ echo "\\nSelesai! Harap segera hapus file script pembersih ini dari server Anda.
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
 
   const handleDownload = () => {
     const blob = new Blob([phpScriptContent], { type: "application/x-httpd-php;charset=utf-8" });
