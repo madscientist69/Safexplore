@@ -25,7 +25,7 @@ export default function Footer() {
               href="https://www.instagram.com/depressedhighschooler_official/"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-800 hover:text-[#f15a24] transition-colors font-mono break-all sm:break-normal"
+              className="w-fit flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-800 hover:text-[#f15a24] transition-colors font-mono break-all sm:break-normal"
             >
               <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 shrink-0" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -39,7 +39,7 @@ export default function Footer() {
               href="https://www.youtube.com/@DepressedHighSchooler"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-800 hover:text-[#f15a24] transition-colors font-mono break-all sm:break-normal"
+              className="w-fit flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-800 hover:text-[#f15a24] transition-colors font-mono break-all sm:break-normal"
             >
               <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current stroke-2 shrink-0" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />

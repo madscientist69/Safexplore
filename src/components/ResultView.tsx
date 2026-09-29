@@ -538,7 +538,7 @@ export default function ResultView({ targetUrl, scanData, onBackToSearch }: Resu
         )}
       </main>
 
-      <RemediationModal isOpen={isRemediationOpen} onClose={() => setIsRemediationOpen(false)} targetUrl={targetUrl} />
+      <RemediationModal isOpen={isRemediationOpen} onClose={() => setIsRemediationOpen(false)} targetUrl={targetUrl} isInfected={isInfected} />
       <HtaccessModal isOpen={isHtaccessOpen} onClose={() => setIsHtaccessOpen(false)} targetUrl={targetUrl} />
       <PhpScriptModal isOpen={isPhpScriptOpen} onClose={() => setIsPhpScriptOpen(false)} targetUrl={targetUrl} />
       <Footer />

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { X, Check, Copy, Download, Shield } from "lucide-react";
 
 interface HtaccessModalProps {
@@ -55,6 +55,17 @@ Options -Indexes
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   const handleDownload = () => {
     const blob = new Blob([htaccessContent], { type: "text/plain;charset=utf-8" });

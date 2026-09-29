@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { X, Check, Copy, Download, Terminal, Code, Cpu } from "lucide-react";
 
 interface PhpScriptModalProps {
@@ -101,6 +101,17 @@ echo "\\nSelesai! Harap segera hapus file script pembersih ini dari server Anda.
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   const handleDownload = () => {
     const blob = new Blob([phpScriptContent], { type: "application/x-httpd-php;charset=utf-8" });
