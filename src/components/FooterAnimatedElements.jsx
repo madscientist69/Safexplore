@@ -9,7 +9,6 @@ export const IsometricCubeSVG = ({ className = "" }) => (
 export const GrowingCubesBackground = () => (
   <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
     
-    {/* TAMPILAN HP: Kiri & Kanan (Ukuran disesuaikan, dinaikkan ke bottom-2) */}
     <div className="absolute left-2 bottom-2 -translate-y-2 sm:hidden flex items-end gap-1">
       <div className="w-8 h-8 animate-grow-cube drop-shadow-md origin-bottom" style={{ "--duration": "3.5s", "--delay": "0s" }}>
         <IsometricCubeSVG />
@@ -21,7 +20,6 @@ export const GrowingCubesBackground = () => (
       </div>
     </div>
 
-    {/* TAMPILAN LAPTOP: Posisi dinaikkan sedikit ke bottom-2 / bottom-4 */}
     <div className="hidden sm:flex absolute left-8 bottom-1 -translate-y-1 items-end gap-2">
       <div className="w-20 h-20 animate-grow-cube drop-shadow-md origin-bottom" style={{ "--duration": "3.5s", "--delay": "0s" }}>
         <IsometricCubeSVG />
