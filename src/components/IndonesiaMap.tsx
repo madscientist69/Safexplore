@@ -132,7 +132,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
         className="w-full relative flex flex-col md:block items-center justify-center min-h-auto md:min-h-[520px] lg:min-h-[620px] gap-4 md:gap-0"
         onClick={() => setSelectedId("Bengkulu")}
       >
-        {/* PANEL 1: INFO PROVINSI (Urutan ke-1 di HP, Kiri Atas di Laptop) */}
+        {/* PANEL 1: INFO PROVINSI (Di atas pada HP, Kiri Atas pada Laptop) */}
         <div
           className="relative md:absolute top-0 md:top-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[260px] bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all order-1 md:order-none"
           onClick={(e) => e.stopPropagation()}
@@ -191,7 +191,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           )}
         </div>
 
-        {/* PANEL 2: STATUS (Urutan ke-2 di HP, Kanan Atas di Laptop) */}
+        {/* PANEL 2: STATUS (Di urutan kedua pada HP, Kanan Atas pada Laptop) */}
         <div className="relative md:absolute top-0 md:top-4 right-0 md:right-4 z-20 flex flex-wrap justify-center items-center gap-3 md:gap-2 bg-white/95 backdrop-blur-md px-4 py-3 md:px-3 md:py-1.5 rounded-xl border border-gray-200 shadow-md text-xs md:text-[10px] font-sans font-bold w-full md:w-auto order-2 md:order-none">
           <span className="text-gray-500 hidden md:inline">Status:</span>
           <span className="flex items-center gap-1 text-slate-700">
@@ -208,48 +208,10 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           </span>
         </div>
 
-        {/* PANEL 3: TOP PROVINSI (Urutan ke-3 di HP, Kiri Bawah di Laptop) */}
-        <div
-          className="relative md:absolute bottom-0 md:bottom-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[240px] bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans order-3 md:order-none"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-1">
-            Top Provinsi Risiko Tertinggi:
-            <span className="block text-[11px] md:text-[8px] font-medium text-red-600">(Need Immediate Patch):</span>
-          </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium mb-3">
-            {topRisk.length > 0 ? (
-              topRisk.map((r, i) => (
-                <li key={i}>
-                  <span className="text-red-600 font-bold">{r.name}</span>: {r.pct}% Terinfeksi ({r.infected} domain)
-                </li>
-              ))
-            ) : (
-              <li className="text-gray-500 italic list-none">Belum ada provinsi terinfeksi</li>
-            )}
-          </ol>
-
-          <div className="font-bold text-gray-900 mt-3 md:mt-2 leading-tight mb-1 border-t border-gray-100 pt-2">
-            Top Provinsi Paling Higienis:
-            <span className="block text-[11px] md:text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
-          </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium">
-            {topClean.length > 0 ? (
-              topClean.map((r, i) => (
-                <li key={i}>
-                  <span className="text-emerald-700 font-bold">{r.name}</span>: 100% Clean ({r.total} domain aman)
-                </li>
-              ))
-            ) : (
-              <li className="text-gray-500 italic list-none">Sedang mengagregasi data</li>
-            )}
-          </ol>
-        </div>
-
-        {/* PETA SVG (Urutan ke-4 / Paling Bawah di HP) */}
+        {/* PETA SVG (Di urutan ketiga pada HP) */}
         <svg
           viewBox="0 140 2021 780"
-          className="w-full h-auto max-h-[40vh] md:max-h-[60vh] lg:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300 order-4 md:order-none py-4 md:py-0"
+          className="w-full h-auto max-h-[40vh] md:max-h-[60vh] lg:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300 order-3 md:order-none py-4 md:py-0"
           xmlns="http://www.w3.org/2000/svg"
         >
           <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
@@ -383,6 +345,44 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
               <path d="M0,-236.317L-11.373,-236.317L-12.709,-241.892L-26.76,-246.075L-27.428,-243.986L-36.125,-252.35L-50.174,-247.47L-92.318,-267.687L-125.768,-279.536L-135.801,-287.205L-165.236,-271.171L-156.539,-262.11L-179.285,-250.955L-195.34,-253.746L-196.678,-242.59L-210.727,-230.739L-212.734,-223.071L-228.787,-209.129L-241.5,-203.553L-259.563,-209.827L-258.893,-224.466L-264.912,-220.981L-267.588,-204.946L-254.879,-177.063L-264.244,-177.063L-265.582,-170.094L-244.844,-155.454L-232.803,-157.546L-226.113,-155.454L-214.07,-154.059L-198.016,-144.997L-196.008,-147.088L-176.609,-135.237L-171.926,-137.331L-161.223,-131.753L-155.871,-135.237L-126.436,-111.536L-123.762,-102.473L-115.063,-103.171C-115.063,-103.171 -124.428,-96.2 -121.752,-96.2L-111.719,-96.2L-115.732,-91.319L-98.34,-60.647L-80.945,-48.797L-104.359,-50.192L-94.326,-38.34L-78.939,-36.946L-83.621,-34.159L-103.691,-35.553L-84.959,-23.003L-86.297,-12.547L-90.313,1.394L-92.318,11.152L-74.924,2.787L-71.58,9.757L-46.158,4.88L-2.676,50.888L-0.67,-50.192L-9.365,-59.254L-4.014,-69.71L-0.67,-75.985L0,-236.317Z" />
             </g>
           </g>
+
+          {/* PANEL 3: TOP PROVINSI (Di urutan terbawah pada HP, Kiri Bawah pada Laptop) */}
+          <div
+            className="relative md:absolute bottom-0 md:bottom-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[240px] bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans order-4 md:order-none"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-1">
+              Top Provinsi Risiko Tertinggi:
+              <span className="block text-[11px] md:text-[8px] font-medium text-red-600">(Need Immediate Patch):</span>
+            </div>
+            <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium mb-3">
+              {topRisk.length > 0 ? (
+                topRisk.map((r, i) => (
+                  <li key={i}>
+                    <span className="text-red-600 font-bold">{r.name}</span>: {r.pct}% Terinfeksi ({r.infected} domain)
+                  </li>
+                ))
+              ) : (
+                <li className="text-gray-500 italic list-none">Belum ada provinsi terinfeksi</li>
+              )}
+            </ol>
+
+            <div className="font-bold text-gray-900 mt-3 md:mt-2 leading-tight mb-1 border-t border-gray-100 pt-2">
+              Top Provinsi Paling Higienis:
+              <span className="block text-[11px] md:text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
+            </div>
+            <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium">
+              {topClean.length > 0 ? (
+                topClean.map((r, i) => (
+                  <li key={i}>
+                    <span className="text-emerald-700 font-bold">{r.name}</span>: 100% Clean ({r.total} domain aman)
+                  </li>
+                ))
+              ) : (
+                <li className="text-gray-500 italic list-none">Sedang mengagregasi data</li>
+              )}
+            </ol>
+          </div>
 
           {/* PIN LOKASI */}
           <g
