@@ -66,16 +66,14 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
   const [selectedId, setSelectedId] = useState<string>("Bengkulu");
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  // State untuk mengontrol tingkat Zoom
+  // State zoom (Hanya digunakan di Mobile)
   const [zoom, setZoom] = useState<number>(1);
 
-  // Handler Zoom In (Maksimal 3x)
   const handleZoomIn = (e: React.MouseEvent) => {
     e.stopPropagation();
     setZoom((prev) => Math.min(prev + 0.5, 3));
   };
 
-  // Handler Zoom Out (Minimal 1x)
   const handleZoomOut = (e: React.MouseEvent) => {
     e.stopPropagation();
     setZoom((prev) => Math.max(prev - 0.5, 1));
@@ -142,120 +140,107 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
   const pointerTarget = activeMeta.center;
 
   return (
-    <div className="w-full relative flex flex-col items-center select-none py-2 px-4 md:px-0">
-      {/* Kontainer utama dengan md:min-h-[650px] agar Panel 1 dan 3 tidak menabrak di PC */}
+    // md:h-[700px] memaksa tinggi fix di desktop agar elemen absolute tidak tumpang tindih
+    <div className="w-full relative flex flex-col md:block items-center select-none py-2 px-4 md:px-0 gap-4 md:gap-0 md:h-[700px]" onClick={() => setSelectedId("Bengkulu")}>
+
+      {/* PANEL 1: INFO PROVINSI */}
+      {/* Di PC menggunakan md:absolute melayang di Kiri-Tengah */}
       <div
-        className="w-full relative flex flex-col md:block items-center justify-center gap-4 md:gap-0 md:min-h-[650px]"
-        onClick={() => setSelectedId("Bengkulu")}
+        className="relative md:absolute md:top-8 md:left-8 z-20 w-full md:w-[280px] bg-white rounded-xl border border-gray-300 p-4 text-left shadow-lg text-xs md:text-sm font-sans transition-all order-1 md:order-none"
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* PANEL 1: INFO PROVINSI */}
-        <div
-          className="relative md:absolute top-0 md:top-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[260px] bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all order-1 md:order-none min-h-[250px] md:min-h-[260px] flex flex-col"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-2">Nama Provinsi: {activeMeta.name}</div>
+        <div className="font-bold text-gray-900 text-sm md:text-base leading-tight mb-2">Nama Provinsi: {activeMeta.name}</div>
 
-          {!hasData ? (
-            <div className="flex-1">
-              <div className="mt-1 flex items-center gap-1">
-                <span className="px-1.5 py-0.5 rounded-full text-[10px] md:text-[8.5px] font-bold bg-slate-100 text-slate-700 border border-slate-300 font-mono">
-                  BELUM ADA DATA
-                </span>
-                <span className="text-gray-500 text-xs md:text-[9px]">Wilayah {activeMeta.regionKey}</span>
-              </div>
-              <div className="text-gray-600 mt-2">
-                Skor Indeks: <span className="font-semibold text-gray-700">- / 100</span>
-              </div>
-              <div className="text-gray-600 mt-1">
-                Total Web Dipindai: <span className="font-semibold text-gray-700">0 Domain</span>
-              </div>
-              <div className="text-gray-600 mt-1">
-                Web Terinfeksi Active: <span className="font-semibold text-gray-700">0 Domain (0%)</span>
-              </div>
-              <div className="text-gray-500 mt-2 pt-2 border-t border-gray-100 text-[11px] md:text-[8.5px] italic leading-tight">
-                Belum ada domain dari provinsi ini di database. Masukkan URL kampus/sekolah di atas untuk memindai wilayah ini.
-              </div>
+        {!hasData ? (
+          <div className="flex-1">
+            <div className="mt-1 flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300 font-mono">
+                BELUM ADA DATA
+              </span>
+              <span className="text-gray-500 text-xs">Wilayah {activeMeta.regionKey}</span>
             </div>
-          ) : (
-            <div className="flex-1">
-              <div className="text-gray-700 mt-1">
-                Skor Indeks Keamanan: <span className={`font-bold ${regData.score < 60 ? "text-red-600" : (regData.score < 80 || regData.infected > 0) ? "text-amber-600" : "text-emerald-600"}`}>
-                  {regData.score} / 100 ({regData.score < 60 ? "Bahaya" : (regData.score < 80 || regData.infected > 0) ? "Waspada" : "Aman"})
-                </span>
-              </div>
-              <div className="text-gray-700 mt-1">
-                Total Web Dipindai: <span className="font-semibold text-gray-900">{regData.total} Domain</span>
-              </div>
-              <div className="text-gray-700 mt-1">
-                Web Terinfeksi Active: <span className={`font-bold ${regData.infected > 0 ? "text-red-600" : "text-emerald-600"}`}>
-                  {regData.infected} Domain ({infectedPct}%)
-                </span>
-              </div>
-              <div className="pl-2 text-gray-600 mt-1 leading-tight">
-                <div>• Kampus (.ac.id): {acInfected} Terinfeksi</div>
-                <div>• Sekolah (.sch.id): {schInfected} Terinfeksi</div>
-              </div>
-              <div className="text-gray-700 mt-2 leading-tight">
-                Tipe Serangan Terbanyak: <span className="font-medium text-gray-900">{regData.main_threat}</span>
-              </div>
-              <div className="text-gray-700 mt-1">
-                Status Perbaikan: <span className={`font-semibold ${regData.infected > 0 ? "text-red-600" : "text-emerald-700"}`}>
-                  {regData.infected > 0 ? `${regData.infected} Domain Perlu Remediasi` : "Sistem Terpantau Bersih"}
-                </span>
-              </div>
+            <div className="text-gray-600 mt-3">
+              Skor Indeks: <span className="font-semibold text-gray-700">- / 100</span>
             </div>
-          )}
-        </div>
-
-        {/* PANEL 2: STATUS */}
-        <div className="relative md:absolute top-0 md:top-4 right-0 md:right-4 z-20 flex flex-wrap justify-center items-center gap-3 md:gap-2 bg-white/95 backdrop-blur-md px-4 py-3 md:px-3 md:py-1.5 rounded-xl border border-gray-200 shadow-md text-xs md:text-[10px] font-sans font-bold w-full md:w-auto order-2 md:order-none">
-          <span className="text-gray-500 hidden md:inline">Status:</span>
-          <span className="flex items-center gap-1 text-slate-700">
-            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-white border border-slate-400 inline-block shadow-xs"></span> Belum Ada Data
-          </span>
-          <span className="flex items-center gap-1 text-emerald-700">
-            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-[#22c55e] inline-block shadow-xs"></span> Aman
-          </span>
-          <span className="flex items-center gap-1 text-amber-700">
-            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-[#ea580c] inline-block shadow-xs"></span> Waspada
-          </span>
-          <span className="flex items-center gap-1 text-red-700">
-            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-[#dc2626] inline-block shadow-xs"></span> Bahaya
-          </span>
-        </div>
-
-        {/* BUNGKUSAN PETA DAN TOMBOL ZOOM */}
-        <div className="w-full relative overflow-auto touch-pan-x touch-pan-y order-3 md:order-none hide-scrollbar cursor-grab active:cursor-grabbing border md:border-transparent rounded-xl md:rounded-none bg-slate-50 md:bg-transparent">
-
-          {/* TOMBOL ZOOM MENGAMBANG */}
-          <div className="sticky md:absolute right-2 top-2 md:top-auto md:bottom-4 md:right-4 z-30 flex flex-col gap-1 md:gap-2 float-right md:float-none mt-2 mr-2 md:mt-0 md:mr-0">
-            <button
-              onClick={handleZoomIn}
-              className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white/90 backdrop-blur text-gray-700 rounded-lg shadow-md hover:bg-gray-100 font-bold text-xl md:text-2xl border border-gray-300 transition-colors"
-              title="Zoom In"
-            >
-              +
-            </button>
-            <button
-              onClick={handleZoomOut}
-              className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white/90 backdrop-blur text-gray-700 rounded-lg shadow-md hover:bg-gray-100 font-bold text-2xl border border-gray-300 transition-colors"
-              title="Zoom Out"
-            >
-              -
-            </button>
+            <div className="text-gray-600 mt-1">
+              Total Web Dipindai: <span className="font-semibold text-gray-700">0 Domain</span>
+            </div>
+            <div className="text-gray-600 mt-1">
+              Web Terinfeksi Active: <span className="font-semibold text-gray-700">0 Domain (0%)</span>
+            </div>
+            <div className="text-gray-500 mt-3 pt-3 border-t border-gray-100 text-[11px] italic leading-tight">
+              Belum ada domain dari provinsi ini di database. Masukkan URL kampus/sekolah di atas untuk memindai wilayah ini.
+            </div>
           </div>
+        ) : (
+          <div className="flex-1">
+            <div className="text-gray-700 mt-2">
+              Skor Indeks Keamanan: <span className={`font-bold ${regData.score < 60 ? "text-red-600" : (regData.score < 80 || regData.infected > 0) ? "text-amber-600" : "text-emerald-600"}`}>
+                {regData.score} / 100 ({regData.score < 60 ? "Bahaya" : (regData.score < 80 || regData.infected > 0) ? "Waspada" : "Aman"})
+              </span>
+            </div>
+            <div className="text-gray-700 mt-1">
+              Total Web Dipindai: <span className="font-semibold text-gray-900">{regData.total} Domain</span>
+            </div>
+            <div className="text-gray-700 mt-1">
+              Web Terinfeksi Active: <span className={`font-bold ${regData.infected > 0 ? "text-red-600" : "text-emerald-600"}`}>
+                {regData.infected} Domain ({infectedPct}%)
+              </span>
+            </div>
+            <div className="pl-2 text-gray-600 mt-1 leading-tight text-xs">
+              <div>• Kampus (.ac.id): {acInfected} Terinfeksi</div>
+              <div>• Sekolah (.sch.id): {schInfected} Terinfeksi</div>
+            </div>
+            <div className="text-gray-700 mt-3 leading-tight">
+              Tipe Serangan Terbanyak: <span className="font-medium text-gray-900">{regData.main_threat}</span>
+            </div>
+            <div className="text-gray-700 mt-1">
+              Status Perbaikan: <span className={`font-semibold ${regData.infected > 0 ? "text-red-600" : "text-emerald-700"}`}>
+                {regData.infected > 0 ? `${regData.infected} Domain Perlu Remediasi` : "Sistem Terpantau Bersih"}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
 
-          {/* KANVAS PETA (Menggunakan inline style zoom) */}
+      {/* PANEL 2: STATUS LEGEND */}
+      {/* Di PC menggunakan md:absolute melayang di Kanan-Atas */}
+      <div className="relative md:absolute md:top-8 md:right-8 z-20 flex flex-wrap justify-center items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-gray-200 shadow-md text-xs font-sans font-bold w-full md:w-auto order-2 md:order-none">
+        <span className="text-gray-500 hidden md:inline">Status:</span>
+        <span className="flex items-center gap-1 text-slate-700">
+          <span className="w-3 h-3 rounded-full bg-white border border-slate-400 inline-block shadow-xs"></span> Belum Ada Data
+        </span>
+        <span className="flex items-center gap-1 text-emerald-700">
+          <span className="w-3 h-3 rounded-full bg-[#22c55e] inline-block shadow-xs"></span> Aman
+        </span>
+        <span className="flex items-center gap-1 text-amber-700">
+          <span className="w-3 h-3 rounded-full bg-[#ea580c] inline-block shadow-xs"></span> Waspada
+        </span>
+        <span className="flex items-center gap-1 text-red-700">
+          <span className="w-3 h-3 rounded-full bg-[#dc2626] inline-block shadow-xs"></span> Bahaya
+        </span>
+      </div>
+
+      {/* KONTAINER PETA */}
+      {/* Di HP menggunakan h-[400px] tetap agar zoom tidak membesarkan seluruh screen. Di PC mengisi seluruh layout (absolute inset-0) */}
+      <div className="w-full h-[400px] md:h-full relative md:absolute md:inset-0 z-10 order-3 md:order-none bg-slate-50 border border-gray-200 md:bg-transparent md:border-none rounded-xl overflow-hidden cursor-grab active:cursor-grabbing">
+
+        {/* Tombol Zoom (Hanya Tampil di HP - md:hidden) */}
+        <div className="absolute bottom-4 right-4 z-30 flex flex-col gap-2 md:hidden">
+          <button onClick={handleZoomIn} className="w-10 h-10 bg-white/90 backdrop-blur shadow-md border border-gray-300 rounded-lg text-xl font-bold flex items-center justify-center text-gray-700 active:bg-gray-100">+</button>
+          <button onClick={handleZoomOut} className="w-10 h-10 bg-white/90 backdrop-blur shadow-md border border-gray-300 rounded-lg text-2xl font-bold flex items-center justify-center text-gray-700 active:bg-gray-100">-</button>
+        </div>
+
+        {/* Scroll Area Peta */}
+        <div className="w-full h-full overflow-auto hide-scrollbar flex items-center justify-center">
           <div
-            style={{
-              width: `${zoom * 100}%`,
-              minWidth: `${zoom * 800}px`
-            }}
-            className="mx-auto transition-all duration-300 ease-out flex justify-center"
+            className="transition-all duration-300 ease-out flex items-center justify-center"
+            style={{ width: `${zoom * 100}%`, minWidth: `${zoom * 800}px` }}
           >
+            {/* Pada PC, width menjadi 100% dan menyesuaikan otomatis */}
             <svg
               viewBox="0 140 2021 780"
-              className="w-full h-auto md:max-h-[60vh] lg:max-h-[70vh] object-contain select-none filter drop-shadow-sm py-4 md:py-0"
+              className="w-full h-auto drop-shadow-sm"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
@@ -413,45 +398,47 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
             </svg>
           </div>
         </div>
-
-        {/* PANEL 3: TOP PROVINSI (Dikembalikan ke bottom agar aman) */}
-        <div
-          className="relative md:absolute md:top-auto md:bottom-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[240px] bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans order-4 md:order-none min-h-[220px]"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-1">
-            Top Provinsi Risiko Tertinggi:
-            <span className="block text-[11px] md:text-[8px] font-medium text-red-600">(Need Immediate Patch):</span>
-          </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium mb-3">
-            {topRisk.length > 0 ? (
-              topRisk.map((r, i) => (
-                <li key={i}>
-                  <span className="text-red-600 font-bold">{r.name}</span>: {r.pct}% Terinfeksi ({r.infected} domain)
-                </li>
-              ))
-            ) : (
-              <li className="text-gray-500 italic list-none">Belum ada provinsi terinfeksi</li>
-            )}
-          </ol>
-
-          <div className="font-bold text-gray-900 mt-3 md:mt-2 leading-tight mb-1 border-t border-gray-100 pt-2">
-            Top Provinsi Paling Higienis:
-            <span className="block text-[11px] md:text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
-          </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium">
-            {topClean.length > 0 ? (
-              topClean.map((r, i) => (
-                <li key={i}>
-                  <span className="text-emerald-700 font-bold">{r.name}</span>: 100% Clean ({r.total} domain aman)
-                </li>
-              ))
-            ) : (
-              <li className="text-gray-500 italic list-none">Sedang mengagregasi data</li>
-            )}
-          </ol>
-        </div>
       </div>
+
+      {/* PANEL 3: TOP PROVINSI */}
+      {/* Di PC menggunakan md:absolute melayang di Kiri-Bawah */}
+      <div
+        className="relative md:absolute md:bottom-8 md:left-8 z-20 w-full md:w-[260px] bg-white rounded-xl border border-[#f15a24] p-4 text-left shadow-lg text-xs md:text-sm font-sans order-4 md:order-none"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="font-bold text-gray-900 text-sm md:text-sm leading-tight mb-2">
+          Top Provinsi Risiko Tertinggi:
+          <span className="block text-[10px] font-medium text-red-600 mt-0.5">(Need Immediate Patch):</span>
+        </div>
+        <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1.5 font-medium mb-4 text-xs md:text-sm">
+          {topRisk.length > 0 ? (
+            topRisk.map((r, i) => (
+              <li key={i}>
+                <span className="text-red-600 font-bold">{r.name}</span>: {r.pct}% Terinfeksi
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-500 italic list-none">Belum ada provinsi terinfeksi</li>
+          )}
+        </ol>
+
+        <div className="font-bold text-gray-900 mt-4 leading-tight mb-2 border-t border-gray-100 pt-3">
+          Top Provinsi Paling Higienis:
+          <span className="block text-[10px] font-medium text-emerald-600 mt-0.5">(Best Cyber-Hygiene):</span>
+        </div>
+        <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1.5 font-medium text-xs md:text-sm">
+          {topClean.length > 0 ? (
+            topClean.map((r, i) => (
+              <li key={i}>
+                <span className="text-emerald-700 font-bold">{r.name}</span>: 100% Clean
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-500 italic list-none">Sedang mengagregasi data</li>
+          )}
+        </ol>
+      </div>
+
     </div>
   );
 }
