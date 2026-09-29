@@ -129,33 +129,33 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
   return (
     <div className="w-full relative flex flex-col items-center select-none py-1">
       <div
-        className="w-full relative flex items-center justify-center min-h-[420px] sm:min-h-[520px] md:min-h-[620px]"
+        className="w-full relative flex items-center justify-center min-h-[320px] sm:min-h-[520px] md:min-h-[620px]"
         onClick={() => setSelectedId("Bengkulu")}
       >
         <div
-          className="absolute top-1 sm:top-3 left-1 sm:left-4 z-20 max-w-[210px] sm:max-w-[260px] bg-white rounded-2xl border-2 border-[#1e293b] p-2.5 sm:p-3 text-left shadow-lg text-[9px] sm:text-[10px] font-sans transition-all"
+          className="absolute top-0 sm:top-3 left-0 sm:left-4 z-20 max-w-[150px] sm:max-w-[260px] bg-white rounded-xl sm:rounded-2xl border sm:border-2 border-[#1e293b] p-1.5 sm:p-3 text-left shadow-lg text-[7px] sm:text-[10px] font-sans transition-all"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-bold text-gray-900 leading-tight">Nama Provinsi: {activeMeta.name}</div>
 
           {!hasData ? (
             <>
-              <div className="mt-1 flex items-center gap-1.5">
-                <span className="px-2 py-0.5 rounded-full text-[8.5px] font-bold bg-slate-100 text-slate-700 border border-slate-300 font-mono">
+              <div className="mt-1 flex items-center gap-1">
+                <span className="px-1.5 py-0.5 rounded-full text-[6.5px] sm:text-[8.5px] font-bold bg-slate-100 text-slate-700 border border-slate-300 font-mono">
                   BELUM ADA DATA
                 </span>
-                <span className="text-gray-500 text-[9px]">Wilayah {activeMeta.regionKey}</span>
+                <span className="text-gray-500 text-[7px] sm:text-[9px]">Wilayah {activeMeta.regionKey}</span>
               </div>
-              <div className="text-gray-600 mt-2 text-[9.5px]">
+              <div className="text-gray-600 mt-1 sm:mt-2">
                 Skor Indeks: <span className="font-semibold text-gray-700">- / 100</span>
               </div>
-              <div className="text-gray-600 mt-0.5 text-[9.5px]">
+              <div className="text-gray-600 mt-0.5">
                 Total Web Dipindai: <span className="font-semibold text-gray-700">0 Domain</span>
               </div>
-              <div className="text-gray-600 mt-0.5 text-[9.5px]">
+              <div className="text-gray-600 mt-0.5">
                 Web Terinfeksi Active: <span className="font-semibold text-gray-700">0 Domain (0%)</span>
               </div>
-              <div className="text-gray-500 mt-1.5 pt-1.5 border-t border-gray-100 text-[8.5px] italic leading-tight">
+              <div className="text-gray-500 mt-1.5 pt-1.5 border-t border-gray-100 text-[6.5px] sm:text-[8.5px] italic leading-tight">
                 Belum ada domain dari provinsi ini di database. Masukkan URL kampus/sekolah di atas untuk memindai wilayah ini.
               </div>
             </>
@@ -177,14 +177,14 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
                   {regData.infected} Domain ({infectedPct}%)
                 </span>
               </div>
-              <div className="pl-2 text-gray-600 text-[8.5px] sm:text-[9.5px] mt-0.5 leading-tight">
+              <div className="pl-1 sm:pl-2 text-gray-600 mt-0.5 leading-tight">
                 <div>• Kampus (.ac.id): {acInfected} Terinfeksi</div>
                 <div>• Sekolah (.sch.id): {schInfected} Terinfeksi</div>
               </div>
-              <div className="text-gray-700 mt-1 leading-tight text-[8.5px] sm:text-[9.5px]">
+              <div className="text-gray-700 mt-1 leading-tight">
                 Tipe Serangan Terbanyak: <span className="font-medium text-gray-900">{regData.main_threat}</span>
               </div>
-              <div className="text-gray-700 mt-1 text-[8.5px] sm:text-[9.5px]">
+              <div className="text-gray-700 mt-1">
                 Status Perbaikan: <span className={`font-semibold ${regData.infected > 0 ? "text-red-600" : "text-emerald-700"}`}>
                   {regData.infected > 0 ? `${regData.infected} Domain Perlu Remediasi` : "Sistem Terpantau Bersih"}
                 </span>
@@ -193,31 +193,31 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           )}
         </div>
 
-        <div className="absolute top-1 sm:top-3 right-1 sm:right-4 z-20 flex flex-wrap items-center gap-2 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-gray-200 shadow-md text-[9px] sm:text-[10px] font-sans font-bold">
+        <div className="absolute top-0 sm:top-3 right-0 sm:right-4 z-20 flex flex-wrap items-center gap-1 sm:gap-2 bg-white/95 backdrop-blur-md px-1.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-gray-200 shadow-md text-[7px] sm:text-[10px] font-sans font-bold">
           <span className="text-gray-500">Status:</span>
-          <span className="flex items-center gap-1 text-slate-700">
-            <span className="w-2.5 h-2.5 rounded-full bg-white border border-slate-400 inline-block shadow-xs"></span> Belum Ada Data
+          <span className="flex items-center gap-0.5 sm:gap-1 text-slate-700">
+            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-white border border-slate-400 inline-block shadow-xs"></span> Belum Ada Data
           </span>
-          <span className="flex items-center gap-1 text-emerald-700">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] inline-block shadow-xs"></span> Aman (&gt;75)
+          <span className="flex items-center gap-0.5 sm:gap-1 text-emerald-700">
+            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-[#22c55e] inline-block shadow-xs"></span> Aman (&gt;75)
           </span>
-          <span className="flex items-center gap-1 text-amber-700">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ea580c] inline-block shadow-xs"></span> Waspada (60-74)
+          <span className="flex items-center gap-0.5 sm:gap-1 text-amber-700">
+            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ea580c] inline-block shadow-xs"></span> Waspada (60-74)
           </span>
-          <span className="flex items-center gap-1 text-red-700">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#dc2626] inline-block shadow-xs"></span> Bahaya (&lt;60)
+          <span className="flex items-center gap-0.5 sm:gap-1 text-red-700">
+            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-[#dc2626] inline-block shadow-xs"></span> Bahaya (&lt;60)
           </span>
         </div>
 
         <div
-          className="absolute bottom-2 left-1 sm:left-4 z-20 max-w-[195px] sm:max-w-[240px] bg-white rounded-2xl border-2 border-[#f15a24] p-2.5 sm:p-3 text-left shadow-md text-[8.5px] sm:text-[9.5px] font-sans"
+          className="absolute bottom-1 sm:bottom-2 left-0 sm:left-4 z-20 max-w-[140px] sm:max-w-[240px] bg-white rounded-xl sm:rounded-2xl border sm:border-2 border-[#f15a24] p-1.5 sm:p-3 text-left shadow-md text-[7px] sm:text-[9.5px] font-sans"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-bold text-gray-900 leading-tight">
             Top Provinsi Risiko Tertinggi:
-            <span className="block text-[8px] font-medium text-red-600">(Need Immediate Patch):</span>
+            <span className="block text-[6px] sm:text-[8px] font-medium text-red-600">(Need Immediate Patch):</span>
           </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-0.5 font-medium">
+          <ol className="list-decimal list-inside text-gray-700 mt-0.5 space-y-0.5 font-medium">
             {topRisk.length > 0 ? (
               topRisk.map((r, i) => (
                 <li key={i}>
@@ -229,11 +229,11 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
             )}
           </ol>
 
-          <div className="font-bold text-gray-900 mt-2 leading-tight">
+          <div className="font-bold text-gray-900 mt-1 sm:mt-2 leading-tight">
             Top Provinsi Paling Higienis:
-            <span className="block text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
+            <span className="block text-[6px] sm:text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
           </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-0.5 font-medium">
+          <ol className="list-decimal list-inside text-gray-700 mt-0.5 space-y-0.5 font-medium">
             {topClean.length > 0 ? (
               topClean.map((r, i) => (
                 <li key={i}>
@@ -248,7 +248,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
 
         <svg
           viewBox="0 140 2021 780"
-          className="w-full h-auto max-h-[50vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300"
+          className="w-full h-auto max-h-[40vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300"
           xmlns="http://www.w3.org/2000/svg"
         >
           <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
