@@ -126,62 +126,60 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
 
   const pointerTarget = activeMeta.center;
 
-return (
-    <div className="w-full relative flex flex-col items-center select-none py-1">
+  return (
+    <div className="w-full relative flex flex-col items-center select-none py-2 px-4 md:px-0">
       <div
-        className="w-full relative flex items-center justify-center min-h-[320px] sm:min-h-[520px] md:min-h-[620px]"
+        className="w-full relative flex flex-col md:block items-center justify-center min-h-auto md:min-h-[520px] lg:min-h-[620px] gap-4 md:gap-0"
         onClick={() => setSelectedId("Bengkulu")}
       >
+        {/* PANEL 1: INFO PROVINSI (Urutan ke-1 di HP, Kiri Atas di Laptop) */}
         <div
-          className="absolute top-0 sm:top-3 left-0 sm:left-4 z-20 max-w-[150px] sm:max-w-[260px] bg-white rounded-xl sm:rounded-2xl border sm:border-2 border-[#1e293b] p-1.5 sm:p-3 text-left shadow-lg text-[7px] sm:text-[10px] font-sans transition-all"
+          className="relative md:absolute top-0 md:top-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[260px] bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all order-1 md:order-none"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="font-bold text-gray-900 leading-tight">Nama Provinsi: {activeMeta.name}</div>
+          <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-2">Nama Provinsi: {activeMeta.name}</div>
 
           {!hasData ? (
             <>
               <div className="mt-1 flex items-center gap-1">
-                <span className="px-1.5 py-0.5 rounded-full text-[6.5px] sm:text-[8.5px] font-bold bg-slate-100 text-slate-700 border border-slate-300 font-mono">
+                <span className="px-1.5 py-0.5 rounded-full text-[10px] md:text-[8.5px] font-bold bg-slate-100 text-slate-700 border border-slate-300 font-mono">
                   BELUM ADA DATA
                 </span>
-                <span className="text-gray-500 text-[7px] sm:text-[9px]">Wilayah {activeMeta.regionKey}</span>
+                <span className="text-gray-500 text-xs md:text-[9px]">Wilayah {activeMeta.regionKey}</span>
               </div>
-              <div className="text-gray-600 mt-1 sm:mt-2">
+              <div className="text-gray-600 mt-2">
                 Skor Indeks: <span className="font-semibold text-gray-700">- / 100</span>
               </div>
-              <div className="text-gray-600 mt-0.5">
+              <div className="text-gray-600 mt-1">
                 Total Web Dipindai: <span className="font-semibold text-gray-700">0 Domain</span>
               </div>
-              <div className="text-gray-600 mt-0.5">
+              <div className="text-gray-600 mt-1">
                 Web Terinfeksi Active: <span className="font-semibold text-gray-700">0 Domain (0%)</span>
               </div>
-              <div className="text-gray-500 mt-1.5 pt-1.5 border-t border-gray-100 text-[6.5px] sm:text-[8.5px] italic leading-tight">
+              <div className="text-gray-500 mt-2 pt-2 border-t border-gray-100 text-[11px] md:text-[8.5px] italic leading-tight">
                 Belum ada domain dari provinsi ini di database. Masukkan URL kampus/sekolah di atas untuk memindai wilayah ini.
               </div>
             </>
           ) : (
             <>
-              <div className="text-gray-700 mt-0.5">
-                Skor Indeks Keamanan: <span className={`font-bold ${regData.score < 60 ? "text-red-600" : (regData.score < 80 || regData.infected > 0) ? "text-amber-600" : "text-emerald-600"
-                  }`}>
-                  {regData.score} / 100 ({
-                    regData.score < 60 ? "Bahaya" : (regData.score < 80 || regData.infected > 0) ? "Waspada" : "Aman"
-                  })
+              <div className="text-gray-700 mt-1">
+                Skor Indeks Keamanan: <span className={`font-bold ${regData.score < 60 ? "text-red-600" : (regData.score < 80 || regData.infected > 0) ? "text-amber-600" : "text-emerald-600"}`}>
+                  {regData.score} / 100 ({regData.score < 60 ? "Bahaya" : (regData.score < 80 || regData.infected > 0) ? "Waspada" : "Aman"})
                 </span>
               </div>
-              <div className="text-gray-700 mt-0.5">
+              <div className="text-gray-700 mt-1">
                 Total Web Dipindai: <span className="font-semibold text-gray-900">{regData.total} Domain</span>
               </div>
-              <div className="text-gray-700 mt-0.5">
+              <div className="text-gray-700 mt-1">
                 Web Terinfeksi Active: <span className={`font-bold ${regData.infected > 0 ? "text-red-600" : "text-emerald-600"}`}>
                   {regData.infected} Domain ({infectedPct}%)
                 </span>
               </div>
-              <div className="pl-1 sm:pl-2 text-gray-600 mt-0.5 leading-tight">
+              <div className="pl-2 text-gray-600 mt-1 leading-tight">
                 <div>• Kampus (.ac.id): {acInfected} Terinfeksi</div>
                 <div>• Sekolah (.sch.id): {schInfected} Terinfeksi</div>
               </div>
-              <div className="text-gray-700 mt-1 leading-tight">
+              <div className="text-gray-700 mt-2 leading-tight">
                 Tipe Serangan Terbanyak: <span className="font-medium text-gray-900">{regData.main_threat}</span>
               </div>
               <div className="text-gray-700 mt-1">
@@ -193,31 +191,33 @@ return (
           )}
         </div>
 
-        <div className="absolute top-0 sm:top-3 right-0 sm:right-4 z-20 flex flex-wrap items-center gap-1 sm:gap-2 bg-white/95 backdrop-blur-md px-1.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-gray-200 shadow-md text-[7px] sm:text-[10px] font-sans font-bold">
-          <span className="text-gray-500">Status:</span>
-          <span className="flex items-center gap-0.5 sm:gap-1 text-slate-700">
-            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-white border border-slate-400 inline-block shadow-xs"></span> Belum Ada Data
+        {/* PANEL 2: STATUS (Urutan ke-2 di HP, Kanan Atas di Laptop) */}
+        <div className="relative md:absolute top-0 md:top-4 right-0 md:right-4 z-20 flex flex-wrap justify-center items-center gap-3 md:gap-2 bg-white/95 backdrop-blur-md px-4 py-3 md:px-3 md:py-1.5 rounded-xl border border-gray-200 shadow-md text-xs md:text-[10px] font-sans font-bold w-full md:w-auto order-2 md:order-none">
+          <span className="text-gray-500 hidden md:inline">Status:</span>
+          <span className="flex items-center gap-1 text-slate-700">
+            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-white border border-slate-400 inline-block shadow-xs"></span> Belum Ada Data
           </span>
-          <span className="flex items-center gap-0.5 sm:gap-1 text-emerald-700">
-            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-[#22c55e] inline-block shadow-xs"></span> Aman (&gt;75)
+          <span className="flex items-center gap-1 text-emerald-700">
+            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-[#22c55e] inline-block shadow-xs"></span> Aman
           </span>
-          <span className="flex items-center gap-0.5 sm:gap-1 text-amber-700">
-            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ea580c] inline-block shadow-xs"></span> Waspada (60-74)
+          <span className="flex items-center gap-1 text-amber-700">
+            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-[#ea580c] inline-block shadow-xs"></span> Waspada
           </span>
-          <span className="flex items-center gap-0.5 sm:gap-1 text-red-700">
-            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-[#dc2626] inline-block shadow-xs"></span> Bahaya (&lt;60)
+          <span className="flex items-center gap-1 text-red-700">
+            <span className="w-3 h-3 md:w-2.5 md:h-2.5 rounded-full bg-[#dc2626] inline-block shadow-xs"></span> Bahaya
           </span>
         </div>
 
+        {/* PANEL 3: TOP PROVINSI (Urutan ke-3 di HP, Kiri Bawah di Laptop) */}
         <div
-          className="absolute bottom-1 sm:bottom-2 left-0 sm:left-4 z-20 max-w-[140px] sm:max-w-[240px] bg-white rounded-xl sm:rounded-2xl border sm:border-2 border-[#f15a24] p-1.5 sm:p-3 text-left shadow-md text-[7px] sm:text-[9.5px] font-sans"
+          className="relative md:absolute bottom-0 md:bottom-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[240px] bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans order-3 md:order-none"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="font-bold text-gray-900 leading-tight">
+          <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-1">
             Top Provinsi Risiko Tertinggi:
-            <span className="block text-[6px] sm:text-[8px] font-medium text-red-600">(Need Immediate Patch):</span>
+            <span className="block text-[11px] md:text-[8px] font-medium text-red-600">(Need Immediate Patch):</span>
           </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-0.5 space-y-0.5 font-medium">
+          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium mb-3">
             {topRisk.length > 0 ? (
               topRisk.map((r, i) => (
                 <li key={i}>
@@ -229,11 +229,11 @@ return (
             )}
           </ol>
 
-          <div className="font-bold text-gray-900 mt-1 sm:mt-2 leading-tight">
+          <div className="font-bold text-gray-900 mt-3 md:mt-2 leading-tight mb-1 border-t border-gray-100 pt-2">
             Top Provinsi Paling Higienis:
-            <span className="block text-[6px] sm:text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
+            <span className="block text-[11px] md:text-[8px] font-medium text-emerald-600">(Best Cyber-Hygiene):</span>
           </div>
-          <ol className="list-decimal list-inside text-gray-700 mt-0.5 space-y-0.5 font-medium">
+          <ol className="list-decimal list-inside text-gray-700 mt-1 space-y-1 font-medium">
             {topClean.length > 0 ? (
               topClean.map((r, i) => (
                 <li key={i}>
@@ -246,9 +246,10 @@ return (
           </ol>
         </div>
 
+        {/* PETA SVG (Urutan ke-4 / Paling Bawah di HP) */}
         <svg
           viewBox="0 140 2021 780"
-          className="w-full h-auto max-h-[40vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300"
+          className="w-full h-auto max-h-[40vh] md:max-h-[60vh] lg:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300 order-4 md:order-none py-4 md:py-0"
           xmlns="http://www.w3.org/2000/svg"
         >
           <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
