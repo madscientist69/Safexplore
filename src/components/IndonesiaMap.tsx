@@ -132,15 +132,15 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
         className="w-full relative flex flex-col md:block items-center justify-center gap-4 md:gap-0"
         onClick={() => setSelectedId("Bengkulu")}
       >
-        {/* PANEL 1: INFO PROVINSI (Di atas pada HP, Kiri Atas pada Laptop) */}
+        {/* PANEL 1: INFO PROVINSI (Diberi min-h agar tidak menyusut/melompat saat teks berganti) */}
         <div
-          className="relative md:absolute top-0 md:top-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[260px] bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all order-1 md:order-none"
+          className="relative md:absolute top-0 md:top-4 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[260px] bg-white rounded-xl md:rounded-2xl border border-[#1e293b] md:border-2 p-3 text-left shadow-lg text-xs md:text-[10px] font-sans transition-all order-1 md:order-none min-h-[250px] md:min-h-[260px] flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-2">Nama Provinsi: {activeMeta.name}</div>
 
           {!hasData ? (
-            <>
+            <div className="flex-1">
               <div className="mt-1 flex items-center gap-1">
                 <span className="px-1.5 py-0.5 rounded-full text-[10px] md:text-[8.5px] font-bold bg-slate-100 text-slate-700 border border-slate-300 font-mono">
                   BELUM ADA DATA
@@ -159,9 +159,9 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
               <div className="text-gray-500 mt-2 pt-2 border-t border-gray-100 text-[11px] md:text-[8.5px] italic leading-tight">
                 Belum ada domain dari provinsi ini di database. Masukkan URL kampus/sekolah di atas untuk memindai wilayah ini.
               </div>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="flex-1">
               <div className="text-gray-700 mt-1">
                 Skor Indeks Keamanan: <span className={`font-bold ${regData.score < 60 ? "text-red-600" : (regData.score < 80 || regData.infected > 0) ? "text-amber-600" : "text-emerald-600"}`}>
                   {regData.score} / 100 ({regData.score < 60 ? "Bahaya" : (regData.score < 80 || regData.infected > 0) ? "Waspada" : "Aman"})
@@ -187,11 +187,11 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
                   {regData.infected > 0 ? `${regData.infected} Domain Perlu Remediasi` : "Sistem Terpantau Bersih"}
                 </span>
               </div>
-            </>
+            </div>
           )}
         </div>
 
-        {/* PANEL 2: STATUS (Di urutan kedua pada HP, Kanan Atas pada Laptop) */}
+        {/* PANEL 2: STATUS */}
         <div className="relative md:absolute top-0 md:top-4 right-0 md:right-4 z-20 flex flex-wrap justify-center items-center gap-3 md:gap-2 bg-white/95 backdrop-blur-md px-4 py-3 md:px-3 md:py-1.5 rounded-xl border border-gray-200 shadow-md text-xs md:text-[10px] font-sans font-bold w-full md:w-auto order-2 md:order-none">
           <span className="text-gray-500 hidden md:inline">Status:</span>
           <span className="flex items-center gap-1 text-slate-700">
@@ -208,11 +208,11 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           </span>
         </div>
 
-        {/* PETA SVG DENGAN WRAPPER ZOOM & SCROLL UNTUK HP */}
-        <div className="w-full relative overflow-x-auto overflow-y-visible touch-pan-x touch-pan-y md:overflow-visible order-3 md:order-none pb-2 md:pb-0 hide-scrollbar">
+        {/* PETA SVG (Mode Zoom/Geser diaktifkan untuk layar Mobile) */}
+        <div className="w-full relative overflow-auto touch-pan-x touch-pan-y md:overflow-visible order-3 md:order-none hide-scrollbar cursor-grab active:cursor-grabbing">
           <svg
             viewBox="0 140 2021 780"
-            className="w-full h-auto min-w-[750px] md:min-w-full max-h-[50vh] md:max-h-[60vh] lg:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300 py-4 md:py-0"
+            className="w-[200%] sm:w-[150%] md:w-full min-w-[800px] md:min-w-0 h-auto md:max-h-[60vh] lg:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300 py-4 md:py-0 mx-auto"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
@@ -370,9 +370,10 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
           </svg>
         </div>
 
-        {/* PANEL 3: TOP PROVINSI (Di urutan terbawah pada HP, Kiri Bawah pada Laptop) */}
+        {/* PANEL 3: TOP PROVINSI */}
+        {/* Menggunakan md:top-[290px] alih-alih md:bottom-0 agar diletakkan pas di bawah panel 1 */}
         <div
-          className="relative md:absolute bottom-0 md:bottom-2 left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[240px] bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans order-4 md:order-none"
+          className="relative md:absolute md:top-[290px] left-0 md:left-4 z-20 w-full md:w-auto md:max-w-[240px] bg-white rounded-xl md:rounded-2xl border border-[#f15a24] md:border-2 p-3 text-left shadow-md text-xs md:text-[9.5px] font-sans order-4 md:order-none min-h-[220px] md:min-h-0"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-bold text-gray-900 text-sm md:text-xs leading-tight mb-1">
@@ -407,7 +408,6 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
             )}
           </ol>
         </div>
-
       </div>
     </div>
   );
