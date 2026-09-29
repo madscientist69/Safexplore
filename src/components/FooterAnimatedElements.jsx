@@ -10,12 +10,12 @@ export const GrowingCubesBackground = () => (
   <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
     
     {/* TAMPILAN HP: Kiri & Kanan (Ukuran disesuaikan, dinaikkan ke bottom-2) */}
-    <div className="absolute left-2 bottom--1 sm:hidden flex items-end gap-1">
+    <div className="absolute left-2 bottom-0 sm:hidden flex items-end gap-1">
       <div className="w-8 h-8 animate-grow-cube drop-shadow-md origin-bottom" style={{ "--duration": "3.5s", "--delay": "0s" }}>
         <IsometricCubeSVG />
       </div>
     </div>
-    <div className="absolute right-2 bottom--1 sm:hidden flex items-end gap-1">
+    <div className="absolute right-2 bottom-0 sm:hidden flex items-end gap-1">
       <div className="w-8 h-8 animate-grow-cube drop-shadow-md origin-bottom" style={{ "--duration": "4.2s", "--delay": "-0.8s" }}>
         <IsometricCubeSVG />
       </div>
