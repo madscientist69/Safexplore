@@ -26,21 +26,18 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
   return (
     <section className="relative w-full min-h-[500px] md:min-h-[580px] bg-grid-blueprint flex flex-col items-center justify-center px-4 py-12 md:py-16 overflow-hidden border-b border-gray-200">
       
-      {/* Decorative Isometric Cubes at bottom corners */}
-      <div className="absolute -bottom-6 -left-4 w-20 sm:w-36 md:w-64 opacity-25 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute bottom-0 -left-4 w-20 sm:w-36 md:w-64 opacity-25 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="left" />
       </div>
-      <div className="absolute -bottom-6 -right-4 w-20 sm:w-36 md:w-64 opacity-25 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute bottom-0 -right-4 w-20 sm:w-36 md:w-64 opacity-25 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="right" />
       </div>
 
-      {/* Decorative subtle section tag on bottom left */}
       <div className="hidden sm:block absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-400/60 text-xs font-mono font-bold tracking-wider select-none">
         About Us
       </div>
 
-      {/* Main Hero Content */}
-      <div className="max-w-3xl w-full mx-auto text-center z-20 flex flex-col items-center">
+      <div className="max-w-3xl w-full mx-auto text-center z-20 flex flex-col items-center relative">
         
         {/* Main Title */}
         <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-[40px] font-extrabold text-[#1a2530] leading-snug sm:leading-tight tracking-tight max-w-2xl">
@@ -55,14 +52,12 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
           </span>
         </h1>
 
-        <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-600 max-w-xl px-2">
+        <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-600 max-w-xl px-2 relative z-20">
           Audit otomatis kerentanan SEO Hijacking, Googlebot Cloaking, dan Injeksi Backlink Judi Online pada institusi pendidikan & publik Indonesia.
         </p>
 
-        {/* Input Pill Container */}
-        <form onSubmit={handleSubmit} className="w-full max-w-xl mt-6 sm:mt-8 flex flex-col items-center gap-3 sm:gap-4">
+        <form onSubmit={handleSubmit} className="w-full max-w-xl mt-6 sm:mt-8 flex flex-col items-center gap-3 sm:gap-4 relative z-30">
           
-          {/* Blue Pill Bar */}
           <div className="w-full bg-[#0b3c61] rounded-full p-1.5 sm:p-2 pl-3.5 sm:pl-5 flex items-center shadow-lg border-2 border-[#092e4a] focus-within:ring-2 focus-within:ring-[#f15a24] transition-all">
             <span className="hidden sm:inline text-white/90 text-xs md:text-sm font-semibold whitespace-nowrap mr-2 select-none">
               Masukkan URL Website :
@@ -79,7 +74,6 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
             />
           </div>
 
-          {/* Orange "Cari" Button */}
           <button
             type="submit"
             className="w-full sm:w-auto bg-[#f15a24] hover:bg-[#d94a18] active:scale-95 text-white font-bold px-8 sm:px-10 py-2.5 rounded-full text-sm md:text-base shadow-md hover:shadow-lg border border-[#f15a24] transition-all flex items-center justify-center gap-2 cursor-pointer group"
@@ -89,8 +83,7 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
           </button>
         </form>
 
-        {/* Quick Test Chips */}
-        <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-xs px-2">
+        <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-xs px-2 relative z-30">
           <span className="text-gray-500 font-medium flex items-center gap-1 text-[11px] sm:text-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#f15a24] shrink-0" />
             <span>Coba contoh:</span>
