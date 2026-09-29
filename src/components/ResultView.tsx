@@ -167,8 +167,8 @@ export default function ResultView({ targetUrl, scanData, onBackToSearch }: Resu
         </span>
       </div>
 
-      <div className="absolute -bottom-4 -translate-y-[30px] -right-6 w-36 sm:w-52 md:w-72 pointer-events-none z-10 opacity-40 sm:opacity-100"><IsometricCubes variant="right" /></div>
-      <div className="absolute -bottom-4 -translate-y-[30px] -translate-x-[20px] -left-6 w-36 sm:w-52 md:w-72 pointer-events-none z-10 opacity-40 sm:opacity-100"><IsometricCubes variant="left" /></div>
+      {/* <div className="absolute -bottom-4 -translate-y-[30px] -right-6 w-36 sm:w-52 md:w-72 pointer-events-none z-10 opacity-40 sm:opacity-100"><IsometricCubes variant="right" /></div>
+      <div className="absolute -bottom-4 -translate-y-[30px] -translate-x-[20px] -left-6 w-36 sm:w-52 md:w-72 pointer-events-none z-10 opacity-40 sm:opacity-100"><IsometricCubes variant="left" /></div> */}
 
       <main className="max-w-6xl w-full mx-auto px-3 sm:px-4 py-6 sm:py-8 relative z-20 flex-1 flex flex-col">
         
