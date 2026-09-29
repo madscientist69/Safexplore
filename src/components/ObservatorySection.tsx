@@ -38,20 +38,20 @@ export default function ObservatorySection({ refreshTrigger = 0 }: ObservatoryPr
   return (
     <section
       id="observatory"
-      className="relative w-full bg-grid-blueprint py-12 md:py-20 px-3 sm:px-4 overflow-hidden border-b border-gray-200"
+      className="relative w-full bg-grid-blueprint pt-10 pb-16 md:pt-14 md:pb-20 px-3 sm:px-4 overflow-hidden border-b border-gray-200"
     >
-      <div className="absolute -bottom-2 -translate-y-[1.5px] -left-2 w-16 sm:w-36 md:w-60 opacity-30 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute bottom-0 left-0 w-24 sm:w-44 md:w-60 lg:w-64 opacity-70 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="left" />
       </div>
-      <div className="absolute -bottom-2 -translate-y-1 -right-2 w-16 sm:w-36 md:w-60 opacity-30 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute bottom-0 right-0 w-24 sm:w-44 md:w-60 lg:w-64 opacity-70 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="right" />
       </div>
 
-      <div className="hidden sm:block absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-400/50 text-xs font-mono font-bold tracking-wider select-none">
+      <div className="hidden sm:block absolute bottom-3 left-1/2 -translate-x-1/2 text-gray-400/50 text-xs font-mono font-bold tracking-wider select-none z-10">
         Footer
       </div>
 
-      <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-20">
+      <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-20">
         <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#1b2a38] tracking-tight px-2">
           Data statistik agregat web kampus/sekolah di Indonesia{" "}
           <span className="block text-xs sm:text-sm md:text-base font-semibold text-gray-600 mt-1 font-mono">
@@ -59,7 +59,8 @@ export default function ObservatorySection({ refreshTrigger = 0 }: ObservatoryPr
           </span>
         </h2>
 
-        <div className="w-full max-w-4xl mt-5 sm:mt-6 bg-white rounded-2xl border-2 border-[#f15a24] p-4 sm:p-5 shadow-lg relative z-30 transition-all duration-300">
+        {/* METRICS CARD */}
+        <div className="w-full max-w-4xl mt-4 sm:mt-5 bg-white rounded-2xl border-2 border-[#f15a24] p-4 sm:p-5 shadow-lg relative z-30 transition-all duration-300">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6 text-left text-xs sm:text-sm font-sans">
             <div className="flex items-center justify-between sm:justify-start gap-2">
               <span className="text-gray-700 font-bold">Rata-rata Index Nasional :</span>
@@ -96,13 +97,15 @@ export default function ObservatorySection({ refreshTrigger = 0 }: ObservatoryPr
           </div>
         </div>
 
-        <div className="w-full mt-4 sm:mt-6 relative z-20 flex justify-center items-center overflow-hidden">
+        {/* CONTAINER PETA */}
+        <div className="w-full mt-2 sm:mt-3 relative z-20 flex justify-center items-center">
           <div className="w-full max-w-full flex justify-center">
             <IndonesiaMap filter={filter} apiData={stats} />
           </div>
         </div>
 
-        <div className="mt-5 flex flex-col items-center gap-2 z-30 relative">
+        {/* FILTER BUTTONS - Dinaikkan posisinya & dirapatkan jaraknya ke peta */}
+        <div className="mt-1 sm:mt-2 mb-6 sm:mb-8 flex flex-col items-center gap-1.5 z-30 relative">
           <span className="text-xs font-bold text-gray-600 uppercase tracking-wider font-mono">
             Filter
           </span>

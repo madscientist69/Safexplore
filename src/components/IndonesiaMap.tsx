@@ -259,7 +259,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
         </div>
 
         {/* KONTAINER PETA - Tinggi desktop dinaikkan ke md:h-[580px] lg:h-[650px] agar jauh lebih besar */}
-        <div className="w-full relative h-[420px] md:h-[580px] lg:h-[650px] border border-gray-200 md:border-none rounded-xl bg-slate-50 md:bg-transparent overflow-hidden">
+        <div className="w-full relative h-[400px] md:h-[420px] lg:h-[460px] border border-gray-200 md:border-none rounded-xl bg-slate-50 md:bg-transparent overflow-hidden">
 
           {/* Tombol Zoom (Hanya Mobile) */}
           <div className="absolute bottom-4 right-4 z-30 flex flex-col gap-2 md:hidden">
