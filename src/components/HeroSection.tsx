@@ -26,7 +26,7 @@ export default function HeroSection({ onStartScan }: HeroSectionProps) {
   return (
     <section className="relative w-full min-h-[500px] md:min-h-[580px] bg-grid-blueprint flex flex-col items-center justify-center px-4 py-12 md:py-16 overflow-hidden border-b border-gray-200">
       
-      <div className="absolute bottom-0 -left-4 -translate-x-8 w-20 sm:w-36 md:w-64 opacity-25 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute bottom-0 -left-4 -translate-x-6 w-20 sm:w-36 md:w-64 opacity-25 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="left" />
       </div>
       <div className="absolute bottom-0 -right-4 w-20 sm:w-36 md:w-64 opacity-25 sm:opacity-100 pointer-events-none z-10">

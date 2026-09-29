@@ -29,7 +29,7 @@ export default function Navbar({ onNavigate, onResetToHome }: NavbarProps) {
           <div className="flex-1 flex justify-start">
             <button
               onClick={() => handleScroll("observatory")}
-              className="flex items-center gap-1 sm:gap-1.5 hover:text-orange-100 transition-all font-medium py-1 px-2 sm:px-3 rounded-full hover:bg-white/15 cursor-pointer text-xs sm:text-sm"
+              className="flex items-center gap-1 sm:gap-1.5 hover:text-orange-100 -translate-x-1 transition-all font-medium py-1 px-2 sm:px-3 rounded-full hover:bg-white/15 cursor-pointer text-xs sm:text-sm"
               aria-label="Observatory"
             >
               <Globe2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
