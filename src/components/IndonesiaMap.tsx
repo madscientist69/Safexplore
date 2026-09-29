@@ -126,7 +126,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
 
   const pointerTarget = activeMeta.center;
 
-  return (
+return (
     <div className="w-full relative flex flex-col items-center select-none py-1">
       <div
         className="w-full relative flex items-center justify-center min-h-[320px] sm:min-h-[520px] md:min-h-[620px]"
