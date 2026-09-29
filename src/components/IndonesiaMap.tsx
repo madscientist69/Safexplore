@@ -248,7 +248,7 @@ export default function IndonesiaMap({ filter, apiData }: IndonesiaMapProps) {
 
         <svg
           viewBox="0 140 2021 780"
-          className="w-full h-auto select-none overflow-visible filter drop-shadow-sm"
+          className="w-full h-auto max-h-[50vh] sm:max-h-[60vh] md:max-h-[70vh] object-contain select-none overflow-visible filter drop-shadow-sm transition-all duration-300"
           xmlns="http://www.w3.org/2000/svg"
         >
           <g id="Indonesia-Map" transform="matrix(1,0,0,1,-18.4771,18.4557)">
