@@ -5,7 +5,7 @@ import React from "react";
 interface IsometricCubesProps {
   className?: string;
   variant?: "left" | "right" | "stacked";
-  colorMode?: "orange-blue" | "all-blue";
+  colorMode?: "orange-blue" | "all-blue" | "leaf-green"; // Tambahkan leaf-green
 }
 
 export default function IsometricCubes({
@@ -13,10 +13,18 @@ export default function IsometricCubes({
   variant = "right",
   colorMode = "orange-blue",
 }: IsometricCubesProps) {
-  // Fill: #064E7A
-  // Border: 3px solid #F2692E / #0ea5e9
-  const strokeColor = colorMode === "orange-blue" ? "#F2692E" : "#0ea5e9";
-  const fillColor = "#064E7A";
+  
+  // Konfigurasi Warna Dinamis
+  let strokeColor = "#F2692E"; // Default Orange
+  let fillColor = "#064E7A";   // Default Dark Blue
+  
+  if (colorMode === "all-blue") {
+    strokeColor = "#0ea5e9";
+  } else if (colorMode === "leaf-green") {
+    strokeColor = "#4ade80"; // Hijau Daun Cerah
+    fillColor = "#064e3b";   // Hijau Gelap
+  }
+
   const strokeWidth = "3";
 
   // Variant "left" 
@@ -24,19 +32,16 @@ export default function IsometricCubes({
     return (
       <div className={`pointer-events-none select-none ${className}`}>
         <svg viewBox="0 0 220 220" className="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Back/Top Cube */}
           <g transform="translate(85, 5)">
             <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
             <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
             <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
           </g>
-          {/* Middle/Left Cube */}
           <g transform="translate(35, 55)">
             <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
             <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
             <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
           </g>
-          {/* Front/Right Cube */}
           <g transform="translate(85, 105)">
             <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
             <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
@@ -47,7 +52,7 @@ export default function IsometricCubes({
     );
   }
 
-  // Variant "stacked" 
+  // Variant "stacked" (Animasi Escalator Linear)
   if (variant === "stacked") {
     return (
       <div 
@@ -61,17 +66,16 @@ export default function IsometricCubes({
           {`
             @keyframes escalator {
               0% { transform: translateY(0); }
-              100% { transform: translateY(-70px); } /* Bergerak sejauh 1 tinggi kubus */
+              100% { transform: translateY(-70px); }
             }
             .anim-escalator {
-              /* Animasi linear agar pergerakannya mulus dan tidak membuat pusing */
               animation: escalator 2s linear infinite; 
             }
           `}
         </style>
         <svg
           viewBox="0 0 120 1400" 
-          preserveAspectRatio="xMidYMid slice" // Memaksa SVG memenuhi container (sampai ujung)
+          preserveAspectRatio="xMidYMid slice"
           className="w-full h-full drop-shadow-lg"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -93,23 +97,20 @@ export default function IsometricCubes({
     );
   }
 
-  // Variant "right" 
+  // Variant "right"
   return (
     <div className={`pointer-events-none select-none ${className}`}>
       <svg viewBox="0 0 220 220" className="w-full h-auto drop-shadow-lg" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Back/Top Cube */}
         <g transform="translate(35, 5)">
           <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
           <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
           <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
         </g>
-        {/* Middle/Right Cube */}
         <g transform="translate(85, 55)">
           <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
           <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
           <path d="M50 56 L100 28 L100 82 L50 110 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
         </g>
-        {/* Front/Left Cube */}
         <g transform="translate(35, 105)">
           <path d="M50 0 L100 28 L50 56 L0 28 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />
           <path d="M0 28 L50 56 L50 110 L0 82 Z" fill={fillColor} stroke={strokeColor} strokeWidth={strokeWidth} strokeLinejoin="round" strokeLinecap="round" />

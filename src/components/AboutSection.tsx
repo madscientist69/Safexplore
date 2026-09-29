@@ -1,19 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef } from "react";
 import IsometricCubes from "./IsometricCubes";
+import { FloatingBackground } from "./FloatingBackground"; 
 
 export default function AboutSection() {
+  const [showFloating, setShowFloating] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleSdgClick = () => {
+    setShowFloating(true);
+    
+    if (timerRef.current) clearTimeout(timerRef.current);
+    
+    timerRef.current = setTimeout(() => {
+      setShowFloating(false);
+    }, 3500);
+  };
+
   return (
     <section
       id="about"
       className="relative w-full bg-[#171d22] bg-grid-blueprint-dark text-white py-14 md:py-20 px-2 sm:px-4 overflow-hidden border-b border-gray-800 z-10"
     >
+      <div 
+        className={`absolute inset-0 pointer-events-none z-0 transition-opacity duration-1000 ease-in-out ${
+          showFloating ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <FloatingBackground />
+      </div>
+
       <div className="absolute inset-y-0 -left-4 sm:-left-6 md:-left-8 w-12 sm:w-28 md:w-32 lg:w-40 opacity-40 sm:opacity-100 pointer-events-none z-10">
-        <IsometricCubes variant="stacked" colorMode="orange-blue" />
+        <IsometricCubes variant="stacked" colorMode="leaf-green" />
       </div>
       <div className="absolute inset-y-0 -right-4 sm:-right-6 md:-right-8 w-12 sm:w-28 md:w-32 lg:w-40 opacity-40 sm:opacity-100 pointer-events-none z-10">
-        <IsometricCubes variant="stacked" colorMode="orange-blue" />
+        <IsometricCubes variant="stacked" colorMode="leaf-green" />
       </div>
 
       <div className="max-w-3xl mx-auto text-center relative z-20 flex flex-col items-center px-12 sm:px-0">
@@ -33,12 +55,21 @@ export default function AboutSection() {
         </p>
 
         <div className="mt-5 sm:mt-8 flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8">
-          <div className="w-20 h-20 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl hover:scale-105 active:scale-95 active:shadow-inner transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-orange-500/30 bg-[#f36d25] [-webkit-tap-highlight-color:transparent]">
+          
+          <div 
+            onClick={handleSdgClick}
+            className="w-20 h-20 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl hover:scale-105 active:scale-95 active:shadow-inner transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-orange-500/30 bg-[#f36d25] [-webkit-tap-highlight-color:transparent] relative z-20"
+          >
             <img src="/sdg9.svg" alt="SDG 9" className="w-full h-full object-cover select-none pointer-events-none" />
           </div>
-          <div className="w-20 h-20 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl hover:scale-105 active:scale-95 active:shadow-inner transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-sky-500/30 bg-[#00689d] [-webkit-tap-highlight-color:transparent]">
+          
+          <div 
+            onClick={handleSdgClick}
+            className="w-20 h-20 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl hover:scale-105 active:scale-95 active:shadow-inner transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-sky-500/30 bg-[#00689d] [-webkit-tap-highlight-color:transparent] relative z-20"
+          >
             <img src="/sdg16.svg" alt="SDG 16" className="w-full h-full object-cover select-none pointer-events-none" />
           </div>
+          
         </div>
       </div>
     </section>
