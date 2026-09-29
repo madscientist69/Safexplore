@@ -9,11 +9,11 @@ export default function AboutSection() {
       id="about"
       className="relative w-full bg-[#171d22] bg-grid-blueprint-dark text-white py-12 md:py-20 px-4 overflow-hidden border-b border-gray-800 z-10"
     >
-
-      <div className="absolute top-1/2 -left-4 sm:-left-6 -translate-y-3 md:-left-8 -translate-y-1/2 w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
+      {/* Penyesuaian responsif: Mengubah posisi left/right dan w (ukuran kubus) agar lebih seimbang di HP */}
+      <div className="absolute top-1/2 -left-2 sm:-left-6 md:-left-8 -translate-y-1/2 w-16 sm:w-28 md:w-32 lg:w-40 opacity-40 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
-      <div className="absolute top-1/2 -right-4 sm:-right-6 -translate-y-3 md:-right-8 -translate-y-1/2  w-16 sm:w-28 md:w-40 opacity-50 sm:opacity-100 pointer-events-none z-10">
+      <div className="absolute top-1/2 -right-2 sm:-right-6 md:-right-8 -translate-y-1/2 w-16 sm:w-28 md:w-32 lg:w-40 opacity-40 sm:opacity-100 pointer-events-none z-10">
         <IsometricCubes variant="stacked" colorMode="orange-blue" />
       </div>
 
@@ -34,7 +34,6 @@ export default function AboutSection() {
         </p>
 
         <div className="mt-6 sm:mt-8 flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8">
-  
           <div className="w-28 h-28 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl hover:scale-105 active:scale-95 active:shadow-inner transition-all duration-300 cursor-pointer border border-white/10 hover:shadow-orange-500/30 bg-[#f36d25] [-webkit-tap-highlight-color:transparent]">
             <img src="/sdg9.svg" alt="SDG 9" className="w-full h-full object-cover select-none pointer-events-none" />
           </div>
